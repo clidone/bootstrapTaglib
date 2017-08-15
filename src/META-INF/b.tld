@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <description>Bootstrap Tag Library</description>
+    <display-name>Bootstrap Tag Library</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>b</short-name>
+    <uri>http://tag.clidone.com</uri>
+
+    <!--
+    Tag body-content:
+    tagdependent：标签体内容直接被写入BodyContent，由自定义标签类来进行处理，而不被JSP容器解释
+    JSP：接受所有JSP语法
+    empty：空标记，即起始标记和结束标记之间没有内容
+    scriptless：接受文本、EL和JSP动作
+     -->
+    <tag>
+        <description>Paging Tag</description>
+        <name>paging</name>
+        <tag-class>com.clidone.tag.bootstrap.PagingTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>Data total count.</description>
+            <name>count</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Page current index.</description>
+            <name>index</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Each page data count.</description>
+            <name>each</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Paging item URL, not include page parameter.</description>
+            <name>url</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Paging item URL page parameter name.</description>
+            <name>pageParamName</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
