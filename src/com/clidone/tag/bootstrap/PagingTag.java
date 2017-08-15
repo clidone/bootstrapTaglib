@@ -1,18 +1,12 @@
 package com.clidone.tag.bootstrap;
 
-import java.io.IOException;
-
-import javax.servlet.jsp.JspContext;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-
-import com.clidone.tag.AbstractTag;
+import com.clidone.tag.AbstractSimpleTag;
 
 /**
  * <strong>Paging tag</strong>
  * @author wuhuaxia
  */
-public class PagingTag extends AbstractTag {
+public class PagingTag extends AbstractSimpleTag {
 
     // **********************************************************************************
     //
@@ -85,20 +79,6 @@ public class PagingTag extends AbstractTag {
     // 标签逻辑
     //
     // **********************************************************************************
-    /**
-     * 执行标签
-     */
-    @Override
-    public void doTag() throws JspException, IOException {
-        // 组织内容
-        String content = renderV3();
-
-        // 输出内容
-        JspContext jspContext = getJspContext();
-        JspWriter writer = jspContext.getOut();
-        writer.println(content);
-    }
-
     /**
      * 渲染V2内容
      * @return 渲染内容
