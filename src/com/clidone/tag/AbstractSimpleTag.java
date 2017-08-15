@@ -2,9 +2,11 @@ package com.clidone.tag;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import com.clidone.tag.bootstrap.IBootstrapTag;
@@ -68,8 +70,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     //
     // **********************************************************************************
     /**
-     * 获取是否隐藏样式
-     * @return 是否隐藏
+     * @see IBootstrapTag#getHide()
      */
     @Override
     public boolean getHide() {
@@ -77,8 +78,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置是否隐藏样式
-     * @param hidden 是否隐藏
+     * @see IBootstrapTag#setHide(boolean)
      */
     @Override
     public void setHide(boolean hidden) {
@@ -86,8 +86,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取是否显示样式
-     * @return 是否显示
+     * @see IBootstrapTag#getShow()
      */
     @Override
     public boolean getShow() {
@@ -95,8 +94,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置是否显示样式
-     * @param show 是否显示
+     * @see IBootstrapTag#setShow(boolean)
      */
     @Override
     public void setShow(boolean show) {
@@ -104,8 +102,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取对屏幕阅读器以外的设备隐藏内容
-     * @return 是否显示
+     * @see IBootstrapTag#getSrOnly()
      */
     @Override
     public boolean getSrOnly() {
@@ -113,8 +110,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置对屏幕阅读器以外的设备隐藏内容
-     * @param srOnly 是否显示
+     * @see IBootstrapTag#setSrOnly(boolean)
      */
     @Override
     public void setSrOnly(boolean srOnly) {
@@ -122,8 +118,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取XS下是否显示
-     * @return 显示样式
+     * @see IBootstrapTag#getXsShow()
      */
     @Override
     public String getXsShow() {
@@ -131,8 +126,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置XS下是否显示
-     * @param style 显示样式
+     * @see IBootstrapTag#setXsShow(String)
      */
     @Override
     public void setXsShow(String style) {
@@ -140,8 +134,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取SM下是否显示
-     * @return 显示样式
+     * @see IBootstrapTag#getSmShow()
      */
     @Override
     public String getSmShow() {
@@ -149,8 +142,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置SM下是否显示
-     * @param style 显示样式
+     * @see IBootstrapTag#setSmShow(String)
      */
     @Override
     public void setSmShow(String style) {
@@ -158,8 +150,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取MD下是否显示
-     * @return 显示样式
+     * @see IBootstrapTag#getMdShow()
      */
     @Override
     public String getMdShow() {
@@ -167,8 +158,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置MD下是否显示
-     * @param style 显示样式
+     * @see IBootstrapTag#setMdShow(String)
      */
     @Override
     public void setMdShow(String style) {
@@ -176,8 +166,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取LG下是否显示
-     * @return 显示样式
+     * @see IBootstrapTag#getLgShow()
      */
     @Override
     public String getLgShow() {
@@ -185,8 +174,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置LG下是否显示
-     * @param style 显示样式
+     * @see IBootstrapTag#setLgShow(String)
      */
     @Override
     public void setLgShow(String style) {
@@ -194,8 +182,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取Print下是否显示
-     * @return 显示样式
+     * @see IBootstrapTag#getPrintShow()
      */
     @Override
     public String getPrintShow() {
@@ -203,8 +190,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置Print下是否显示
-     * @param style 显示样式
+     * @see IBootstrapTag#setPrintShow(String)
      */
     @Override
     public void setPrintShow(String style) {
@@ -212,8 +198,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取XS下是否隐藏
-     * @return 隐藏样式
+     * @see IBootstrapTag#getXsHide()
      */
     @Override
     public boolean getXsHide() {
@@ -221,8 +206,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置XS下是否隐藏
-     * @param hide 隐藏样式
+     * @see IBootstrapTag#setXsHide(boolean)
      */
     @Override
     public void setXsHide(boolean hide) {
@@ -230,8 +214,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取SM下是否隐藏
-     * @return 隐藏样式
+     * @see IBootstrapTag#getSmHide()
      */
     @Override
     public boolean getSmHide() {
@@ -239,8 +222,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置SM下是否隐藏
-     * @param hide 隐藏样式
+     * @see IBootstrapTag#setSmHide(boolean)
      */
     @Override
     public void setSmHide(boolean hide) {
@@ -248,8 +230,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取MD下是否隐藏
-     * @return 隐藏样式
+     * @see IBootstrapTag#getMdHide()
      */
     @Override
     public boolean getMdHide() {
@@ -257,8 +238,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置MD下是否隐藏
-     * @param hide 隐藏样式
+     * @see IBootstrapTag#setMdHide(boolean)
      */
     @Override
     public void setMdHide(boolean hide) {
@@ -266,8 +246,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取LG下是否隐藏
-     * @return 隐藏样式
+     * @see IBootstrapTag#getLgHide()
      */
     @Override
     public boolean getLgHide() {
@@ -275,8 +254,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置LG下是否隐藏
-     * @param hide 隐藏样式
+     * @see IBootstrapTag#setLgHide(boolean)
      */
     @Override
     public void setLgHide(boolean hide) {
@@ -284,8 +262,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取Print下是否隐藏
-     * @return 隐藏样式
+     * @see IBootstrapTag#getPrintHide()
      */
     @Override
     public boolean getPrintHide() {
@@ -293,8 +270,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置Print下是否隐藏
-     * @param hide 隐藏样式
+     * @see IBootstrapTag#setPrintHide(boolean)
      */
     @Override
     public void setPrintHide(boolean hide) {
@@ -302,8 +278,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 获取透明度
-     * @return 透明度
+     * @see IBootstrapTag#getOpacity()
      */
     @Override
     public String getOpacity() {
@@ -311,8 +286,7 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     }
 
     /**
-     * 设置透明度
-     * @param opacity 透明度
+     * @see IBootstrapTag#setOpacity(String)
      */
     @Override
     public void setOpacity(String opacity) {
@@ -326,28 +300,45 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
     //
     // **********************************************************************************
     /**
-     * 执行标签
+     * @see SimpleTagSupport#doTag()
      */
     @Override
     public void doTag() throws JspException, IOException {
-        // 组织内容
-        StringBuilder builder = new StringBuilder();
-
-        // 输出内容
         JspContext jspContext = getJspContext();
+        ServletContext servletContext = ((PageContext) jspContext).getServletContext();
+
+        // Get configuration
+        String taglibVersion = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY);
+        if (taglibVersion == null || "".equals(taglibVersion.trim())) {
+            throw new JspException("Render tag failure: taglib version is empty.");
+        }
+
+        // Render tag content
+        String content = null;
+        if ("3".equals(taglibVersion.trim())) {
+            content = renderV3();
+
+        } else if ("2".equals(taglibVersion.trim())) {
+            content = renderV2();
+
+        } else {
+            throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
+        }
+
+        // Print tag content
         JspWriter writer = jspContext.getOut();
-        writer.println(builder.toString());
+        writer.println(content);
     }
 
     /**
-     * 渲染V2内容
-     * @return 渲染内容
+     * Render Version 2.* HTML Content
+     * @return Tag HTML Content
      */
     protected abstract String renderV2();
 
     /**
-     * 渲染V3内容
-     * @return 渲染内容
+     * Render Version 3.* HTML Content
+     * @return Tag HTML Content
      */
     protected abstract String renderV3();
 }
