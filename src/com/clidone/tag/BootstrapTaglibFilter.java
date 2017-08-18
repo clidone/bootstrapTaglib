@@ -25,9 +25,10 @@ public class BootstrapTaglibFilter implements Filter {
      */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        String tagVersion = filterConfig.getInitParameter("version");
-        String tagIcon    = filterConfig.getInitParameter("icon");
-        String tagConfig  = filterConfig.getInitParameter("configLocation");
+        String tagVersion     = filterConfig.getInitParameter("version");
+        String tagIcon        = filterConfig.getInitParameter("icon");
+        String tagDeviceWidth = filterConfig.getInitParameter("deviceWidth");
+        String tagConfig      = filterConfig.getInitParameter("configLocation");
 
         if (tagConfig != null) {
             try {
@@ -51,6 +52,9 @@ public class BootstrapTaglibFilter implements Filter {
                 if (tagIcon == null) {
                     tagIcon = properties.getProperty(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
                 }
+                if (tagDeviceWidth == null) {
+                    tagDeviceWidth = properties.getProperty(BootstrapConfigConst.BOOTSTRAP_TAGLIB_DEVICE_WIDTH_KEY);;
+                }
 
             } catch (IOException ex) {
                 throw new ServletException("init BootstrapTaglib config failure: Can't load config propertices file.");
@@ -60,14 +64,19 @@ public class BootstrapTaglibFilter implements Filter {
         }
 
         // validate configuration
-        if (tagVersion == null || "".equals(tagVersion.trim())) {
+        if (ValueUtils.isEmpty(tagVersion)) {
             throw new ServletException("init BootstrapTaglib config failure: Version config is empty.");
         }
         tagVersion = tagVersion.trim();
 
+        if (ValueUtils.isEmpty(tagDeviceWidth)) {
+            tagDeviceWidth = BootstrapConfigConst.DEVICE_WIDTH_NAME;
+        }
+
         // Cache configurations in ServletContext
-        filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY, tagVersion);
-        filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY,    tagIcon);
+        filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY,      tagVersion);
+        filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY,         tagIcon);
+        filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_DEVICE_WIDTH_KEY, tagDeviceWidth);
     }
 
     /**

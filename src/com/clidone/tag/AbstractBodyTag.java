@@ -2,8 +2,9 @@ package com.clidone.tag;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 
@@ -15,12 +16,21 @@ import com.clidone.tag.bootstrap.IBootstrapTag;
  */
 public abstract class AbstractBodyTag extends BodyTagSupport implements IBootstrapTag {
 
-    // **********************************************************************************
-    //
-    // 数据成员
-    //
-    // **********************************************************************************
     private static final long serialVersionUID = -6152630007445070508L;
+
+    // **********************************************************************************
+    //
+    // Tag data
+    //
+    // **********************************************************************************
+    // Custom class attributes content
+    protected String classCss = null;
+
+    // Custom style attributes content
+    protected String styleCss = null;
+
+    // Icon prefix
+    protected String iconPrefix = null;
 
     // 是否隐藏样式
     protected boolean hidden = false;
@@ -66,9 +76,41 @@ public abstract class AbstractBodyTag extends BodyTagSupport implements IBootstr
 
     // **********************************************************************************
     //
-    // 属性
+    // Tag attributes
     //
     // **********************************************************************************
+    /**
+     * @see IBootstrapTag#getClassCss()
+     */
+    @Override
+    public String getClassCss() {
+        return (classCss == null) ? "" : classCss;
+    }
+
+    /**
+     * @see IBootstrapTag#setClassCss()
+     */
+    @Override
+    public void setClassCss(String classCss) {
+        this.classCss = classCss;
+    }
+
+    /**
+     * @see IBootstrapTag#getStyleCss()
+     */
+    @Override
+    public String getStyleCss() {
+        return (styleCss == null) ? "" : styleCss;
+    }
+
+    /**
+     * @see IBootstrapTag#setStyleCss()
+     */
+    @Override
+    public void setStyleCss(String styleCss) {
+        this.styleCss = styleCss;
+    }
+
     /**
      * 获取是否隐藏样式
      * @return 是否隐藏
@@ -327,80 +369,138 @@ public abstract class AbstractBodyTag extends BodyTagSupport implements IBootstr
     //
     // **********************************************************************************
     /**
-     * 处理标签开始逻辑
+     * Before render body tags,
+     * @return EVAL_BODY_INCLUDE: Render body, bodyContent does NOT available in doAfterBody()
+     *         EVAL_BODY_BUFFERED: Render body, bodyContent does available in doAfterBody()
+     *         SKIP_BODY: Ignore body
      */
     @Override
     public int doStartTag() throws JspException {
-        // 组织内容
-        StringBuilder builder = new StringBuilder();
-
-        // 输出内容
-        try {
-            BodyContent bodyContent = super.getBodyContent();
-            JspWriter writer = bodyContent.getEnclosingWriter();
-            writer.println(builder.toString());
-            bodyContent.writeOut(writer);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return 0;
+        return EVAL_BODY_BUFFERED;
     }
 
     /**
-     * 处理标签结束逻辑
+     * Invoke when doStartTag() return EVAL_BODY_BUFFERED
+     * before doInitBody() and doAfterBody()
      */
     @Override
-    public int doEndTag() throws JspException {
-        // 组织内容
-        StringBuilder builder = new StringBuilder();
-
-        // 输出内容
-        try {
-            BodyContent bodyContent = super.getBodyContent();
-            JspWriter writer = bodyContent.getEnclosingWriter();
-            writer.println(builder.toString());
-            bodyContent.writeOut(writer);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return 0;
+    public void doInitBody() throws JspException {
+        super.doInitBody();
     }
 
     /**
-     * 处理标签完成逻辑
+     * Invoke when doStartTag() return EVAL_BODY_BUFFERED
+     * before doAfterBody()
+     */
+    @Override
+    public void setBodyContent(BodyContent bodyContent) {
+        super.setBodyContent(bodyContent);
+    }
+
+    /**
+     * Invoke when doStartTag() return EVAL_BODY_INCLUDE or EVAL_BODY_BUFFERED
+     * @return EVAL_BODY_AGAIN: Render body again
+     *         SKIP_BODY: invoke doEndTag()
      */
     @Override
     public int doAfterBody() throws JspException {
-        // 组织内容
-        StringBuilder builder = new StringBuilder();
+        ServletContext servletContext = getServletContext();
 
-        // 输出内容
-        try {
-            BodyContent bodyContent = super.getBodyContent();
-            JspWriter writer = bodyContent.getEnclosingWriter();
-            writer.println(builder.toString());
-            bodyContent.writeOut(writer);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        // Get configuration
+        String taglibVersion = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY);
+        if (taglibVersion == null || "".equals(taglibVersion.trim())) {
+            throw new JspException("Render tag failure: taglib version is empty.");
+        }
+        iconPrefix = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
+        if (ValueUtils.isEmpty(iconPrefix)) {
+            iconPrefix = "";
         }
 
-        return 0;
+        // Render tag content
+        String content = null;
+        if ("3".equals(taglibVersion.trim())) {
+            content = renderV3();
+
+        } else if ("2".equals(taglibVersion.trim())) {
+            content = renderV2();
+
+        } else {
+            throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
+        }
+        printContent(content);
+
+        return super.doAfterBody();
+    }
+
+    /**
+     * Invoke when reach the end of tag
+     * @return EVAL_PAGE: Keep render the left JSP content
+     *         SKIP_PAGE: Break the left JSP content
+     */
+    @Override
+    public int doEndTag() throws JspException {
+        return super.doEndTag();
+    }
+
+    /**
+     * Get ServletContext
+     * @return ServletContext
+     */
+    protected ServletContext getServletContext() {
+        return super.pageContext.getServletContext();
+    }
+
+    /**
+     * Get ServletRequest
+     * @return ServletRequest
+     */
+    protected ServletRequest getRequest() {
+        return super.pageContext.getRequest();
+    }
+
+    /**
+     * Render icon HTML
+     * @param icon iconMark
+     * @return icon HTML
+     */
+    protected String renderIcon(String icon) {
+        String iconHTML = null;
+        if (BootstrapConfigConst.ICON_FONTAWESOME.equals(iconPrefix)) {
+            iconHTML = "<i class=\"fa fa-" + icon + "\"></i>&nbsp;";
+
+        } else if (BootstrapConfigConst.ICON_GLYPHICON.equals(iconPrefix)) {
+            iconHTML = "<span class=\"glyphicon glyphicon-" + icon + "\"></span>&nbsp;";
+        } else {
+            iconHTML = "<i class=\"" + icon + "\"></i>&nbsp;";
+        }
+        return iconHTML;
+    }
+
+    /**
+     * Print and output content to page
+     * @param content
+     * @throws JspException
+     */
+    protected void printContent(String content) throws JspException {
+        try {
+            super.getPreviousOut().println(content);
+
+        } catch (IOException ex) {
+            throw new JspException(ex);
+        }
     }
 
     /**
      * Render Version 2.* HTML Content
      * @return Tag HTML Content
+     * @exception JspException
      */
-    protected abstract String renderV2();
+    protected abstract String renderV2() throws JspException;
 
     /**
      * Render Version 3.* HTML Content
      * @return Tag HTML Content
+     * @exception JspException
      */
-    protected abstract String renderV3();
+    protected abstract String renderV3() throws JspException;
 }

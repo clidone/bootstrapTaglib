@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
@@ -19,9 +18,18 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
 
     // **********************************************************************************
     //
-    // 数据成员
+    // Tag data
     //
     // **********************************************************************************
+    // Custom class attributes content
+    protected String classCss = null;
+
+    // Custom style attributes content
+    protected String styleCss = null;
+
+    // Icon prefix
+    protected String iconPrefix = null;
+
     // 是否隐藏样式
     protected boolean hidden = false;
 
@@ -66,9 +74,41 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
 
     // **********************************************************************************
     //
-    // 属性
+    // Tag attributes
     //
     // **********************************************************************************
+    /**
+     * @see IBootstrapTag#getClassCss()
+     */
+    @Override
+    public String getClassCss() {
+        return (classCss == null) ? "" : classCss;
+    }
+
+    /**
+     * @see IBootstrapTag#setClassCss()
+     */
+    @Override
+    public void setClassCss(String classCss) {
+        this.classCss = classCss;
+    }
+
+    /**
+     * @see IBootstrapTag#getStyleCss()
+     */
+    @Override
+    public String getStyleCss() {
+        return (styleCss == null) ? "" : styleCss;
+    }
+
+    /**
+     * @see IBootstrapTag#setStyleCss()
+     */
+    @Override
+    public void setStyleCss(String styleCss) {
+        this.styleCss = styleCss;
+    }
+
     /**
      * @see IBootstrapTag#getHide()
      */
@@ -304,13 +344,16 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
      */
     @Override
     public void doTag() throws JspException, IOException {
-        JspContext jspContext = getJspContext();
-        ServletContext servletContext = ((PageContext) jspContext).getServletContext();
+        ServletContext servletContext = getServletContext();
 
         // Get configuration
         String taglibVersion = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY);
-        if (taglibVersion == null || "".equals(taglibVersion.trim())) {
+        if (ValueUtils.isEmpty(taglibVersion)) {
             throw new JspException("Render tag failure: taglib version is empty.");
+        }
+        iconPrefix = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
+        if (ValueUtils.isEmpty(iconPrefix)) {
+            iconPrefix = "";
         }
 
         // Render tag content
@@ -324,21 +367,47 @@ public abstract class AbstractSimpleTag extends SimpleTagSupport implements IBoo
         } else {
             throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
         }
+        getJspContext().getOut().println(content);
+    }
 
-        // Print tag content
-        JspWriter writer = jspContext.getOut();
-        writer.println(content);
+    /**
+     * Get ServletContext
+     * @return ServletContext
+     */
+    protected ServletContext getServletContext() {
+        JspContext jspContext = getJspContext();
+        return ((PageContext) jspContext).getServletContext();
+    }
+
+    /**
+     * Render icon HTML
+     * @param icon iconMark
+     * @return icon HTML
+     */
+    protected String renderIcon(String icon) {
+        String iconHTML = null;
+        if (BootstrapConfigConst.ICON_FONTAWESOME.equals(iconPrefix)) {
+            iconHTML = "<i class=\"fa fa-" + icon + "\"></i>&nbsp;";
+
+        } else if (BootstrapConfigConst.ICON_GLYPHICON.equals(iconPrefix)) {
+            iconHTML = "<span class=\"glyphicon glyphicon-" + icon + "\"></span>&nbsp;";
+        } else {
+            iconHTML = "<i class=\"" + icon + "\"></i>&nbsp;";
+        }
+        return iconHTML;
     }
 
     /**
      * Render Version 2.* HTML Content
      * @return Tag HTML Content
+     * @exception JspException
      */
-    protected abstract String renderV2();
+    protected abstract String renderV2() throws JspException;
 
     /**
      * Render Version 3.* HTML Content
      * @return Tag HTML Content
+     * @exception JspException
      */
-    protected abstract String renderV3();
+    protected abstract String renderV3() throws JspException;
 }

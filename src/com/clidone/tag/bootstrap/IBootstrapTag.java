@@ -7,6 +7,30 @@ package com.clidone.tag.bootstrap;
 public interface IBootstrapTag {
 
     /**
+     * Get custom class attributes content
+     * @return custom class attributes content
+     */
+    String getClassCss();
+
+    /**
+     * Set custom class attributes content
+     * @param classCss custom class attributes content
+     */
+    void setClassCss(String classCss);
+
+    /**
+     * Get custom style attributes content
+     * @return custom style attributes content
+     */
+    String getStyleCss();
+
+    /**
+     * Set custom style attributes content
+     * @param styleCss custom style attributes content
+     */
+    void setStyleCss(String styleCss);
+
+    /**
      * 获取是否隐藏样式
      * @return 是否隐藏
      */
