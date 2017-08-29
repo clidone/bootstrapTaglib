@@ -3,14 +3,15 @@ package com.clidone.tag.bootstrap.button;
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
+import com.clidone.tag.ValueUtils;
 
 /**
- * <strong>Button group tag</strong>
+ * <strong>Button toolbar tag</strong>
  * @author wuhuaxia
  */
-public class ButtonGroupTag extends AbstractTag {
+public class ButtonToolbarTag extends AbstractTag {
 
-    private static final long serialVersionUID = 4023347944446584944L;
+    private static final long serialVersionUID = 4283967024937744279L;
 
     // **********************************************************************************
     //
@@ -26,24 +27,6 @@ public class ButtonGroupTag extends AbstractTag {
         this.size = size;
     }
 
-    // justified
-    private Boolean justified = null;
-    public Boolean getJustified() {
-        return this.justified;
-    }
-    public void setJustified(boolean justified) {
-        this.justified = new Boolean(justified);
-    }
-
-    // vertical
-    private Boolean vertical = null;
-    public Boolean getVertical() {
-        return this.vertical;
-    }
-    public void setVertical(boolean vertical) {
-        this.vertical = new Boolean(vertical);
-    }
-
     // **********************************************************************************
     //
     // Tag methods
@@ -54,16 +37,12 @@ public class ButtonGroupTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
-        addClass("btn-group");
-
-        if (justified != null && justified.booleanValue()) {
-            addClass("btn-group-justified");
-        }
-        if (vertical != null && vertical.booleanValue()) {
-            addClass("btn-group-vertical");
+        addClass("btn-toolbar");
+        if (!ValueUtils.isEmpty(size)) {
+            addClass("btn-group-" + size);
         }
 
-        addAttribute("role", "group");
+        addAttribute("role", "toolbar");
         addAttribute("aria-label", "");
 
         return render();
