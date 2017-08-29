@@ -18,6 +18,14 @@ public final class ValueUtils {
      * Validate value is empty or not
      * @return true: empty, false: not empty
      */
+    public final static boolean isEmpty(Boolean value) {
+        return (value == null);
+    }
+
+    /**
+     * Validate value is empty or not
+     * @return true: empty, false: not empty
+     */
     public final static boolean isEmpty(Integer value) {
         return (value == null);
     }
