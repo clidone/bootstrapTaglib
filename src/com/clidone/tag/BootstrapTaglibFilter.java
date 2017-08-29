@@ -40,7 +40,7 @@ public class BootstrapTaglibFilter implements Filter {
 
                 File configFile = new File(absoluteConfigPath);
                 if (!configFile.exists()) {
-                    throw new ServletException("init BootstrapTaglib config failure: Can't locate config propertices file.");
+                    throw new ServletException("init BootstrapTaglib config failure: Can't locate config propertices file: " + absoluteConfigPath);
                 }
 
                 Properties properties = new Properties();
@@ -58,6 +58,7 @@ public class BootstrapTaglibFilter implements Filter {
 
             } catch (IOException ex) {
                 throw new ServletException("init BootstrapTaglib config failure: Can't load config propertices file.");
+
             } catch (ServletException servletEx) {
                 throw servletEx;
             }
@@ -84,6 +85,7 @@ public class BootstrapTaglibFilter implements Filter {
      */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     /**
