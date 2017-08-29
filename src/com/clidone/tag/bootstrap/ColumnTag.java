@@ -1,9 +1,8 @@
 package com.clidone.tag.bootstrap;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.BodyContent;
 
-import com.clidone.tag.AbstractBodyTag;
+import com.clidone.tag.AbstractTag;
 import com.clidone.tag.BootstrapConfigConst;
 import com.clidone.tag.ValueUtils;
 
@@ -11,7 +10,7 @@ import com.clidone.tag.ValueUtils;
  * <strong>Column tag</strong>
  * @author wuhuaxia
  */
-public class ColumnTag extends AbstractBodyTag {
+public class ColumnTag extends AbstractTag {
 
     private static final long serialVersionUID = -3672878843482734152L;
 
@@ -106,7 +105,7 @@ public class ColumnTag extends AbstractBodyTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractBodyTag#renderV2()
+     * @see AbstractTag#renderV2()
      */
     @Override
     protected String renderV2() throws JspException {
@@ -162,83 +161,68 @@ public class ColumnTag extends AbstractBodyTag {
             }
         }
 
-        BodyContent bodyContent = super.getBodyContent();
-
-        StringBuilder tagHTML = new StringBuilder();
-        tagHTML.append("<div").append(" style=\"").append(super.getStyleCss());
-        tagHTML.append(" class=\"").append(super.getClassCss());
-        tagHTML.append(" span").append(columnValue);
+        addClass(" span" + columnValue);
         if (columnOffset > 0) {
-            tagHTML.append(" offset").append(columnOffset);
+            addClass(" offset" + columnOffset);
         }
-        tagHTML.append("\" \">");
-        tagHTML.append(bodyContent.getString());
-        tagHTML.append("</div>");
 
-        return tagHTML.toString();
+        return render();
     }
 
     /**
-     * @see AbstractBodyTag#renderV3()
+     * @see AbstractTag#renderV3()
      */
     @Override
     protected String renderV3() throws JspException {
-        BodyContent bodyContent = super.getBodyContent();
-
-        StringBuilder tagHTML = new StringBuilder();
-        tagHTML.append("<div").append(" style=\"").append(super.getStyleCss()).append(" class=\"").append(super.getClassCss());
         if (xs > 0) {
-            tagHTML.append(" col-xs-").append(xs);
+            addClass(" col-xs-" + xs);
         }
         if (sm > 0) {
-            tagHTML.append(" col-sm-").append(sm);
+            addClass(" col-sm-" + sm);
         }
         if (md > 0) {
-            tagHTML.append(" col-md-").append(md);
+            addClass(" col-md-" + md);
         }
         if (lg > 0) {
-            tagHTML.append(" col-lg-").append(lg);
+            addClass(" col-lg-" + lg);
         }
         if (xsPush > 0) {
-            tagHTML.append(" col-xs-push-").append(xsPush);
+            addClass(" col-xs-push-" + xsPush);
         }
         if (smPush > 0) {
-            tagHTML.append(" col-sm-push-").append(smPush);
+            addClass(" col-sm-push-" + smPush);
         }
         if (mdPush > 0) {
-            tagHTML.append(" col-md-push-").append(mdPush);
+            addClass(" col-md-push-" + mdPush);
         }
         if (lgPush > 0) {
-            tagHTML.append(" col-lg-push-").append(lgPush);
+            addClass(" col-lg-push-" + lgPush);
         }
         if (xsPull > 0) {
-            tagHTML.append(" col-xs-pull-").append(xsPull);
+            addClass(" col-xs-pull-" + xsPull);
         }
         if (smPull > 0) {
-            tagHTML.append(" col-sm-pull-").append(smPull);
+            addClass(" col-sm-pull-" + smPull);
         }
         if (mdPull > 0) {
-            tagHTML.append(" col-md-pull-").append(mdPull);
+            addClass(" col-md-pull-" + mdPull);
         }
         if (lgPull > 0) {
-            tagHTML.append(" col-lg-pull-").append(lgPull);
+            addClass(" col-lg-pull-" + lgPull);
         }
         if (xsOffset > 0) {
-            tagHTML.append(" col-xs-offset-").append(xsOffset);
+            addClass(" col-xs-offset-" + xsOffset);
         }
         if (smOffset > 0) {
-            tagHTML.append(" col-sm-offset-").append(smOffset);
+            addClass(" col-sm-offset-" + smOffset);
         }
         if (mdOffset > 0) {
-            tagHTML.append(" col-md-offset-").append(mdOffset);
+            addClass(" col-md-offset-" + mdOffset);
         }
         if (lgOffset > 0) {
-            tagHTML.append(" col-lg-offset-").append(lgOffset);
+            addClass(" col-lg-offset-" + lgOffset);
         }
-        tagHTML.append("\" \">");
-        tagHTML.append(bodyContent.getString());
-        tagHTML.append("</div>");
 
-        return tagHTML.toString();
+        return render();
     }
 }

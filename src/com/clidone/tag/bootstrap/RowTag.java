@@ -1,14 +1,14 @@
 package com.clidone.tag.bootstrap;
 
-import javax.servlet.jsp.tagext.BodyContent;
+import javax.servlet.jsp.JspException;
 
-import com.clidone.tag.AbstractBodyTag;
+import com.clidone.tag.AbstractTag;
 
 /**
  * <strong>Row tag</strong>
  * @author wuhuaxia
  */
-public class RowTag extends AbstractBodyTag {
+public class RowTag extends AbstractTag {
 
     private static final long serialVersionUID = 2712884462549558144L;
 
@@ -24,25 +24,19 @@ public class RowTag extends AbstractBodyTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractBodyTag#renderV2()
+     * @see AbstractTag#renderV2()
      */
     @Override
-    protected String renderV2() {
-        BodyContent bodyContent = super.getBodyContent();
-
-        StringBuilder tagHTML = new StringBuilder();
-        tagHTML.append("<div class=\"row ").append(super.getClassCss()).append("\" style=\"").append(super.getStyleCss()).append("\">");
-        tagHTML.append(bodyContent.getString());
-        tagHTML.append("</div>");
-
-        return tagHTML.toString();
+    protected String renderV2() throws JspException {
+        addClass("row");
+        return render();
     }
 
     /**
-     * @see AbstractBodyTag#renderV3()
+     * @see AbstractTag#renderV3()
      */
     @Override
-    protected String renderV3() {
+    protected String renderV3() throws JspException {
         return renderV2();
     }
 }

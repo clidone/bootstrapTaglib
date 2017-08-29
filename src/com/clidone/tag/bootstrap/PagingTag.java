@@ -1,12 +1,12 @@
 package com.clidone.tag.bootstrap;
 
-import com.clidone.tag.AbstractSimpleTag;
+import com.clidone.tag.AbstractTag;
 
 /**
  * <strong>Paging tag</strong>
  * @author wuhuaxia
  */
-public class PagingTag extends AbstractSimpleTag {
+public class PagingTag extends AbstractTag {
 
     // **********************************************************************************
     //

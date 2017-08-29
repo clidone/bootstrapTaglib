@@ -2,23 +2,23 @@ package com.clidone.tag.bootstrap;
 
 import javax.servlet.jsp.JspException;
 
-import com.clidone.tag.AbstractSimpleTag;
+import com.clidone.tag.AbstractTag;
 import com.clidone.tag.ValueUtils;
 
 /**
  * <strong>锚点标签对象</strong>
  * @author wuhuaxia
  */
-public final class AnchorTag extends AbstractSimpleTag {
+public final class AnchorTag extends AbstractTag {
+
+    private static final long serialVersionUID = -6211850808642948790L;
 
     // **********************************************************************************
     //
     // Tag attributes
     //
     // **********************************************************************************
-    /**
-    * URL
-    */
+    // url
     private String uri = null;
     public String getUri() {
         return uri;
@@ -27,9 +27,7 @@ public final class AnchorTag extends AbstractSimpleTag {
         this.uri = uri;
     }
 
-    /**
-     * ICON
-     */
+    // icon
     private String icon = null;
     public String getIcon() {
         return icon;
@@ -38,38 +36,31 @@ public final class AnchorTag extends AbstractSimpleTag {
         this.icon = icon;
     }
 
-    /**
-     * Text
-     */
-    private String text = null;
-    public String getText() {
-        return text;
-    }
-    public void setText(String text) {
-        this.text = text;
-    }
-
     // **********************************************************************************
     //
     // Tag methods
     //
     // **********************************************************************************
+    /**
+     * @see AbstractTag#renderV2()
+     */
     @Override
     protected String renderV2() throws JspException {
+        setName("a");
+
         String contextPath = super.getServletContext().getContextPath();
+        String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
+        addAttribute("href", contextPath + uriValue);
 
-        String uriHTML  = ValueUtils.isEmpty(uri)  ? "" : uri;
-        String iconHTML = ValueUtils.isEmpty(icon) ? "" : super.renderIcon(icon);
-        String textHTML = ValueUtils.isEmpty(text) ? "" : text;
+        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
+        addBeforeContent(iconHTML);
 
-        StringBuilder tagHTML = new StringBuilder();
-        tagHTML.append("<a href=\"").append(contextPath).append(uriHTML).append("\" class=\"btn btn-primary\">");
-        tagHTML.append(    iconHTML).append(textHTML);
-        tagHTML.append("</a>");
-
-        return tagHTML.toString();
+        return render();
     }
 
+    /**
+     * @see AbstractTag#renderV3()
+     */
     @Override
     protected String renderV3() throws JspException {
         return renderV2();
