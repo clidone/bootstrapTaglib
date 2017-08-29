@@ -8,7 +8,7 @@
     <display-name>Bootstrap Tag Library</display-name>
     <tlib-version>1.0</tlib-version>
     <short-name>b</short-name>
-    <uri>http://tag.clidone.com</uri>
+    <uri>http://taglib.clidone.com</uri>
 
     <!--
     Tag body-content:
@@ -16,41 +16,156 @@
     JSP：接受所有JSP语法
     empty：空标记，即起始标记和结束标记之间没有内容
     scriptless：接受文本、EL和JSP动作
-     -->
+    -->
+
+    <tag>
+        <description>View Tag</description>
+        <name>view</name>
+        <tag-class>com.clidone.tag.bootstrap.components.ViewTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>View Header Tag</description>
+        <name>viewHeader</name>
+        <tag-class>com.clidone.tag.bootstrap.components.ViewHeaderTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>View Body Tag</description>
+        <name>viewBody</name>
+        <tag-class>com.clidone.tag.bootstrap.components.ViewBodyTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>fluid</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>View Footer Tag</description>
+        <name>viewFooter</name>
+        <tag-class>com.clidone.tag.bootstrap.components.ViewFooterTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Row Tag</description>
+        <name>row</name>
+        <tag-class>com.clidone.tag.bootstrap.RowTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Column Tag</description>
+        <name>column</name>
+        <tag-class>com.clidone.tag.bootstrap.ColumnTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>xs</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>sm</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>md</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>lg</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>xsPush</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>smPush</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>mdPush</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>lgPush</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>xsPull</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>smPull</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>mdPull</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>lgPull</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>xsOffset</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>smOffset</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>mdOffset</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>lgOffset</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Anchor Tag</description>
+        <name>a</name>
+        <tag-class>com.clidone.tag.bootstrap.AnchorTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>uri</name>  <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Text Tag</description>
+        <name>text</name>
+        <tag-class>com.clidone.tag.bootstrap.TextTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>as</name>         <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fontFamily</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fontSize</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fontStyle</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fontWeight</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>lineHeight</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>align</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>color</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>bg</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>case</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>cursor</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
     <tag>
         <description>Paging Tag</description>
         <name>paging</name>
         <tag-class>com.clidone.tag.bootstrap.PagingTag</tag-class>
         <body-content>empty</body-content>
-        <attribute>
-            <description>Data total count.</description>
-            <name>count</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <description>Page current index.</description>
-            <name>index</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <description>Each page data count.</description>
-            <name>each</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <description>Paging item URL, not include page parameter.</description>
-            <name>url</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <description>Paging item URL page parameter name.</description>
-            <name>pageParamName</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
+        <attribute> <name>count</name>         <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>index</name>         <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>each</name>          <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>           <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>pageParamName</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
     </tag>
+
+    <tag>
+        <description>Button Tag</description>
+        <name>button</name>
+        <tag-class>com.clidone.tag.bootstrap.button.ButtonTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>dropdown</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Button group Tag</description>
+        <name>buttonGroup</name>
+        <tag-class>com.clidone.tag.bootstrap.button.ButtonGroupTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>size</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>justified</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>vertical</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Button toolbar Tag</description>
+        <name>buttonToolbar</name>
+        <tag-class>com.clidone.tag.bootstrap.button.ButtonToolbarTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>size</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Link Tag</description>
+        <name>link</name>
+        <tag-class>com.clidone.tag.bootstrap.button.LinkTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>uri</name>   <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>theme</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
 </taglib>
