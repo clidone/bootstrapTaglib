@@ -9,7 +9,7 @@ import com.clidone.tag.ValueUtils;
  * <strong>Anchor tag</strong>
  * @author wuhuaxia
  */
-public final class AnchorTag extends AbstractTag {
+public class AnchorTag extends AbstractTag {
 
     private static final long serialVersionUID = -6211850808642948790L;
 
