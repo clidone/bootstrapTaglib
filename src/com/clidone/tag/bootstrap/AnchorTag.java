@@ -6,7 +6,7 @@ import com.clidone.tag.AbstractTag;
 import com.clidone.tag.ValueUtils;
 
 /**
- * <strong>锚点标签对象</strong>
+ * <strong>Anchor tag</strong>
  * @author wuhuaxia
  */
 public final class AnchorTag extends AbstractTag {
