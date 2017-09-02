@@ -168,4 +168,136 @@
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
+    <tag>
+        <description>Form Tag</description>
+        <name>form</name>
+        <tag-class>com.clidone.tag.bootstrap.form.FormTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>layout</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>model</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Input Tag</description>
+        <name>input</name>
+        <tag-class>com.clidone.tag.bootstrap.form.InputTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>id</name>          <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>prefixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>suffixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Select Tag</description>
+        <name>select</name>
+        <tag-class>com.clidone.tag.bootstrap.form.SelectTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>id</name>          <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>prefixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>suffixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>items</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Option Tag</description>
+        <name>option</name>
+        <tag-class>com.clidone.tag.bootstrap.form.OptionTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>value</name> <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Checkbox Tag</description>
+        <name>checkbox</name>
+        <tag-class>com.clidone.tag.bootstrap.form.CheckboxTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>id</name>          <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Checkbox list Tag</description>
+        <name>checkboxList</name>
+        <tag-class>com.clidone.tag.bootstrap.form.CheckboxListTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>data</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>items</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Radio Tag</description>
+        <name>radio</name>
+        <tag-class>com.clidone.tag.bootstrap.form.RadioTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>id</name>          <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Radio list Tag</description>
+        <name>radioList</name>
+        <tag-class>com.clidone.tag.bootstrap.form.RadioListTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>data</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>items</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
 </taglib>
