@@ -22,34 +22,16 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
     // Tag data
     //
     // **********************************************************************************
-    private String tagName  = "div";
+    private String tagName  = null;
 
     private StringBuilder tagHTML       = null;
     private StringBuilder tagClass      = null;
     private StringBuilder tagStyle      = null;
     private StringBuilder tagAttributes = null;
-    private StringBuilder beforeTagHTML = null;
-    private StringBuilder afterTagHTML  = null;
-
-    // 对屏幕阅读器以外的设备隐藏内容
-    protected boolean srOnly = false;
-
-    // Show or hidden
-    protected Boolean hidden       = null;
-    protected Boolean show         = null;
-    protected String  visibleXs    = null;
-    protected String  visibleSm    = null;
-    protected String  visibleMd    = null;
-    protected String  visibleLg    = null;
-    protected String  visiblePrint = null;
-    protected Boolean hiddenXs     = null;
-    protected Boolean hiddenSm     = null;
-    protected Boolean hiddenMd     = null;
-    protected Boolean hiddenLg     = null;
-    protected Boolean hiddenPrint  = null;
-
-    // opacity
-    protected String opacity = null;
+    private StringBuilder beforeContent = null;
+    private StringBuilder afterContent  = null;
+    private StringBuilder beforeWrap    = null;
+    private StringBuilder afterWrap     = null;
 
     // Icon prefix
     protected String iconPrefix = null;
@@ -103,6 +85,16 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     @Override
     public int doAfterBody() throws JspException {
+        return SKIP_BODY;
+    }
+
+    /**
+     * Invoke when reach the end of tag
+     * @return EVAL_PAGE: Keep render the left JSP content
+     *         SKIP_PAGE: Break the left JSP content
+     */
+    @Override
+    public int doEndTag() throws JspException {
         ServletContext servletContext = getServletContext();
 
         // Get configuration
@@ -128,22 +120,20 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
         }
 
         try {
-            super.getPreviousOut().println(content);
+            super.pageContext.getOut().println(content);
 
         } catch (IOException ex) {
             throw new JspException(ex);
         }
 
-        return SKIP_BODY;
-    }
-
-    /**
-     * Invoke when reach the end of tag
-     * @return EVAL_PAGE: Keep render the left JSP content
-     *         SKIP_PAGE: Break the left JSP content
-     */
-    @Override
-    public int doEndTag() throws JspException {
+        tagHTML       = null;
+        tagClass      = null;
+        tagStyle      = null;
+        tagAttributes = null;
+        beforeContent = null;
+        afterContent  = null;
+        beforeWrap    = null;
+        afterWrap     = null;
         return EVAL_PAGE;
     }
 
@@ -156,7 +146,7 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
         String attrValue = (value == null) ? "" : value.toString().trim();
 
         if ("class".equals(attrName)) {
-            addClass("attrValue");
+            addClass(attrValue);
 
         } else if ("style".equals(attrName)) {
             addStyle(attrValue);
@@ -243,8 +233,12 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * Set tag name
      * @param tagName
      * @return AbstractTag
+     * @exception JspException
      */
-    protected AbstractTag setName(String tagName) {
+    protected AbstractTag setTagName(String tagName) throws JspException {
+        if (ValueUtils.isEmpty(tagName)) {
+            throw new JspException("Set tag name failure: tag name is empty.");
+        }
         this.tagName = tagName;
         return this;
     }
@@ -255,6 +249,9 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * @return AbstractTag
      */
     protected AbstractTag addClass(String tagClassValue) {
+        if (ValueUtils.isEmpty(tagClassValue)) {
+            return this;
+        }
         if (tagClass == null) {
             tagClass = new StringBuilder();
         }
@@ -271,6 +268,9 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * @return AbstractTag
      */
     protected AbstractTag addStyle(String tagStyleValue) {
+        if (ValueUtils.isEmpty(tagStyleValue)) {
+            return this;
+        }
         if (tagStyle == null) {
             tagStyle = new StringBuilder();
         }
@@ -286,8 +286,12 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * @param tagStyleName
      * @param tagStyleValue
      * @return AbstractTag
+     * @exception JspException
      */
-    protected AbstractTag addStyle(String tagStyleName, String tagStyleValue) {
+    protected AbstractTag addStyle(String tagStyleName, String tagStyleValue) throws JspException {
+        if (ValueUtils.isEmpty(tagStyleName) || ValueUtils.isEmpty(tagStyleValue)) {
+            throw new JspException("Set tag style failure: tag style is empty.");
+        }
         if (tagStyle == null) {
             tagStyle = new StringBuilder();
         }
@@ -303,8 +307,15 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * @param name Attribute name
      * @param value Attribute value
      * @return AbstractTag
+     * @exception JspException
      */
-    protected AbstractTag addAttribute(String name, String value) {
+    protected AbstractTag addAttribute(String name, String value) throws JspException {
+        if (ValueUtils.isEmpty(name)) {
+            throw new JspException("Set tag attribute failure: tag attribute is empty.");
+        }
+        if (ValueUtils.isEmpty(value)) {
+            value = "";
+        }
         if (tagAttributes == null) {
             tagAttributes = new StringBuilder();
         }
@@ -322,10 +333,10 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     protected AbstractTag addBeforeContent(String content) {
         if (content != null) {
-            if (beforeTagHTML == null) {
-                beforeTagHTML = new StringBuilder();
+            if (beforeContent == null) {
+                beforeContent = new StringBuilder();
             }
-            beforeTagHTML.append(content);
+            beforeContent.append(content);
         }
         return this;
     }
@@ -337,10 +348,40 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     protected AbstractTag addAfterContent(String content) {
         if (content != null) {
-            if (afterTagHTML == null) {
-                afterTagHTML = new StringBuilder();
+            if (afterContent == null) {
+                afterContent = new StringBuilder();
             }
-            afterTagHTML.append(content);
+            afterContent.append(content);
+        }
+        return this;
+    }
+
+    /**
+     * Add wrap before tag
+     * @param content
+     * @return AbstractTag
+     */
+    protected AbstractTag addBeforeWrap(String content) {
+        if (content != null) {
+            if (beforeWrap == null) {
+                beforeWrap = new StringBuilder();
+            }
+            beforeWrap.append(content);
+        }
+        return this;
+    }
+
+    /**
+     * Add wrap after tag
+     * @param content
+     * @return AbstractTag
+     */
+    protected AbstractTag addAfterWrap(String content) {
+        if (content != null) {
+            if (afterWrap == null) {
+                afterWrap = new StringBuilder();
+            }
+            afterWrap.append(content);
         }
         return this;
     }
@@ -354,29 +395,42 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
         String styleValue = (tagStyle      == null) ? null : tagStyle.toString();
         String attributes = (tagAttributes == null) ? null : tagAttributes.toString();
 
-        tagHTML.append("<").append(tagName);
-        if (!ValueUtils.isEmpty(classValue)) {
-            tagHTML.append(" class=\"").append(classValue).append("\"");
+        if (beforeWrap != null) {
+            tagHTML.append(beforeWrap.toString());
         }
-        if (!ValueUtils.isEmpty(styleValue)) {
-            tagHTML.append(" style=\"").append(styleValue).append("\"");
-        }
-        if (!ValueUtils.isEmpty(attributes)) {
-            tagHTML.append(" ").append(attributes);
-        }
-        tagHTML.append(">");
 
-        if (beforeTagHTML != null) {
-            tagHTML.append(beforeTagHTML.toString());
+        boolean hasTagName = !ValueUtils.isEmpty(tagName);
+        if (hasTagName) {
+            tagHTML.append("<").append(tagName);
+            if (!ValueUtils.isEmpty(classValue)) {
+                tagHTML.append(" class=\"").append(classValue).append("\"");
+            }
+            if (!ValueUtils.isEmpty(styleValue)) {
+                tagHTML.append(" style=\"").append(styleValue).append("\"");
+            }
+            if (!ValueUtils.isEmpty(attributes)) {
+                tagHTML.append(" ").append(attributes);
+            }
+            tagHTML.append(">");
+        }
+
+        if (beforeContent != null) {
+            tagHTML.append(beforeContent.toString());
         }
         if (bodyContent != null) {
             tagHTML.append(bodyContent.getString());
         }
-        if (afterTagHTML != null) {
-            tagHTML.append(afterTagHTML.toString());
+        if (afterContent != null) {
+            tagHTML.append(afterContent.toString());
         }
 
-        tagHTML.append("</").append(tagName).append(">");
+        if (hasTagName) {
+            tagHTML.append("</").append(tagName).append(">");
+        }
+
+        if (afterWrap != null) {
+            tagHTML.append(afterWrap.toString());
+        }
 
         return tagHTML.toString();
     }
