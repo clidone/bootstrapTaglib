@@ -46,7 +46,7 @@ public class AnchorTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
-        setName("a");
+        setTagName("a");
 
         String contextPath = super.getServletContext().getContextPath();
         String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;

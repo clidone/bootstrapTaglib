@@ -28,7 +28,10 @@ public class ViewHeaderTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
+        setTagName("div");
+
         addClass("view-header");
+
         return render();
     }
 

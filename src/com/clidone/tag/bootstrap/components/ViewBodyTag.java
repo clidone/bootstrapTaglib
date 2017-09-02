@@ -36,6 +36,8 @@ public class ViewBodyTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
+        setTagName("div");
+
         if (fluid) {
             addClass("view-body container-fluid");
         } else {

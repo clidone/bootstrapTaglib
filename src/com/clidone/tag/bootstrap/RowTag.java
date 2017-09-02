@@ -28,7 +28,10 @@ public class RowTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
+        setTagName("div");
+
         addClass("row");
+
         return render();
     }
 

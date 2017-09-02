@@ -161,9 +161,11 @@ public class ColumnTag extends AbstractTag {
             }
         }
 
-        addClass(" span" + columnValue);
+        setTagName("div");
+
+        addClass("span" + columnValue);
         if (columnOffset > 0) {
-            addClass(" offset" + columnOffset);
+            addClass("offset" + columnOffset);
         }
 
         return render();
@@ -174,53 +176,55 @@ public class ColumnTag extends AbstractTag {
      */
     @Override
     protected String renderV3() throws JspException {
+        setTagName("div");
+
         if (xs > 0) {
-            addClass(" col-xs-" + xs);
+            addClass("col-xs-" + xs);
         }
         if (sm > 0) {
-            addClass(" col-sm-" + sm);
+            addClass("col-sm-" + sm);
         }
         if (md > 0) {
-            addClass(" col-md-" + md);
+            addClass("col-md-" + md);
         }
         if (lg > 0) {
-            addClass(" col-lg-" + lg);
+            addClass("col-lg-" + lg);
         }
         if (xsPush > 0) {
-            addClass(" col-xs-push-" + xsPush);
+            addClass("col-xs-push-" + xsPush);
         }
         if (smPush > 0) {
-            addClass(" col-sm-push-" + smPush);
+            addClass("col-sm-push-" + smPush);
         }
         if (mdPush > 0) {
-            addClass(" col-md-push-" + mdPush);
+            addClass("col-md-push-" + mdPush);
         }
         if (lgPush > 0) {
-            addClass(" col-lg-push-" + lgPush);
+            addClass("col-lg-push-" + lgPush);
         }
         if (xsPull > 0) {
-            addClass(" col-xs-pull-" + xsPull);
+            addClass("col-xs-pull-" + xsPull);
         }
         if (smPull > 0) {
-            addClass(" col-sm-pull-" + smPull);
+            addClass("col-sm-pull-" + smPull);
         }
         if (mdPull > 0) {
-            addClass(" col-md-pull-" + mdPull);
+            addClass("col-md-pull-" + mdPull);
         }
         if (lgPull > 0) {
-            addClass(" col-lg-pull-" + lgPull);
+            addClass("col-lg-pull-" + lgPull);
         }
         if (xsOffset > 0) {
-            addClass(" col-xs-offset-" + xsOffset);
+            addClass("col-xs-offset-" + xsOffset);
         }
         if (smOffset > 0) {
-            addClass(" col-sm-offset-" + smOffset);
+            addClass("col-sm-offset-" + smOffset);
         }
         if (mdOffset > 0) {
-            addClass(" col-md-offset-" + mdOffset);
+            addClass("col-md-offset-" + mdOffset);
         }
         if (lgOffset > 0) {
-            addClass(" col-lg-offset-" + lgOffset);
+            addClass("col-lg-offset-" + lgOffset);
         }
 
         return render();

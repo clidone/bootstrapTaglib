@@ -3,6 +3,7 @@ package com.clidone.tag.bootstrap.button;
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
+import com.clidone.tag.ValueUtils;
 
 /**
  * <strong>Button group tag</strong>
@@ -54,7 +55,13 @@ public class ButtonGroupTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
+        setTagName("div");
+
         addClass("btn-group");
+
+        if (!ValueUtils.isEmpty(size)) {
+            addClass("btn-group-" + size);
+        }
 
         if (justified != null && justified.booleanValue()) {
             addClass("btn-group-justified");

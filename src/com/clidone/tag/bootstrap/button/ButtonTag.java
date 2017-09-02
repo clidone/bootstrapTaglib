@@ -56,7 +56,7 @@ public class ButtonTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
-        setName("button");
+        setTagName("button");
 
         addClass("btn");
         if (!ValueUtils.isEmpty(theme)) {

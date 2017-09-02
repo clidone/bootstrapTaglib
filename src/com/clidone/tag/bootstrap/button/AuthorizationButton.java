@@ -47,23 +47,4 @@ public class AuthorizationButton extends ButtonTag {
     public void setCurrent(String current) {
         this.current = current;
     }
-
-    /**
-     * 执行标签
-     */
-    @Override
-    public void doTag() throws IOException {
-        // 组织内容
-        StringBuilder builder = new StringBuilder();
-        if ((valid != null && !"".equals(valid.trim())) &&
-            (current != null && !"".equals(current.trim())) &&
-            valid.indexOf(current) >= 0) {
-            builder.append("<button type='button' class='btn btn-default' />");
-        }
-
-        // 输出内容
-        JspContext jspContext = getJspContext();
-        JspWriter writer = jspContext.getOut();
-        writer.println(builder.toString());
-    }
 }

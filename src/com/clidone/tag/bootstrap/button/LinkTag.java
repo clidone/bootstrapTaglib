@@ -55,7 +55,7 @@ public class LinkTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
-        setName("a");
+        setTagName("a");
 
         addClass("btn");
         if (!ValueUtils.isEmpty(theme)) {

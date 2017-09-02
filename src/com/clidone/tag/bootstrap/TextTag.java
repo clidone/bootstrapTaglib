@@ -136,7 +136,7 @@ public class TextTag extends AbstractTag {
      */
     @Override
     protected String renderV2() throws JspException {
-        setName(as);
+        setTagName(as);
 
         if (!ValueUtils.isEmpty(fontFamily)) {
             addStyle("font-family", fontFamily);
