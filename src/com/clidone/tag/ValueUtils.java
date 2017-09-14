@@ -11,7 +11,7 @@ public final class ValueUtils {
      * @return true: empty, false: not empty
      */
     public final static boolean isEmpty(String value) {
-        return (value == null || "".equals(value.trim()));
+        return (value == null || value.length() == 0);
     }
 
     /**
