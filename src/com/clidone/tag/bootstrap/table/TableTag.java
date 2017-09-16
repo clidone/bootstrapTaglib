@@ -1,43 +1,319 @@
 package com.clidone.tag.bootstrap.table;
 
-import javax.servlet.jsp.tagext.TagSupport;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.jsp.JspException;
+
+import com.clidone.tag.AbstractTag;
+import com.clidone.tag.ValueUtils;
 
 /**
  * <strong>Table tag</strong>
  * @author wuhuaxia
  */
-public class TableTag extends TagSupport {
+public class TableTag extends AbstractTag {
 
-    private static final long serialVersionUID = -5271790824898179363L;
+    private static final long serialVersionUID = -510289398275521046L;
 
-    // 添加 .table-bordered 类为表格和其中的每个单元格增加边框。
-    private boolean bordered = false;
-    public void setBordered(boolean bordered) {
+    // **********************************************************************************
+    //
+    // Tag data
+    //
+    // **********************************************************************************
+    // Whether table has data
+    private boolean hasData = false;
+
+    // Whether table has more data or not
+    private boolean hasMoreData = false;
+
+    // Raw data iterator
+    private Iterator<?> iterator = null;
+
+    // Table register columns
+    private List<TableColumnData> columns = null;
+
+    // Whether should collect column data or not
+    // After first time render body content, this flag will set false, and no more collection
+    private boolean shouldCollectColumn = true;
+
+    // **********************************************************************************
+    //
+    // Tag attributes
+    //
+    // **********************************************************************************
+    // var
+    private String var = null;
+    public void setVar(String var) throws JspException {
+        if (ValueUtils.isEmpty(var)) {
+            throw new JspException("Table var attribute is required.");
+        }
+        this.var = var;
+    }
+
+    // items
+    public void setItems(Object items) {
+        // initialize raw data iterator
+        if (items instanceof Collection) {
+            Collection<?> data = (Collection<?>) items;
+            this.iterator = data.iterator();
+
+        } else if (items instanceof Map) {
+            Map<?,?> data = (Map<?,?>) items;
+            this.iterator = data.entrySet().iterator();
+        }
+
+        this.hasData = (items != null && iterator != null && iterator.hasNext());
+    }
+
+    // caption
+    private String caption = null;
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    // icon
+    private String icon = null;
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    // bordered
+    private Boolean bordered = null;
+    public void setBordered(Boolean bordered) {
         this.bordered = bordered;
     }
 
-    // 通过添加 .table-condensed 类可以让表格更加紧凑，单元格中的内补（padding）均会减半。
-    private boolean condensed = false;
-    public void setCondensed(boolean condensed) {
+    // condensed
+    private Boolean condensed = null;
+    public void setCondensed(Boolean condensed) {
         this.condensed = condensed;
     }
 
-    // 通过添加 .table-hover 类可以让 <tbody> 中的每一行对鼠标悬停状态作出响应。
-    private boolean hover = false;
-    public void setHover(boolean hover) {
+    // hover
+    private Boolean hover = null;
+    public void setHover(Boolean hover) {
         this.hover = hover;
     }
 
-    // 通过 .table-striped 类可以给 <tbody> 之内的每一行增加斑马条纹样式。
-    private boolean striped = false;
-    public void setStriped(boolean striped) {
+    // striped
+    private Boolean striped = null;
+    public void setStriped(Boolean striped) {
         this.striped = striped;
     }
 
-    // 将任何 .table 元素包裹在 .table-responsive 元素内，即可创建响应式表格，
-    // 其会在小屏幕设备上（小于768px）水平滚动。当屏幕大于 768px 宽度时，水平滚动条消失。
-    private boolean responsive = true;
-    public void setResponsive(boolean responsive) {
+    // responsive
+    private Boolean responsive = new Boolean(true);
+    public void setResponsive(Boolean responsive) {
         this.responsive = responsive;
+    }
+
+    // header
+    private Boolean header = new Boolean(true);
+    public void setHeader(Boolean header) {
+        this.header = header;
+    }
+
+    // footer
+    private Boolean footer = null;
+    public void setFooter(Boolean footer) {
+        this.footer = footer;
+    }
+
+    // **********************************************************************************
+    //
+    // Tag methods
+    //
+    // **********************************************************************************
+    /**
+     * @see AbstractTag#doStartTagV2()
+     */
+    @Override
+    protected int doStartTagV2() throws JspException {
+        hasMoreData = hasMoreData();
+        if (hasMoreData) {
+            // get current item, and make it available for body render
+            Object item = iterator.next();
+            if (pageContext.getAttribute(var) != null) {
+                pageContext.removeAttribute(var);
+            }
+            pageContext.setAttribute(var, item);
+
+            return EVAL_BODY_BUFFERED;
+        } else {
+            return SKIP_BODY;
+        }
+    }
+
+    /**
+     * @see AbstractTag#doStartTagV3()
+     */
+    @Override
+    protected int doStartTagV3() throws JspException {
+        return doStartTagV2();
+    }
+
+    /**
+     * @see AbstractTag#doAfterBodyV2()
+     */
+    @Override
+    protected int doAfterBodyV2() throws JspException {
+        // When we collect all column data, no need to collect again
+        if (shouldCollectColumn) {
+            shouldCollectColumn = false;
+        }
+
+        hasMoreData = hasMoreData();
+        if (hasMoreData) {
+            // get current item, and make it available for body render
+            Object item = iterator.next();
+            if (pageContext.getAttribute(var) != null) {
+                pageContext.removeAttribute(var);
+            }
+            pageContext.setAttribute(var, item);
+
+            return EVAL_BODY_AGAIN;
+        } else {
+            return SKIP_BODY;
+        }
+    }
+
+    /**
+     * @see AbstractTag#doAfterBodyV3()
+     */
+    @Override
+    protected int doAfterBodyV3() throws JspException {
+        return doAfterBodyV2();
+    }
+
+    /**
+     * @see AbstractTag#doEndTagV2()
+     */
+    @Override
+    protected String doEndTagV2() throws JspException {
+        setTagName("table");
+
+        addClass("table");
+
+        // table caption
+        String captionContent = "";
+        if (!ValueUtils.isEmpty(icon)) {
+            captionContent += renderIcon(icon);
+        }
+        if (!ValueUtils.isEmpty(caption)) {
+            captionContent += caption;
+        }
+        if (!ValueUtils.isEmpty(captionContent)) {
+            addBeforeContent("<caption>"+captionContent+"</caption>");
+        }
+
+        // table style
+        if (bordered != null && bordered.booleanValue()) {
+            addClass("table-bordered");
+        }
+        if (condensed != null && condensed.booleanValue()) {
+            addClass("table-condensed");
+        }
+        if (hover != null && hover.booleanValue()) {
+            addClass("table-hover");
+        }
+        if (striped != null && striped.booleanValue()) {
+            addClass("table-striped");
+        }
+        if (responsive != null && responsive.booleanValue()) {
+            addBeforeWrap("<div class=\"table-responsive\">");
+            addAfterWrap("</div>");
+        }
+
+        // render header
+        if (header != null && header.booleanValue()) {
+            addBeforeContent("<thead>");
+            if (columns != null) {
+                addBeforeContent("<tr>");
+                for (int i=0,len=columns.size(); i<len; i++) {
+                    addBeforeContent("<th>");
+                    addBeforeContent(columns.get(i).getLabel());
+                    addBeforeContent("</th>");
+                }
+                addBeforeContent("</tr>");
+            }
+            addBeforeContent("</thead>");
+        }
+
+        // render body and data
+        addBeforeContent("<tbody>");
+        addAfterContent("</tbody>");
+
+        // footer
+        if (footer != null && footer.booleanValue()) {
+            addAfterContent("<tfoot>");
+            if (columns != null) {
+                addAfterContent("<tr>");
+                for (int i=0,len=columns.size(); i<len; i++) {
+                    addAfterContent("<th>");
+                    addAfterContent(columns.get(i).getLabel());
+                    addAfterContent("</th>");
+                }
+                addAfterContent("</tr>");
+            }
+            addAfterContent("</tfoot>");
+        }
+
+        return render();
+    }
+
+    /**
+     * @see AbstractTag#doEndTagV3()
+     */
+    @Override
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
+    }
+
+    /**
+     * Add column tag data
+     * @param columnData column data
+     */
+    public void addColumn(TableColumnData columnData) {
+        if (!shouldCollectColumn) {
+            return;
+        }
+        if (columnData == null) {
+            return;
+        }
+        if (columns == null) {
+            columns = new ArrayList<TableColumnData>();
+        }
+        columns.add(columnData);
+    }
+
+    /**
+     * Whether collect column data or not
+     * @return true: collect, false: ignore
+     */
+    public boolean shouldCollectColumn() {
+        return shouldCollectColumn;
+    }
+
+    /**
+     * Get has data flag
+     * @return true: has data, false: no data
+     */
+    public boolean hasData() {
+        return hasData;
+    }
+
+    /**
+     * Check has more data or not
+     * @return true: has data, false: no more data
+     */
+    private boolean hasMoreData() {
+        if (iterator == null) {
+            return false;
+        }
+        return iterator.hasNext();
     }
 }
