@@ -17,6 +17,10 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
 
     private static final long serialVersionUID = -6152630007445070508L;
 
+    // Version constant
+    private static final String VERSION2 = "2";
+    private static final String VERSION3 = "3";
+
     // **********************************************************************************
     //
     // Tag data
@@ -33,6 +37,9 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
     private StringBuilder beforeWrap    = null;
     private StringBuilder afterWrap     = null;
 
+    // tag version
+    private String taglibVersion = null;
+
     // Icon prefix
     protected String iconPrefix = null;
 
@@ -45,7 +52,7 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
 
     // **********************************************************************************
     //
-    // 标签逻辑
+    // Tag logic
     //
     // **********************************************************************************
     /**
@@ -56,8 +63,15 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     @Override
     public int doStartTag() throws JspException {
-        tagHTML = new StringBuilder();
-        return EVAL_BODY_BUFFERED;
+        init();
+
+        if (VERSION3.equals(taglibVersion.trim())) {
+            return doStartTagV3();
+        } else if (VERSION2.equals(taglibVersion.trim())) {
+            return doStartTagV2();
+        } else {
+            throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
+        }
     }
 
     /**
@@ -66,7 +80,13 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     @Override
     public void doInitBody() throws JspException {
-        super.doInitBody();
+        if (VERSION3.equals(taglibVersion.trim())) {
+            doInitBodyV3();
+        } else if (VERSION2.equals(taglibVersion.trim())) {
+            doInitBodyV2();
+        } else {
+            throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
+        }
     }
 
     /**
@@ -85,7 +105,13 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     @Override
     public int doAfterBody() throws JspException {
-        return SKIP_BODY;
+        if (VERSION3.equals(taglibVersion.trim())) {
+            return doAfterBodyV3();
+        } else if (VERSION2.equals(taglibVersion.trim())) {
+            return doAfterBodyV2();
+        } else {
+            throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
+        }
     }
 
     /**
@@ -95,25 +121,13 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      */
     @Override
     public int doEndTag() throws JspException {
-        ServletContext servletContext = getServletContext();
-
-        // Get configuration
-        String taglibVersion = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY);
-        if (taglibVersion == null || "".equals(taglibVersion.trim())) {
-            throw new JspException("Render tag failure: taglib version is empty.");
-        }
-        iconPrefix = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
-        if (ValueUtils.isEmpty(iconPrefix)) {
-            iconPrefix = "";
-        }
-
         // Render tag content
         String content = null;
-        if ("3".equals(taglibVersion.trim())) {
-            content = renderV3();
+        if (VERSION3.equals(taglibVersion.trim())) {
+            content = doEndTagV3();
 
-        } else if ("2".equals(taglibVersion.trim())) {
-            content = renderV2();
+        } else if (VERSION2.equals(taglibVersion.trim())) {
+            content = doEndTagV2();
 
         } else {
             throw new JspException("Render tag failure: taglib version is invalid, should be 2 or 3 value.");
@@ -227,6 +241,28 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
         } else {
             addAttribute(attrName, attrValue);
         }
+    }
+
+    /**
+     * Initialize tag context
+     * @throws JspException
+     */
+    protected void init() throws JspException {
+        ServletContext servletContext = getServletContext();
+
+        // get tag version
+        taglibVersion = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY);
+        if (taglibVersion == null || "".equals(taglibVersion.trim())) {
+            throw new JspException("Render tag failure: taglib version is empty.");
+        }
+
+        // get icon prefix
+        iconPrefix = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
+        if (ValueUtils.isEmpty(iconPrefix)) {
+            iconPrefix = "";
+        }
+
+        tagHTML = new StringBuilder();
     }
 
     /**
@@ -471,16 +507,71 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
 
     /**
      * Render Version 2.* HTML Content
+     * @return render result
+     * @exception JspException
+     */
+    protected int doStartTagV2() throws JspException {
+        return EVAL_BODY_BUFFERED;
+    }
+
+    /**
+     * Render Version 3.* HTML Content
+     * @return render result
+     * @exception JspException
+     */
+    protected int doStartTagV3() throws JspException {
+        return EVAL_BODY_BUFFERED;
+    }
+
+    /**
+     * Render Version 2.* HTML Content
+     * @exception JspException
+     */
+    protected void doInitBodyV2() throws JspException {
+        super.doInitBody();
+    }
+
+    /**
+     * Render Version 3.* HTML Content
+     * @exception JspException
+     */
+    protected void doInitBodyV3() throws JspException {
+        super.doInitBody();
+    }
+
+    /**
+     * Render Version 2.* HTML Content
+     * @return render result
+     * @exception JspException
+     */
+    protected int doAfterBodyV2() throws JspException {
+        return SKIP_BODY;
+    }
+
+    /**
+     * Render Version 3.* HTML Content
+     * @return render result
+     * @exception JspException
+     */
+    protected int doAfterBodyV3() throws JspException {
+        return SKIP_BODY;
+    }
+
+    /**
+     * Render Version 2.* HTML Content
      * @return Tag HTML Content
      * @exception JspException
      */
-    protected abstract String renderV2() throws JspException;
+    protected String doEndTagV2() throws JspException {
+        return "";
+    }
 
     /**
      * Render Version 3.* HTML Content
      * @return Tag HTML Content
      * @exception JspException
      */
-    protected abstract String renderV3() throws JspException;
-
+    protected String doEndTagV3() throws JspException {
+        return "";
+    }
 }
