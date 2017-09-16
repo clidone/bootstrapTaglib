@@ -22,126 +22,84 @@ abstract class AbstractFormFieldTag extends AbstractTag {
     // **********************************************************************************
     // name
     protected String name = null;
-    public String getName() {
-        return name;
-    }
     public void setName(String name) {
         this.name = name;
     }
 
     // value
     protected String value = null;
-    public String getValue() {
-        return value;
-    }
     public void setValue(String value) {
         this.value = value;
     }
 
     // label
     protected String label = "";
-    public String getLabel() {
-        return label;
-    }
     public void setLabel(String label) {
         this.label = label;
     }
 
     // labelSrOnly
     protected Boolean labelSrOnly = null;
-    public Boolean getLabelSrOnly() {
-        return labelSrOnly;
-    }
     public void setLabelSrOnly(Boolean labelSrOnly) {
         this.labelSrOnly = labelSrOnly;
     }
 
     // labelXs
     protected int labelXs = 0;
-    public int getLabelXs() {
-        return labelXs;
-    }
     public void setLabelXs(int labelXs) {
         this.labelXs = labelXs;
     }
 
     // labelSm
     protected int labelSm = 0;
-    public int getLabelSm() {
-        return labelSm;
-    }
     public void setLabelSm(int labelSm) {
         this.labelSm = labelSm;
     }
 
     // labelMd
     protected int labelMd = 0;
-    public int getLabelMd() {
-        return labelMd;
-    }
     public void setLabelMd(int labelMd) {
         this.labelMd = labelMd;
     }
 
     // labelLg
     protected int labelLg = 0;
-    public int getLabelLg() {
-        return labelLg;
-    }
     public void setLabelLg(int labelLg) {
         this.labelLg = labelLg;
     }
 
     // required
     protected Boolean required = null;
-    public Boolean getRequired() {
-        return required;
-    }
     public void setRequired(Boolean required) {
         this.required = required;
     }
 
     // static
     protected Boolean staticFlag = null;
-    public Boolean getStatic() {
-        return staticFlag;
-    }
     public void setStatic(Boolean staticFlag) {
         this.staticFlag = staticFlag;
     }
 
     // size
     protected String size = null;
-    public String getSize() {
-        return size;
-    }
     public void setSize(String size) {
         this.size = size;
     }
 
     // prefixAddon
     protected String prefixAddon = null;
-    public String getPrefixAddon() {
-        return prefixAddon;
-    }
     public void setPrefixAddon(String prefixAddon) {
         this.prefixAddon = prefixAddon;
     }
 
     // suffixAddon
     protected String suffixAddon = null;
-    public String getSuffixAddon() {
-        return suffixAddon;
-    }
     public void setSuffixAddon(String suffixAddon) {
         this.suffixAddon = suffixAddon;
     }
 
     // help
     protected String help = null;
-    public String getHelp() {
-        return help;
-    }
     public void setHelp(String help) {
         this.help = help;
     }

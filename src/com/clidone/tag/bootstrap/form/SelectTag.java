@@ -24,10 +24,6 @@ public class SelectTag extends AbstractFormFieldTag {
     @SuppressWarnings("rawtypes")
     private List items = null;
     @SuppressWarnings("rawtypes")
-    public List getItems() {
-        return this.items;
-    }
-    @SuppressWarnings("rawtypes")
     public void setItems(List items) {
         this.items = items;
     }
@@ -38,10 +34,10 @@ public class SelectTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractFormFieldTag#renderV2()
+     * @see AbstractFormFieldTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         FormTag formTag     = (FormTag) findAncestorWithClass(this, FormTag.class);
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
@@ -85,11 +81,11 @@ public class SelectTag extends AbstractFormFieldTag {
     }
 
     /**
-     * @see AbstractFormFieldTag#renderV3()
+     * @see AbstractFormFieldTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 
 

@@ -20,7 +20,7 @@ public class FormTag extends AbstractTag {
     // layout
     private String layout = null;
     public String getLayout() {
-        return this.layout;
+        return layout;
     }
     public void setLayout(String layout) {
         this.layout = layout;
@@ -37,9 +37,6 @@ public class FormTag extends AbstractTag {
 
     // model
     private String model = null;
-    public String getModel() {
-        return model;
-    }
     public void setModel(String model) {
         this.model = model;
     }
@@ -50,10 +47,10 @@ public class FormTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         setTagName("form");
 
         if ("i".equals(layout) || "inline".equals(layout)) {
@@ -68,10 +65,10 @@ public class FormTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

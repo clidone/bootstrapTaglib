@@ -20,27 +20,18 @@ public class LinkTag extends AbstractTag {
     // **********************************************************************************
     // url
     private String uri = null;
-    public String getUri() {
-        return uri;
-    }
     public void setUri(String uri) {
         this.uri = uri;
     }
 
     // theme
     private String theme = "link";
-    public String getTheme() {
-        return this.theme;
-    }
     public void setTheme(String theme) {
         this.theme = theme;
     }
 
     // icon
     private String icon = null;
-    public String getIcon() {
-        return icon;
-    }
     public void setIcon(String icon) {
         this.icon = icon;
     }
@@ -51,10 +42,10 @@ public class LinkTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         setTagName("a");
 
         addClass("btn");
@@ -73,10 +64,10 @@ public class LinkTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

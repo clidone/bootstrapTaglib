@@ -19,9 +19,6 @@ public class ViewBodyTag extends AbstractTag {
     // **********************************************************************************
     // container fluid or not boolean flag
     private boolean fluid = true;
-    public boolean getFluid() {
-        return fluid;
-    }
     public void setFluid(boolean fluid) {
         this.fluid = fluid;
     }
@@ -32,10 +29,10 @@ public class ViewBodyTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         setTagName("div");
 
         if (fluid) {
@@ -48,10 +45,10 @@ public class ViewBodyTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

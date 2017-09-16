@@ -24,19 +24,12 @@ public class RadioListTag extends AbstractFormFieldTag {
     @SuppressWarnings("rawtypes")
     private List items = null;
     @SuppressWarnings("rawtypes")
-    public List getItems() {
-        return this.items;
-    }
-    @SuppressWarnings("rawtypes")
     public void setItems(List items) {
         this.items = items;
     }
 
     // data
     private Object data = null;
-    public Object getData() {
-        return this.data;
-    }
     public void setData(Object data) {
         this.data = data;
     }
@@ -47,10 +40,10 @@ public class RadioListTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractFormFieldTag#renderV2()
+     * @see AbstractFormFieldTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         if (items != null) {
             KeyValue keyValue   = null;
             String filedLabel   = null;
@@ -88,11 +81,11 @@ public class RadioListTag extends AbstractFormFieldTag {
     }
 
     /**
-     * @see AbstractFormFieldTag#renderV3()
+     * @see AbstractFormFieldTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 
     /**

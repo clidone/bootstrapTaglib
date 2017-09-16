@@ -20,27 +20,18 @@ public class ButtonGroupTag extends AbstractTag {
     // **********************************************************************************
     // size
     private String size = null;
-    public String getSize() {
-        return this.size;
-    }
     public void setSize(String size) {
         this.size = size;
     }
 
     // justified
     private Boolean justified = null;
-    public Boolean getJustified() {
-        return this.justified;
-    }
     public void setJustified(boolean justified) {
         this.justified = new Boolean(justified);
     }
 
     // vertical
     private Boolean vertical = null;
-    public Boolean getVertical() {
-        return this.vertical;
-    }
     public void setVertical(boolean vertical) {
         this.vertical = new Boolean(vertical);
     }
@@ -51,10 +42,10 @@ public class ButtonGroupTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         setTagName("div");
 
         addClass("btn-group");
@@ -77,10 +68,10 @@ public class ButtonGroupTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

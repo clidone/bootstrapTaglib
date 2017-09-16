@@ -1,10 +1,5 @@
 package com.clidone.tag.bootstrap.button;
 
-import java.io.IOException;
-
-import javax.servlet.jsp.JspContext;
-import javax.servlet.jsp.JspWriter;
-
 /**
  * <strong>授权按钮标签对象</strong>
  * @author wuhuaxia

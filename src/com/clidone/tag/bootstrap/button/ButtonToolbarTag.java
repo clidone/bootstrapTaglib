@@ -20,9 +20,6 @@ public class ButtonToolbarTag extends AbstractTag {
     // **********************************************************************************
     // size
     private String size = null;
-    public String getSize() {
-        return this.size;
-    }
     public void setSize(String size) {
         this.size = size;
     }
@@ -33,10 +30,10 @@ public class ButtonToolbarTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         addClass("btn-toolbar");
         if (!ValueUtils.isEmpty(size)) {
             addClass("btn-group-" + size);
@@ -49,10 +46,10 @@ public class ButtonToolbarTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

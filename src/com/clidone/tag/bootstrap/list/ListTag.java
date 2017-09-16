@@ -2,14 +2,23 @@ package com.clidone.tag.bootstrap.list;
 
 import java.util.List;
 
-import javax.servlet.jsp.tagext.TagSupport;
+import javax.servlet.jsp.JspException;
+
+import com.clidone.tag.AbstractTag;
 
 /**
  * <strong>List tag</strong>
  * @author wuhuaxia
  */
-public class ListTag extends TagSupport {
+public class ListTag extends AbstractTag {
 
+    private static final long serialVersionUID = 193649963855763129L;
+
+    // **********************************************************************************
+    //
+    // Tag attributes
+    //
+    // **********************************************************************************
     // 前缀：dot、number
     // TODO：更加前缀选择ul或ol标签
     private String prefix = "dot";
@@ -39,5 +48,26 @@ public class ListTag extends TagSupport {
     private List content;
     public void setContent(List content) {
         this.content = content;
+    }
+
+    // **********************************************************************************
+    //
+    // Tag methods
+    //
+    // **********************************************************************************
+    /**
+     * @see AbstractTag#doEndTagV2()
+     */
+    @Override
+    protected String doEndTagV2() throws JspException {
+        return render();
+    }
+
+    /**
+     * @see AbstractTag#doEndTagV3()
+     */
+    @Override
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

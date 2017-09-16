@@ -24,10 +24,10 @@ public class InputTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractFormFieldTag#renderV2()
+     * @see AbstractFormFieldTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         FormTag formTag     = (FormTag) findAncestorWithClass(this, FormTag.class);
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
@@ -57,10 +57,10 @@ public class InputTag extends AbstractFormFieldTag {
     }
 
     /**
-     * @see AbstractFormFieldTag#renderV3()
+     * @see AbstractFormFieldTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

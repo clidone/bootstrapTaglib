@@ -18,31 +18,28 @@ public class ButtonTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    // theme
-    private String theme = null;
-    public String getTheme() {
-        return this.theme;
+    // type
+    private String type = "button";
+    public void setType(String type) {
+        this.type = type;
     }
+
+    // theme
+    private String theme = "default";
     public void setTheme(String theme) {
         this.theme = theme;
     }
 
     // icon
     private String icon = null;
-    public String getIcon() {
-        return icon;
-    }
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
     // dropdown
-    private Boolean dropdown = false;
-    public Boolean getDropdown() {
-        return dropdown;
-    }
-    public void setDropdown(boolean dropdown) {
-        this.dropdown = new Boolean(dropdown);
+    private Boolean dropdown = null;
+    public void setDropdown(Boolean dropdown) {
+        this.dropdown = dropdown;
     }
 
 
@@ -52,11 +49,15 @@ public class ButtonTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         setTagName("button");
+
+        if (!ValueUtils.isEmpty(type)) {
+            super.addAttribute("type", type);
+        }
 
         addClass("btn");
         if (!ValueUtils.isEmpty(theme)) {
@@ -65,7 +66,7 @@ public class ButtonTag extends AbstractTag {
 
         if (dropdown != null && dropdown.booleanValue()) {
             addClass("dropdown-toggle");
-            addAttribute("data-toggle",   "data-toggle");
+            addAttribute("data-toggle",   "dropdown");
             addAttribute("aria-haspopup", "true");
             addAttribute("aria-expanded", "false");
             addAfterContent("<span class=\"caret\"></span>");
@@ -78,10 +79,10 @@ public class ButtonTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }

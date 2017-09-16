@@ -22,18 +22,12 @@ public class OptionTag extends AbstractTag {
     // **********************************************************************************
     // value
     private String value = null;
-    public String getValue() {
-        return value;
-    }
     public void setValue(String value) {
         this.value = value;
     }
 
     // text
     private String text = null;
-    public String getText() {
-        return text;
-    }
     public void setText(String text) {
         this.text = text;
     }
@@ -44,10 +38,10 @@ public class OptionTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         FormTag formTag     = (FormTag) super.findAncestorWithClass(this, FormTag.class);
         SelectTag selectTag = (SelectTag) super.findAncestorWithClass(this, SelectTag.class);
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
@@ -84,10 +78,10 @@ public class OptionTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
-        return renderV2();
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
     }
 }
