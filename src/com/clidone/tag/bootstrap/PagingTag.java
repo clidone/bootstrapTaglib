@@ -8,93 +8,62 @@ import com.clidone.tag.AbstractTag;
  */
 public class PagingTag extends AbstractTag {
 
+    private static final long serialVersionUID = 4652998063024869960L;
+
     // **********************************************************************************
     //
-    // 数据成员
+    // Tag attributes
     //
     // **********************************************************************************
-    // 数据总件数
+    // count
     private long totalCount = 0L;
-
-    // 数据当前页索引
-    private long currentPage = 0L;
-
-    // 数据每页数量
-    private long eachPageCount = 24L;
-
-    // 翻页链接URL
-    private String linkUrl = null;
-
-    // 链接翻页参数名称
-    private String pageParamName = "page";
-
-
-    // **********************************************************************************
-    //
-    // 属性
-    //
-    // **********************************************************************************
-    // 数据总件数
-    public long getCount() {
-        return totalCount;
-    }
     public void setCount(long totalCount) {
         this.totalCount = totalCount;
     }
 
-    // 数据当前页索引
-    public long getIndex() {
-        return currentPage;
-    }
+    // index
+    private long currentPage = 0L;
     public void setIndex(long currentPage) {
         this.currentPage = currentPage;
     }
 
-    // 数据每页数量
-    public long getEach() {
-        return eachPageCount;
-    }
+    // each
+    private long eachPageCount = 24L;
     public void setEach(long eachPageCount) {
         this.eachPageCount = eachPageCount;
     }
 
-    // 翻页链接URL
-    public String getUrl() {
-        return linkUrl;
-    }
+    // url
+    private String linkUrl = null;
     public void setUrl(String url) {
         this.linkUrl = url;
     }
 
-    // 链接翻页参数名称
-    public String getPageParam() {
-        return pageParamName;
-    }
+    // page parameter
+    private String pageParamName = "page";
     public void setPageParam(String pageParamName) {
         this.pageParamName = pageParamName;
     }
 
     // **********************************************************************************
     //
-    // 标签逻辑
+    // Tag methods
     //
     // **********************************************************************************
     /**
-     * 渲染V2内容
-     * @return 渲染内容
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected final String renderV2() {
+    protected final String doEndTagV2() {
         StringBuilder content = new StringBuilder();
         return content.toString();
     }
 
     /**
-     * 渲染V3内容
-     * @return 渲染内容
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected final String renderV3() {
+    protected final String doEndTagV3() {
         StringBuilder html = new StringBuilder();
         html.append("<div class=\"text-center\">");
         html.append("<nav>");

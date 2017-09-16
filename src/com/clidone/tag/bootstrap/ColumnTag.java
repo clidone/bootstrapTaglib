@@ -105,10 +105,10 @@ public class ColumnTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
-     * @see AbstractTag#renderV2()
+     * @see AbstractTag#doEndTagV2()
      */
     @Override
-    protected String renderV2() throws JspException {
+    protected String doEndTagV2() throws JspException {
         // Get request parameter _device_width_
         String deviceWidthName = (String) super.getServletContext().getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_DEVICE_WIDTH_KEY);
         String deviceWidthStr = super.getRequest().getParameter(deviceWidthName);
@@ -172,10 +172,10 @@ public class ColumnTag extends AbstractTag {
     }
 
     /**
-     * @see AbstractTag#renderV3()
+     * @see AbstractTag#doEndTagV3()
      */
     @Override
-    protected String renderV3() throws JspException {
+    protected String doEndTagV3() throws JspException {
         setTagName("div");
 
         if (xs > 0) {
