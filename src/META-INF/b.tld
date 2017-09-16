@@ -52,6 +52,15 @@
     </tag>
 
     <tag>
+        <description>Container Tag</description>
+        <name>container</name>
+        <tag-class>com.clidone.tag.bootstrap.ContainerTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>fluid</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
         <description>Row Tag</description>
         <name>row</name>
         <tag-class>com.clidone.tag.bootstrap.RowTag</tag-class>
@@ -297,6 +306,50 @@
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>items</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Table Tag</description>
+        <name>table</name>
+        <tag-class>com.clidone.tag.bootstrap.table.TableTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>var</name>        <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>items</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>caption</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>bordered</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>condensed</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>hover</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>striped</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>responsive</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>header</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footer</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Table row Tag</description>
+        <name>tableRow</name>
+        <tag-class>com.clidone.tag.bootstrap.table.TableRowTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Table column Tag</description>
+        <name>tableColumn</name>
+        <tag-class>com.clidone.tag.bootstrap.table.TableColumnTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>label</name> <required>true</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Table no record Tag</description>
+        <name>tableNoRecord</name>
+        <tag-class>com.clidone.tag.bootstrap.table.TableNoRecordTag</tag-class>
+        <body-content>JSP</body-content>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
