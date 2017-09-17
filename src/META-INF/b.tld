@@ -222,6 +222,15 @@
     </tag>
 
     <tag>
+        <description>Textarea Tag</description>
+        <name>textarea</name>
+        <tag-class>com.clidone.tag.bootstrap.form.TextareaTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>resize</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
         <description>Select Tag</description>
         <name>select</name>
         <tag-class>com.clidone.tag.bootstrap.form.SelectTag</tag-class>
