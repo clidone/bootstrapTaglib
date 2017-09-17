@@ -42,8 +42,8 @@ public class CheckboxTag extends AbstractFormFieldTag {
             addAttribute("readonly", "readonly");
         }
 
-        if (!ValueUtils.isEmpty(value)) {
-            addAttribute("value", value);
+        if (value != null) {
+            addAttribute("value", String.valueOf(value));
         }
 
         addBeforeWrap("<div class=\"checkbox\">");
