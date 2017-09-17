@@ -2,8 +2,6 @@ package com.clidone.tag.bootstrap.form;
 
 import javax.servlet.jsp.JspException;
 
-import com.clidone.tag.ValueUtils;
-
 /**
  * <strong>Input tag</strong>
  * @author wuhuaxia
@@ -37,8 +35,8 @@ public class InputTag extends AbstractFormFieldTag {
 
             addClass("form-control-static");
 
-            if (!ValueUtils.isEmpty(value)) {
-                addBeforeContent(value);
+            if (value != null) {
+                addBeforeContent(String.valueOf(value));
             }
 
         } else {
@@ -46,8 +44,8 @@ public class InputTag extends AbstractFormFieldTag {
 
             addClass("form-control");
 
-            if (!ValueUtils.isEmpty(value)) {
-                addAttribute("value", value);
+            if (value != null) {
+                addAttribute("value", String.valueOf(value));
             }
         }
 
