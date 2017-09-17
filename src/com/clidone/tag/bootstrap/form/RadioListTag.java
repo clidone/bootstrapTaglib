@@ -1,5 +1,6 @@
 package com.clidone.tag.bootstrap.form;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.jsp.JspException;
@@ -9,6 +10,22 @@ import com.clidone.tag.data.KeyValue;
 
 /**
  * <strong>Radia list tag</strong>
+ * <p>
+ * Initialize radio list, there are three ways:
+ * <ol>
+ *   <li>set <code>items</code> attribute as List data: In this case, you should also setup both of
+ *       <code>valueKey</code> and <code>textKey</code> attributes, we will access current item with
+ *       valueKey and textKey getter methods, and build valueKey as radio field value, textKey as radio
+ *       display text;
+ *   </li>
+ *   <li>set <code>items</code> attribute as String[][] data: In this case, the inner array index 0 data
+ *   are radio field value, index 1 are radio display text;
+ *   </li>
+ *   <li>set <code>keys</code> and <code>texts</code> attributes: both of these are String and concatenated
+ *   by ',' char, values is radio field value, texts is radio field display text.
+ *   </li>
+ * </ol>
+ * </p>
  * @author wuhuaxia
  */
 public class RadioListTag extends AbstractFormFieldTag {
@@ -21,17 +38,40 @@ public class RadioListTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     // items
-    @SuppressWarnings("rawtypes")
-    private List items = null;
-    @SuppressWarnings("rawtypes")
-    public void setItems(List items) {
-        this.items = items;
+    // Support type: List<?> and String[][], when render items is List, we must also setup valueKey and textKey attributes,
+    // or items is instance of String[][], the second array index 0 is value, index 1 is text
+    private List<KeyValue> items = null;
+    public void setItems(Object items) throws JspException {
+        if (items == null) {
+            return;
+        }
+        initItems(items);
     }
 
-    // data
-    private Object data = null;
-    public void setData(Object data) {
-        this.data = data;
+    // valueKey
+    private String valueKey = null;
+    public void setValueKey(String valueKey) {
+        this.valueKey = valueKey;
+    }
+
+    // textKey
+    private String textKey = null;
+    public void setTextKey(String textKey) {
+        this.textKey = textKey;
+    }
+
+    // values
+    private String values = null;
+    public void setKeys(String values) throws JspException {
+        this.values = values;
+        initItems();
+    }
+
+    // texts
+    private String texts = null;
+    public void setTexts(String texts) throws JspException {
+        this.texts = texts;
+        initItems();
     }
 
     // **********************************************************************************
@@ -44,9 +84,9 @@ public class RadioListTag extends AbstractFormFieldTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        if (items != null) {
+        if (this.items != null) {
             KeyValue keyValue   = null;
-            String filedLabel   = null;
+            String filedText    = null;
             String filedValue   = null;
             String fieldChecked = null;
 
@@ -63,15 +103,13 @@ public class RadioListTag extends AbstractFormFieldTag {
                     continue;
                 }
 
-                filedLabel   = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
                 filedValue   = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
+                filedText    = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
                 fieldChecked = !isChcked(filedValue)                   ? "" : " checked=\"checked\"";
 
-                addBeforeContent("<div class=\"radio\">");
-                addBeforeContent(    "<label>");
-                addBeforeContent(        "<input type=\"radio\" name=\""+filedName+"\" value=\""+filedValue+"\""+filedReadonly+fieldChecked+">" + filedLabel);
-                addBeforeContent(    "</label>");
-                addBeforeContent("</div>");
+                addBeforeContent("<label class=\"radio-inline\">");
+                addBeforeContent(    "<input type=\"radio\" name=\""+filedName+"\" value=\""+filedValue+"\""+filedReadonly+fieldChecked+">" + filedText);
+                addBeforeContent("</label>");
             }
         }
 
@@ -89,40 +127,94 @@ public class RadioListTag extends AbstractFormFieldTag {
     }
 
     /**
+     * Initialize items list
+     * @param items item object
+     * @throws JspException
+     */
+    private void initItems(Object items) throws JspException {
+        if (items instanceof List<?>) {
+            this.items = new ArrayList<KeyValue>();
+
+            if (ValueUtils.isEmpty(valueKey)) {
+                throw new JspException("items is list, 'valueKey' attribute is required.");
+            }
+            if (ValueUtils.isEmpty(textKey)) {
+                throw new JspException("items is list, 'textKey' attribute is required.");
+            }
+
+            List<?> list = (List<?>) items;
+            for (int i=0,len=list.size(); i<len; i++) {
+                Object item = list.get(i);
+                if (item == null) {
+                    continue;
+                }
+
+                Object value = ValueUtils.get(item, valueKey);
+                Object text  = ValueUtils.get(item, textKey);
+                this.items.add(new KeyValue(
+                    ((value == null) ? "" : value.toString()),
+                    ((text == null)  ? "" : text.toString())
+                ));
+            }
+
+        } else if (items instanceof String[][]) {
+            this.items = new ArrayList<KeyValue>();
+
+            String[][] arrays = (String[][]) items;
+            for (int i=0,len=arrays.length; i<len; i++) {
+                String[] item = arrays[i];
+                if (item == null) {
+                    continue;
+                }
+
+                this.items.add(new KeyValue(
+                    ((item[0] == null) ? "" : item[0]),
+                    ((item[1] == null) ? "" : item[1])
+                ));
+            }
+        }
+    }
+
+    /**
+     * Initialize items list
+     * @throws JspException
+     */
+    private void initItems() throws JspException {
+        if (this.values == null) {
+            return;
+        }
+        if (this.texts == null) {
+            return;
+        }
+
+        String[] valueArray = this.values.split(",");
+        String[] textArray  = this.texts.split(",");
+        if (valueArray.length != textArray.length) {
+            throw new JspException("values and texts (length) is NOT equal.");
+        }
+
+        this.items = new ArrayList<KeyValue>();
+        for (int i=0,len=valueArray.length; i<len; i++) {
+            this.items.add(new KeyValue(
+                ((valueArray[i] == null) ? "" : valueArray[i]),
+                ((textArray[i]  == null) ? "" : textArray[i])
+            ));
+        }
+    }
+
+    /**
      * Check value is match or not
-     * @param value item value
+     * @param filedValue item value
      * @return true: matched, false: not match
      */
-    private boolean isChcked(String value) {
+    private boolean isChcked(String filedValue) {
         boolean checked = false;
 
-        if (data instanceof String) {
-            String dataStr = (String) data;
-            if (!ValueUtils.isEmpty(dataStr)) {
-                checked = (dataStr.indexOf(value) >= 0);
-            } else if ("".equals(dataStr) && "".equals(value)) {
-                checked = true;
-            }
+        if (value != null) {
+            checked = value.toString().equals(filedValue);
 
-        } else if (data instanceof List) {
-            @SuppressWarnings("rawtypes")
-            List dataList = (List) data;
-            if (dataList != null) {
-                String itemValue = null;
-
-                for (int i=0,len=dataList.size(); i<len; i++) {
-                    itemValue = dataList.get(i).toString();
-
-                    if (!ValueUtils.isEmpty(itemValue) && itemValue.equals(value)) {
-                        checked = true;
-                        break;
-
-                    } else if ("".equals(itemValue) && "".equals(value)) {
-                        checked = true;
-                        break;
-                    }
-                }
-            }
+        } else if (filedValue == null) {
+            checked = true;
         }
 
         return checked;
