@@ -27,11 +27,11 @@ abstract class AbstractFormFieldTag extends AbstractTag {
     }
 
     // value
-    protected String value = null;
-    public String getValue() {
+    protected Object value = null;
+    public Object getValue() {
         return value;
     }
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 
