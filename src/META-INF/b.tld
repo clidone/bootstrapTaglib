@@ -182,9 +182,9 @@
         <name>form</name>
         <tag-class>com.clidone.tag.bootstrap.form.FormTag</tag-class>
         <body-content>JSP</body-content>
+        <attribute> <name>action</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>layout</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>model</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 

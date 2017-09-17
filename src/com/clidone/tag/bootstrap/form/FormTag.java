@@ -3,6 +3,7 @@ package com.clidone.tag.bootstrap.form;
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
+import com.clidone.tag.ValueUtils;
 
 /**
  * <strong>Form tag</strong>
@@ -17,7 +18,14 @@ public class FormTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // action
+    private String action = null;
+    public void setAction(String action) {
+        this.action = action;
+    }
+
     // layout
+    // Available value: inline(i)、horizontal(h)
     private String layout = null;
     public String getLayout() {
         return layout;
@@ -35,12 +43,6 @@ public class FormTag extends AbstractTag {
         this.staticFlag = staticFlag;
     }
 
-    // model
-    private String model = null;
-    public void setModel(String model) {
-        this.model = model;
-    }
-
     // **********************************************************************************
     //
     // Tag methods
@@ -53,9 +55,15 @@ public class FormTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("form");
 
-        if ("i".equals(layout) || "inline".equals(layout)) {
+        if (!ValueUtils.isEmpty(action)) {
+            String contextPath = super.getServletContext().getContextPath();
+            String url = contextPath + action;
+            addAttribute("action", url);
+        }
+
+        if ("i".equalsIgnoreCase(layout) || "inline".equalsIgnoreCase(layout)) {
             addClass("form-inline");
-        } else if ("h".equals(layout) || "horizontal".equals(layout)) {
+        } else if ("h".equalsIgnoreCase(layout) || "horizontal".equalsIgnoreCase(layout)) {
             addClass("form-horizontal");
         }
 
