@@ -21,10 +21,8 @@ public class SelectTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     // items
-    @SuppressWarnings("rawtypes")
-    private List items = null;
-    @SuppressWarnings("rawtypes")
-    public void setItems(List items) {
+    private List<?> items = null;
+    public void setItems(List<?> items) {
         this.items = items;
     }
 
@@ -88,7 +86,6 @@ public class SelectTag extends AbstractFormFieldTag {
         return doEndTagV2();
     }
 
-
     /**
      * Check value is match or not
      * @param optionValue option value
@@ -97,11 +94,8 @@ public class SelectTag extends AbstractFormFieldTag {
     private boolean isChcked(String optionValue) {
         boolean checked = false;
 
-        if (!ValueUtils.isEmpty(value)) {
-            checked = value.equals(optionValue);
-
-        } else if ("".equals(value) && "".equals(optionValue)) {
-            checked = true;
+        if (value != null) {
+            checked = String.valueOf(value).equals(optionValue);
         }
 
         return checked;
