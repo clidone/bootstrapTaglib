@@ -47,7 +47,7 @@ public class OptionTag extends AbstractTag {
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (selectTag.getStatic() != null && selectTag.getStatic().booleanValue());
 
-        String selectValue = selectTag.getValue();
+        String selectValue = (selectTag.getValue() == null) ? "" : String.valueOf(selectTag.getValue());
         boolean isMatchValue = ((ValueUtils.isEmpty(selectValue) && ValueUtils.isEmpty(value)) ||
                                (!ValueUtils.isEmpty(selectValue) && selectValue.equals(value)));
 
