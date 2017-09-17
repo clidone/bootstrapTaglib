@@ -212,6 +212,10 @@
         <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -226,7 +230,26 @@
         <name>textarea</name>
         <tag-class>com.clidone.tag.bootstrap.form.TextareaTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>resize</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>id</name>          <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>name</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>prefixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>suffixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>resize</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -244,6 +267,10 @@
         <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -274,6 +301,14 @@
         <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -289,6 +324,14 @@
         <attribute> <name>data</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -306,6 +349,14 @@
         <attribute> <name>value</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -321,6 +372,14 @@
         <attribute> <name>data</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>label</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>labelSrOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldXs</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldSm</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldMd</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>fieldLg</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>required</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>

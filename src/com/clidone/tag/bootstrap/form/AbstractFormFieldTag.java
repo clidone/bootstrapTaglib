@@ -71,6 +71,30 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         this.labelLg = labelLg;
     }
 
+    // fieldXs
+    protected int fieldXs = 0;
+    public void setFieldXs(int fieldXs) {
+        this.fieldXs = fieldXs;
+    }
+
+    // fieldSm
+    protected int fieldSm = 0;
+    public void setFieldSm(int fieldSm) {
+        this.fieldSm = fieldSm;
+    }
+
+    // fieldMd
+    protected int fieldMd = 0;
+    public void setFieldMd(int fieldMd) {
+        this.fieldMd = fieldMd;
+    }
+
+    // fieldLg
+    protected int fieldLg = 0;
+    public void setFieldLg(int fieldLg) {
+        this.fieldLg = fieldLg;
+    }
+
     // required
     protected Boolean required = null;
     public void setRequired(Boolean required) {
@@ -167,17 +191,17 @@ abstract class AbstractFormFieldTag extends AbstractTag {
             String controlColSm = "";
             String controlColMd = "";
             String controlColLg = "";
-            if (labelXs > 0) {
-                controlColXs = " col-xs-" + (12 - labelXs);
+            if (fieldXs > 0) {
+                controlColXs = " col-xs-" + fieldXs;
             }
-            if (labelSm > 0) {
-                controlColSm = " col-sm-" + (12 - labelSm);
+            if (fieldSm > 0) {
+                controlColSm = " col-sm-" + fieldSm;
             }
-            if (labelMd > 0) {
-                controlColMd = " col-md-" + (12 - labelMd);
+            if (fieldMd > 0) {
+                controlColMd = " col-md-" + fieldMd;
             }
-            if (labelLg > 0) {
-                controlColLg = " col-lg-" + (12 - labelLg);
+            if (fieldLg > 0) {
+                controlColLg = " col-lg-" + fieldLg;
             }
             super.addBeforeWrap("<div class=\"" + controlColXs + controlColSm + controlColMd + controlColLg + "\">");
         }
