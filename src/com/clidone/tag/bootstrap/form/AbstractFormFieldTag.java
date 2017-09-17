@@ -28,6 +28,9 @@ abstract class AbstractFormFieldTag extends AbstractTag {
 
     // value
     protected String value = null;
+    public String getValue() {
+        return value;
+    }
     public void setValue(String value) {
         this.value = value;
     }
@@ -76,6 +79,9 @@ abstract class AbstractFormFieldTag extends AbstractTag {
 
     // static
     protected Boolean staticFlag = null;
+    public Boolean getStatic() {
+        return staticFlag;
+    }
     public void setStatic(Boolean staticFlag) {
         this.staticFlag = staticFlag;
     }
