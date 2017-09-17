@@ -49,8 +49,8 @@ public class TextareaTag extends AbstractFormFieldTag {
 
             addClass("form-control-static");
 
-            if (!ValueUtils.isEmpty(value)) {
-                addBeforeContent(value);
+            if (value != null) {
+                addBeforeContent(String.valueOf(value));
             }
 
         } else {
@@ -62,8 +62,8 @@ public class TextareaTag extends AbstractFormFieldTag {
                 addStyle("resize", resize);
             }
 
-            if (!ValueUtils.isEmpty(value)) {
-                addBeforeContent(value);
+            if (value != null) {
+                addBeforeContent(String.valueOf(value));
             }
         }
 
