@@ -170,7 +170,12 @@
     </tag>
 
     <tag>
-        <description>Button group Tag</description>
+        <description>
+            Button group Tag
+            [size]: xs, sm, lg;
+            [justified]: true, false;
+            [vertical]: true, false;
+        </description>
         <name>buttonGroup</name>
         <tag-class>com.clidone.tag.bootstrap.button.ButtonGroupTag</tag-class>
         <body-content>JSP</body-content>
