@@ -1,4 +1,6 @@
 /bin/
+/docs/
+/static/
 /.settings/
 /.classpath
 /.project
