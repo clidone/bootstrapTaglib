@@ -24,6 +24,12 @@ public class LinkTag extends AbstractTag {
         this.uri = uri;
     }
 
+    // size
+    private String size = null;
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     // theme
     private String theme = "link";
     public void setTheme(String theme) {
@@ -34,6 +40,18 @@ public class LinkTag extends AbstractTag {
     private String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    // active
+    private Boolean active = null;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    // block
+    private Boolean block = null;
+    public void setBlock(Boolean block) {
+        this.block = block;
     }
 
     // **********************************************************************************
@@ -49,8 +67,21 @@ public class LinkTag extends AbstractTag {
         setTagName("a");
 
         addClass("btn");
+
         if (!ValueUtils.isEmpty(theme)) {
             addClass("btn-" + theme.trim());
+        }
+
+        if (!ValueUtils.isEmpty(size)) {
+            addClass("btn-" + size);
+        }
+
+        if (active != null && active.booleanValue()) {
+            addClass("active");
+        }
+
+        if (block != null && block.booleanValue()) {
+            addClass("btn-block");
         }
 
         String contextPath = super.getServletContext().getContextPath();

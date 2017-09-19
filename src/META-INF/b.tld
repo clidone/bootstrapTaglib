@@ -180,9 +180,12 @@
         <name>link</name>
         <tag-class>com.clidone.tag.bootstrap.button.LinkTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>   <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>theme</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>uri</name>    <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>theme</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>size</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>active</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>block</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
