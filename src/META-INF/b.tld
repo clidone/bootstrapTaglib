@@ -216,6 +216,7 @@
             Drop Link Tag
             [uri]: ...;
             [icon]: ...;
+            [disabled]: true, false;
         </description>
         <name>dropLink</name>
         <tag-class>com.clidone.tag.bootstrap.button.DropLinkTag</tag-class>

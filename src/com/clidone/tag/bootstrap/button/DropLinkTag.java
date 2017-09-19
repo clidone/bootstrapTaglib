@@ -30,6 +30,12 @@ public class DropLinkTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // disabled
+    private Boolean disabled = null;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -41,6 +47,10 @@ public class DropLinkTag extends AbstractTag {
     @Override
     protected String doEndTagV2() throws JspException {
         setTagName("li");
+
+        if (disabled != null && disabled.booleanValue()) {
+            addClass("disabled");
+        }
 
         String contextPath = super.getServletContext().getContextPath();
         String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
