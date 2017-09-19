@@ -88,11 +88,14 @@ public class LinkTag extends AbstractTag {
 
         if (disabled != null && disabled.booleanValue()) {
             addAttribute("disabled", "disabled");
+            addClass("disabled");
         }
 
         if (block != null && block.booleanValue()) {
             addClass("btn-block");
         }
+
+        addAttribute("role", "button");
 
         String contextPath = super.getServletContext().getContextPath();
         String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
