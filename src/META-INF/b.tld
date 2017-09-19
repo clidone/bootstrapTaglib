@@ -226,11 +226,17 @@
     </tag>
 
     <tag>
-        <description>
-            Drop Separator Tag
-        </description>
+        <description>Drop Separator Tag</description>
         <name>dropSeparator</name>
         <tag-class>com.clidone.tag.bootstrap.button.DropSeparatorTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>Drop Header Tag</description>
+        <name>dropHeader</name>
+        <tag-class>com.clidone.tag.bootstrap.button.DropHeaderTag</tag-class>
         <body-content>JSP</body-content>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
