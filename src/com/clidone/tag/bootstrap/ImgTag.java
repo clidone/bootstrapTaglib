@@ -24,6 +24,12 @@ public class ImgTag extends AbstractTag {
         this.responsive = responsive;
     }
 
+    // center
+    private Boolean center = null;
+    public void setCenter(Boolean center) {
+        this.center = center;
+    }
+
     // theme
     private String theme = null;
     public void setTheme(String theme) {
@@ -44,6 +50,10 @@ public class ImgTag extends AbstractTag {
 
         if (responsive != null && responsive.booleanValue()) {
             addClass("img-responsive");
+        }
+
+        if (center != null && center.booleanValue()) {
+            addClass("center-block");
         }
 
         if (!ValueUtils.isEmpty(theme)) {
