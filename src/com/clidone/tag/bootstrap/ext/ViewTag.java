@@ -1,16 +1,16 @@
-package com.clidone.tag.bootstrap.components;
+package com.clidone.tag.bootstrap.ext;
 
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
 
 /**
- * <strong>View Footer tag</strong>
+ * <strong>View tag</strong>
  * @author wuhuaxia
  */
-public class ViewFooterTag extends AbstractTag {
+public class ViewTag extends AbstractTag {
 
-    private static final long serialVersionUID = -7535411469544563937L;
+    private static final long serialVersionUID = 3992394810382159549L;
 
     // **********************************************************************************
     //
@@ -30,7 +30,7 @@ public class ViewFooterTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("div");
 
-        addClass("view-footer");
+        addClass("view");
 
         return render();
     }

@@ -21,7 +21,7 @@
     <tag>
         <description>View Tag</description>
         <name>view</name>
-        <tag-class>com.clidone.tag.bootstrap.components.ViewTag</tag-class>
+        <tag-class>com.clidone.tag.bootstrap.ext.ViewTag</tag-class>
         <body-content>JSP</body-content>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
@@ -29,15 +29,18 @@
     <tag>
         <description>View Header Tag</description>
         <name>viewHeader</name>
-        <tag-class>com.clidone.tag.bootstrap.components.ViewHeaderTag</tag-class>
+        <tag-class>com.clidone.tag.bootstrap.ext.ViewHeaderTag</tag-class>
         <body-content>JSP</body-content>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
     <tag>
-        <description>View Body Tag</description>
+        <description>
+            View Body Tag
+            [fluid]: true, false;
+        </description>
         <name>viewBody</name>
-        <tag-class>com.clidone.tag.bootstrap.components.ViewBodyTag</tag-class>
+        <tag-class>com.clidone.tag.bootstrap.ext.ViewBodyTag</tag-class>
         <body-content>JSP</body-content>
         <attribute> <name>fluid</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
@@ -46,13 +49,16 @@
     <tag>
         <description>View Footer Tag</description>
         <name>viewFooter</name>
-        <tag-class>com.clidone.tag.bootstrap.components.ViewFooterTag</tag-class>
+        <tag-class>com.clidone.tag.bootstrap.ext.ViewFooterTag</tag-class>
         <body-content>JSP</body-content>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
     <tag>
-        <description>Container Tag</description>
+        <description>
+            Container Tag
+            [fluid]: true, false;
+        </description>
         <name>container</name>
         <tag-class>com.clidone.tag.bootstrap.ContainerTag</tag-class>
         <body-content>JSP</body-content>

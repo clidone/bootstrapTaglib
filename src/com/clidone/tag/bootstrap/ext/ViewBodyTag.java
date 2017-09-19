@@ -1,4 +1,4 @@
-package com.clidone.tag.bootstrap.components;
+package com.clidone.tag.bootstrap.ext;
 
 import javax.servlet.jsp.JspException;
 
