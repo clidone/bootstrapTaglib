@@ -50,6 +50,12 @@ public class DropTag extends AbstractTag {
         this.text = text;
     }
 
+    // right
+    private Boolean right = null;
+    public void setRight(Boolean right) {
+        this.right = right;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -68,15 +74,16 @@ public class DropTag extends AbstractTag {
             addClass("dropup");
         }
 
-        String ariaPopup    = (popup    != null && popup.booleanValue())    ? "true" : "false";
-        String ariaExpanded = (expanded != null && expanded.booleanValue()) ? "true" : "false";
+        String ariaPopup    = (popup    != null && popup.booleanValue())    ? "true"                 : "false";
+        String ariaExpanded = (expanded != null && expanded.booleanValue()) ? "true"                 : "false";
+        String alignRight   = (right    != null && right.booleanValue())    ? " dropdown-menu-right" : "";
         String dropMenuId   = UUID.randomUUID().toString();
 
         addBeforeContent("<button type=\"button\" class=\"btn btn-"+theme+" dropdown-toggle\" id=\""+dropMenuId+"\" data-toggle=\"dropdown\" aria-haspopup=\""+ariaPopup+"\" aria-expanded=\""+ariaExpanded+"\">");
         addBeforeContent(ValueUtils.isEmpty(text) ? "" : text);
         addBeforeContent("<span class=\"caret\"></span>");
         addBeforeContent("</button>");
-        addBeforeContent("<ul class=\"dropdown-menu\" aria-labelledby=\""+dropMenuId+"\">");
+        addBeforeContent("<ul class=\"dropdown-menu"+alignRight+"\" aria-labelledby=\""+dropMenuId+"\">");
 
         addAfterContent("</ul>");
 

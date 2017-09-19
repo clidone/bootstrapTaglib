@@ -197,6 +197,7 @@
             [expanded]: true, false;
             [theme]: default, primary, success, info, warning, danger, link;
             [text]: ...;
+            [right]: true, false;
         </description>
         <name>drop</name>
         <tag-class>com.clidone.tag.bootstrap.button.DropTag</tag-class>
@@ -206,6 +207,7 @@
         <attribute> <name>expanded</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>right</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
