@@ -24,6 +24,12 @@ public class ButtonTag extends AbstractTag {
         this.type = type;
     }
 
+    // size
+    private String size = null;
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     // theme
     private String theme = "default";
     public void setTheme(String theme) {
@@ -60,8 +66,13 @@ public class ButtonTag extends AbstractTag {
         }
 
         addClass("btn");
+
         if (!ValueUtils.isEmpty(theme)) {
             addClass("btn-" + theme.trim());
+        }
+
+        if (!ValueUtils.isEmpty(size)) {
+            addClass("btn-" + size);
         }
 
         if (dropdown != null && dropdown.booleanValue()) {

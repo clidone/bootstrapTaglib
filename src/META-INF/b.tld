@@ -147,6 +147,7 @@
         <tag-class>com.clidone.tag.bootstrap.button.ButtonTag</tag-class>
         <body-content>JSP</body-content>
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>size</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>dropdown</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
