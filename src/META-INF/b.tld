@@ -109,7 +109,21 @@
     </tag>
 
     <tag>
-        <description>Text Tag</description>
+        <description>
+        Text Tag
+        [as]: p, span...;
+        [fontFamily]: ...,
+        [fontSize]: ...;
+        [fontStyle]: normal, italic, oblique, inherit;
+        [fontWeight]: normal, bold, bolder, lighter, inherit, ...;
+        [lineHeight]: ...;
+        [align]: left, center, right;
+        [color]: muted, primary, success, info, warning, danger;
+        [bg]: primary, success, info, warning, danger;
+        [case]: lowercase, uppercase, capitalize;
+        [icon]: ...;
+        [cursor]: url, default, auto, crosshair, pointer, move, e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize, text, wait, help;
+        </description>
         <name>text</name>
         <tag-class>com.clidone.tag.bootstrap.TextTag</tag-class>
         <body-content>JSP</body-content>
