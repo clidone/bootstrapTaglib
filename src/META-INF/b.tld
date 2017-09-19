@@ -291,6 +291,28 @@
     </tag>
 
     <tag>
+        <description>Breadcrumb Tag</description>
+        <name>breadcrumb</name>
+        <tag-class>com.clidone.tag.bootstrap.BreadcrumbTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            Breadcrumb link Tag
+            [uri]: ...;
+            [active]: true, false;
+        </description>
+        <name>breadcrumbLink</name>
+        <tag-class>com.clidone.tag.bootstrap.BreadcrumbLinkTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>uri</name>    <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>active</name> <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
         <description>Form Tag</description>
         <name>form</name>
         <tag-class>com.clidone.tag.bootstrap.form.FormTag</tag-class>
