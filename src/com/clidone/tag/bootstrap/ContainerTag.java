@@ -33,6 +33,8 @@ public class ContainerTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
+        setTagName("div");
+
         if (isFluid != null && isFluid.booleanValue()) {
             addClass("container-fluid");
         } else {
