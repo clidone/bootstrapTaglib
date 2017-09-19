@@ -60,13 +60,6 @@ public class ButtonTag extends AbstractTag {
         this.block = block;
     }
 
-    // dropdown
-    private Boolean dropdown = null;
-    public void setDropdown(Boolean dropdown) {
-        this.dropdown = dropdown;
-    }
-
-
     // **********************************************************************************
     //
     // Tag methods
@@ -103,14 +96,6 @@ public class ButtonTag extends AbstractTag {
 
         if (block != null && block.booleanValue()) {
             addClass("btn-block");
-        }
-
-        if (dropdown != null && dropdown.booleanValue()) {
-            addClass("dropdown-toggle");
-            addAttribute("data-toggle",   "dropdown");
-            addAttribute("aria-haspopup", "true");
-            addAttribute("aria-expanded", "false");
-            addAfterContent("<span class=\"caret\"></span>");
         }
 
         String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
