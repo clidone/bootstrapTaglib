@@ -42,6 +42,12 @@ public class ButtonTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // active
+    private Boolean active = null;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     // block
     private Boolean block = null;
     public void setBlock(Boolean block) {
@@ -79,6 +85,10 @@ public class ButtonTag extends AbstractTag {
 
         if (!ValueUtils.isEmpty(size)) {
             addClass("btn-" + size);
+        }
+
+        if (active != null && active.booleanValue()) {
+            addClass("active");
         }
 
         if (block != null && block.booleanValue()) {
