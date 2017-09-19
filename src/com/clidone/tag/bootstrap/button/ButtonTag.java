@@ -48,6 +48,12 @@ public class ButtonTag extends AbstractTag {
         this.active = active;
     }
 
+    // disabled
+    private Boolean disabled = null;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
     // block
     private Boolean block = null;
     public void setBlock(Boolean block) {
@@ -89,6 +95,10 @@ public class ButtonTag extends AbstractTag {
 
         if (active != null && active.booleanValue()) {
             addClass("active");
+        }
+
+        if (disabled != null && disabled.booleanValue()) {
+            addAttribute("disabled", "disabled");
         }
 
         if (block != null && block.booleanValue()) {
