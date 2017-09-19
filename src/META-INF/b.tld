@@ -110,19 +110,19 @@
 
     <tag>
         <description>
-        Text Tag
-        [as]: p, span...;
-        [fontFamily]: ...,
-        [fontSize]: ...;
-        [fontStyle]: normal, italic, oblique, inherit;
-        [fontWeight]: normal, bold, bolder, lighter, inherit, ...;
-        [lineHeight]: ...;
-        [align]: left, center, right;
-        [color]: muted, primary, success, info, warning, danger;
-        [bg]: primary, success, info, warning, danger;
-        [case]: lowercase, uppercase, capitalize;
-        [icon]: ...;
-        [cursor]: url, default, auto, crosshair, pointer, move, e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize, text, wait, help;
+            Text Tag
+            [as]: p, span...;
+            [fontFamily]: ...,
+            [fontSize]: ...;
+            [fontStyle]: normal, italic, oblique, inherit;
+            [fontWeight]: normal, bold, bolder, lighter, inherit, ...;
+            [lineHeight]: ...;
+            [align]: left, center, right;
+            [color]: muted, primary, success, info, warning, danger;
+            [bg]: primary, success, info, warning, danger;
+            [case]: lowercase, uppercase, capitalize;
+            [icon]: ...;
+            [cursor]: url, default, auto, crosshair, pointer, move, e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize, text, wait, help;
         </description>
         <name>text</name>
         <tag-class>com.clidone.tag.bootstrap.TextTag</tag-class>
@@ -191,6 +191,50 @@
     </tag>
 
     <tag>
+        <description>
+            Drop Tag
+            [down]: true, false;
+            [popup]: true, false;
+            [expanded]: true, false;
+            [theme]: default, primary, success, info, warning, danger, link;
+            [text]: ...;
+        </description>
+        <name>drop</name>
+        <tag-class>com.clidone.tag.bootstrap.button.DropTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>down</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>popup</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>expanded</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            Drop Link Tag
+            [uri]: ...;
+            [icon]: ...;
+        </description>
+        <name>dropLink</name>
+        <tag-class>com.clidone.tag.bootstrap.button.DropLinkTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>uri</name>  <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            Drop Separator Tag
+        </description>
+        <name>dropSeparator</name>
+        <tag-class>com.clidone.tag.bootstrap.button.DropSeparatorTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
         <description>Link Tag</description>
         <name>link</name>
         <tag-class>com.clidone.tag.bootstrap.button.LinkTag</tag-class>
@@ -207,10 +251,10 @@
 
     <tag>
         <description>
-        Img Tag
-        [responsive]: true, false;
-        [center]: true, false;
-        [theme]: rounded, circle, thumbnail;
+            Img Tag
+            [responsive]: true, false;
+            [center]: true, false;
+            [theme]: rounded, circle, thumbnail;
         </description>
         <name>img</name>
         <tag-class>com.clidone.tag.bootstrap.ImgTag</tag-class>
