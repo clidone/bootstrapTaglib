@@ -202,6 +202,7 @@
             [expanded]: true, false;
             [theme]: default, primary, success, info, warning, danger, link;
             [text]: ...;
+            [size]: xs, sm, lg;
             [right]: true, false;
         </description>
         <name>drop</name>
@@ -212,6 +213,7 @@
         <attribute> <name>expanded</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>size</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>right</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>

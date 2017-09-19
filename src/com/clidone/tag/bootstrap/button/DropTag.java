@@ -50,6 +50,12 @@ public class DropTag extends AbstractTag {
         this.text = text;
     }
 
+    // size
+    private String size = null;
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     // right
     private Boolean right = null;
     public void setRight(Boolean right) {
@@ -76,10 +82,11 @@ public class DropTag extends AbstractTag {
 
         String ariaPopup    = (popup    != null && popup.booleanValue())    ? "true"                 : "false";
         String ariaExpanded = (expanded != null && expanded.booleanValue()) ? "true"                 : "false";
+        String dropSize     = (ValueUtils.isEmpty(size))                    ? ""                     : " btn-" + size;
         String alignRight   = (right    != null && right.booleanValue())    ? " dropdown-menu-right" : "";
         String dropMenuId   = UUID.randomUUID().toString();
 
-        addBeforeContent("<button type=\"button\" class=\"btn btn-"+theme+" dropdown-toggle\" id=\""+dropMenuId+"\" data-toggle=\"dropdown\" aria-haspopup=\""+ariaPopup+"\" aria-expanded=\""+ariaExpanded+"\">");
+        addBeforeContent("<button type=\"button\" class=\"btn btn-"+theme+dropSize+" dropdown-toggle\" id=\""+dropMenuId+"\" data-toggle=\"dropdown\" aria-haspopup=\""+ariaPopup+"\" aria-expanded=\""+ariaExpanded+"\">");
         addBeforeContent(ValueUtils.isEmpty(text) ? "" : text);
         addBeforeContent("<span class=\"caret\"></span>");
         addBeforeContent("</button>");
