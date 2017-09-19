@@ -42,6 +42,12 @@ public class ButtonTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // block
+    private Boolean block = null;
+    public void setBlock(Boolean block) {
+        this.block = block;
+    }
+
     // dropdown
     private Boolean dropdown = null;
     public void setDropdown(Boolean dropdown) {
@@ -73,6 +79,10 @@ public class ButtonTag extends AbstractTag {
 
         if (!ValueUtils.isEmpty(size)) {
             addClass("btn-" + size);
+        }
+
+        if (block != null && block.booleanValue()) {
+            addClass("btn-block");
         }
 
         if (dropdown != null && dropdown.booleanValue()) {
