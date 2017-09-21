@@ -3,6 +3,7 @@ package com.clidone.tag.bootstrap.button;
 import java.util.UUID;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.Tag;
 
 import com.clidone.tag.AbstractTag;
 import com.clidone.tag.ValueUtils;
@@ -73,6 +74,14 @@ public class DropTag extends AbstractTag {
     @Override
     protected String doEndTagV2() throws JspException {
         setTagName("div");
+
+        // When Dropdown tag is in ButtonGroup Tag, should be set these;
+        Tag tag = super.getParent();
+        if (tag instanceof ButtonGroupTag) {
+            addClass("btn-group");
+            addAttribute("role", "group");
+            addAttribute("aria-label", "group");
+        }
 
         if (down != null && down.booleanValue()) {
             addClass("dropdown");
