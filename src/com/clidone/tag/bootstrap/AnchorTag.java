@@ -49,6 +49,12 @@ public class AnchorTag extends AbstractTag {
         String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
         addBeforeContent(iconHTML);
 
+        // When anchor is in AlterTag, should add this class
+        AlertTag alertTag = (AlertTag) findAncestorWithClass(this, AlertTag.class);
+        if (alertTag != null) {
+            addClass("alert-link");
+        }
+
         return render();
     }
 
