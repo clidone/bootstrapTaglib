@@ -20,43 +20,43 @@ public class DropTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    // Whether drop down or not
+    // Whether drop down is 'down' or not (up)
     private Boolean down = new Boolean(true);
     public void setDown(Boolean down) {
         this.down = down;
     }
 
-    // Whether drop down or not
+    // Whether drop down is popup or not
     private Boolean popup = new Boolean(true);
     public void setPopup(Boolean popup) {
         this.popup = popup;
     }
 
-    // Whether drop down or not
+    // Whether drop down is expanded or not
     private Boolean expanded = new Boolean(false);
     public void setExpanded(Boolean expanded) {
         this.expanded = expanded;
     }
 
-    // theme
+    // theme (button theme)
     private String theme = "default";
     public void setTheme(String theme) {
         this.theme = theme;
     }
 
-    // text
+    // text (button text)
     private String text = null;
     public void setText(String text) {
         this.text = text;
     }
 
-    // size
+    // size (button size)
     private String size = null;
     public void setSize(String size) {
         this.size = size;
     }
 
-    // right
+    // right (popup align right)
     private Boolean right = null;
     public void setRight(Boolean right) {
         this.right = right;
