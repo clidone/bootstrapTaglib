@@ -18,7 +18,7 @@ public class ButtonToolbarTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    // size
+    // size (xs, sm, lg)
     private String size = null;
     public void setSize(String size) {
         this.size = size;
@@ -34,13 +34,16 @@ public class ButtonToolbarTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
+        setTagName("div");
+
         addClass("btn-toolbar");
+
         if (!ValueUtils.isEmpty(size)) {
             addClass("btn-group-" + size);
         }
 
         addAttribute("role", "toolbar");
-        addAttribute("aria-label", "");
+        addAttribute("aria-label", "toolbar");
 
         return render();
     }
