@@ -620,6 +620,20 @@
 
     <tag>
         <description>
+            Badge Tag
+            [text]: ...;
+            [icon]: ...;
+        </description>
+        <name>badge</name>
+        <tag-class>com.clidone.tag.bootstrap.BadgeTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>text</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
             Tag Tag
             [theme]: default, primary, success, info, warning, danger;
             [text]: ...;
