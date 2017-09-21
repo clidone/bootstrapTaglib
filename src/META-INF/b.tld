@@ -629,7 +629,7 @@
         <tag-class>com.clidone.tag.bootstrap.TagTag</tag-class>
         <body-content>JSP</body-content>
         <attribute> <name>theme</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>text</name>  <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>

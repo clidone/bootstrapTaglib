@@ -54,13 +54,12 @@ public class TagTag extends AbstractTag {
             addClass("label-" + theme);
         }
 
-        if (!ValueUtils.isEmpty(theme)) {
-            if (!ValueUtils.isEmpty(icon)) {
-                String iconHTML = renderIcon(icon);
-                addBeforeContent(iconHTML);
-            }
-            addBeforeContent(text);
+        if (!ValueUtils.isEmpty(icon)) {
+            String iconHTML = renderIcon(icon);
+            addBeforeContent(iconHTML);
         }
+
+        addBeforeContent(text);
 
         return render();
     }
