@@ -116,18 +116,6 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         this.size = size;
     }
 
-    // prefixAddon
-    protected String prefixAddon = null;
-    public void setPrefixAddon(String prefixAddon) {
-        this.prefixAddon = prefixAddon;
-    }
-
-    // suffixAddon
-    protected String suffixAddon = null;
-    public void setSuffixAddon(String suffixAddon) {
-        this.suffixAddon = suffixAddon;
-    }
-
     // help
     protected String help = null;
     public void setHelp(String help) {
@@ -206,13 +194,6 @@ abstract class AbstractFormFieldTag extends AbstractTag {
             super.addBeforeWrap("<div class=\"" + controlColXs + controlColSm + controlColMd + controlColLg + "\">");
         }
 
-        if (!ValueUtils.isEmpty(prefixAddon) || !ValueUtils.isEmpty(suffixAddon)) {
-            super.addBeforeWrap("<div class=\"input-group\">");
-            renderAddOn(prefixAddon);
-            renderAddOn(suffixAddon);
-            super.addAfterWrap("</div>");
-        }
-
         if (!ValueUtils.isEmpty(help)) {
             super.addAfterWrap("<span id=\""+fieldId+"HelpBlock\" class=\"help-block\">" + help + "</span>");
         }
@@ -222,23 +203,5 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         }
 
         super.addAfterWrap("</div>");
-    }
-
-    /**
-     * Render addOn
-     * @param addOn
-     */
-    private void renderAddOn(String addOn) {
-        if (ValueUtils.isEmpty(addOn)) {
-            return;
-        }
-
-        String addOnHTML = null;
-        if (addOn.startsWith("icon:")) {
-            addOnHTML = super.renderIcon(addOn.replace("icon:", ""));
-        } else {
-            addOnHTML = addOn;
-        }
-        super.addBeforeWrap("<span class=\"input-group-addon\">"+addOnHTML+"</span>");
     }
 }
