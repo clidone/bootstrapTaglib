@@ -18,7 +18,7 @@ public class ButtonGroupTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    // size
+    // size (xs, sm, lg)
     private String size = null;
     public void setSize(String size) {
         this.size = size;
@@ -62,7 +62,7 @@ public class ButtonGroupTag extends AbstractTag {
         }
 
         addAttribute("role", "group");
-        addAttribute("aria-label", "");
+        addAttribute("aria-label", "group");
 
         return render();
     }
