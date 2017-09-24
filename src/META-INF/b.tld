@@ -726,16 +726,18 @@
             ListGrouptItem Tag
             [text]: ...;
             [active]: true, false;
+            [disabled]: true, false;
             [icon]: ...;
             [badge]: ...;
         </description>
         <name>listGroupItem</name>
         <tag-class>com.clidone.tag.bootstrap.list.ListGroupItemTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>text</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>active</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>badge</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>badge</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -745,17 +747,19 @@
             [url]: ...;
             [text]: ...;
             [active]: true, false;
+            [disabled]: true, false;
             [icon]: ...;
             [badge]: ...;
         </description>
         <name>listGroupLink</name>
         <tag-class>com.clidone.tag.bootstrap.list.ListGroupLinkTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>url</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>text</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>active</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>badge</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>badge</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -764,16 +768,18 @@
             ListGrouptButton Tag
             [text]: ...;
             [active]: true, false;
+            [disabled]: true, false;
             [icon]: ...;
             [badge]: ...;
         </description>
         <name>listGroupButton</name>
         <tag-class>com.clidone.tag.bootstrap.list.ListGroupButtonTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>text</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>active</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>badge</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>badge</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 </taglib>

@@ -30,6 +30,12 @@ public class ListGroupButtonTag extends AbstractTag {
         this.active = active;
     }
 
+    // disabled
+    protected Boolean disabled = null;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
     // icon
     protected String icon = null;
     public void setIcon(String icon) {
@@ -59,6 +65,9 @@ public class ListGroupButtonTag extends AbstractTag {
         addClass("list-group-item");
         if (active != null && active.booleanValue()) {
             addClass("active");
+        }
+        if (disabled != null && disabled.booleanValue()) {
+            addClass("disabled");
         }
 
         if (!ValueUtils.isEmpty(icon)) {

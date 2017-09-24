@@ -6,7 +6,7 @@ import com.clidone.tag.AbstractTag;
 import com.clidone.tag.ValueUtils;
 
 /**
- * <strong>ListGroupItem tag</strong>
+ * <strong>ListGroupItem Tag</strong>
  * @author wuhuaxia
  */
 public class ListGroupItemTag extends AbstractTag {
@@ -28,6 +28,12 @@ public class ListGroupItemTag extends AbstractTag {
     protected Boolean active = null;
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    // disabled
+    protected Boolean disabled = null;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
     }
 
     // icon
@@ -57,6 +63,9 @@ public class ListGroupItemTag extends AbstractTag {
         addClass("list-group-item");
         if (active != null && active.booleanValue()) {
             addClass("active");
+        }
+        if (disabled != null && disabled.booleanValue()) {
+            addClass("disabled");
         }
 
         if (!ValueUtils.isEmpty(icon)) {
