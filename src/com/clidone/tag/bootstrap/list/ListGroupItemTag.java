@@ -36,6 +36,12 @@ public class ListGroupItemTag extends AbstractTag {
         this.disabled = disabled;
     }
 
+    // theme
+    protected String theme = null;
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
     // icon
     protected String icon = null;
     public void setIcon(String icon) {
@@ -66,6 +72,9 @@ public class ListGroupItemTag extends AbstractTag {
         }
         if (disabled != null && disabled.booleanValue()) {
             addClass("disabled");
+        }
+        if (!ValueUtils.isEmpty(theme)) {
+            addClass("list-group-item-"+theme);
         }
 
         if (!ValueUtils.isEmpty(icon)) {
