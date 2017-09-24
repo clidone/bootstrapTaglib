@@ -694,10 +694,12 @@
             [leftImage]: (image url);
             [leftWidth]: (default 64px);
             [leftHeight]: (default 64px);
+            [leftAlign]: middle, bottom;
             [leftUrl]: (image click link);
             [rightImage]: (image url);
             [rightWidth]: (default 64px);
             [rightHeight]: (default 64px);
+            [rightAlign]: middle, bottom;
             [rightUrl]: (image click link);
         </description>
         <name>media</name>
@@ -708,12 +710,14 @@
         <attribute> <name>icon</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>leftImage</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>leftWidth</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>leftHeight</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>leftHeight</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>leftAlign</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>leftUrl</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>rightImage</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>rightWidth</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>rightImage</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>rightWidth</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>rightHeight</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>rightUrl</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>rightAlign</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>rightUrl</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 </taglib>

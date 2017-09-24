@@ -54,6 +54,12 @@ public class MediaTag extends AbstractTag {
         this.leftHeight = leftHeight;
     }
 
+    // left image align
+    protected String leftAlign = null;
+    public void setLeftAlign(String leftAlign) {
+        this.leftAlign = leftAlign;
+    }
+
     // left image url
     protected String leftUrl = null;
     public void setLeftUrl(String leftUrl) {
@@ -78,6 +84,12 @@ public class MediaTag extends AbstractTag {
         this.rightHeight = rightHeight;
     }
 
+    // right image align
+    protected String rightAlign = null;
+    public void setRightAlign(String rightAlign) {
+        this.rightAlign = rightAlign;
+    }
+
     // right image url
     protected String rightUrl = null;
     public void setRightUrl(String rightUrl) {
@@ -99,7 +111,8 @@ public class MediaTag extends AbstractTag {
         addClass("media");
 
         if (!ValueUtils.isEmpty(leftImage)) {
-            addBeforeContent("<div class=\"media-left\">");
+            String align = ValueUtils.isEmpty(leftAlign) ? "" : " media-"+leftAlign;
+            addBeforeContent("<div class=\"media-left"+align+"\">");
             if (!ValueUtils.isEmpty(leftUrl)) {
                 addBeforeContent("<a href=\""+leftUrl+"\">");
             }
@@ -124,7 +137,8 @@ public class MediaTag extends AbstractTag {
         addAfterContent("</p>");
 
         if (!ValueUtils.isEmpty(rightImage)) {
-            addAfterContent("<div class=\"media-right\">");
+            String align = ValueUtils.isEmpty(rightAlign) ? "" : " media-"+rightAlign;
+            addAfterContent("<div class=\"media-right"+align+"\">");
             if (!ValueUtils.isEmpty(rightUrl)) {
                 addAfterContent("<a href=\""+rightUrl+"\">");
             }
