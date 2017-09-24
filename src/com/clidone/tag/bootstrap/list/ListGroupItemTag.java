@@ -18,6 +18,12 @@ public class ListGroupItemTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // text
+    protected String text = null;
+    public void setText(String text) {
+        this.text = text;
+    }
+
     // icon
     protected String icon = null;
     public void setIcon(String icon) {
@@ -51,6 +57,10 @@ public class ListGroupItemTag extends AbstractTag {
 
         if (!ValueUtils.isEmpty(badge)) {
             addBeforeContent("<span class=\"badge\">"+badge+"</span>");
+        }
+
+        if (!ValueUtils.isEmpty(text)) {
+            addBeforeContent(text);
         }
 
         return render();
