@@ -18,6 +18,12 @@ public class ListGroupItemTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // as
+    protected String as = null;
+    public void setAs(String as) {
+        this.as = as;
+    }
+
     // text
     protected String text = null;
     public void setText(String text) {
@@ -42,6 +48,12 @@ public class ListGroupItemTag extends AbstractTag {
         this.theme = theme;
     }
 
+    // url
+    protected String url = null;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     // icon
     protected String icon = null;
     public void setIcon(String icon) {
@@ -64,7 +76,14 @@ public class ListGroupItemTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        setTagName("li");
+        if (!ValueUtils.isEmpty(as)) {
+            switch (as) {
+                case "li":     setTagName("li");     break;
+                case "a":      setTagName("a");      break;
+                case "button": setTagName("button"); break;
+                default:       setTagName("li");     break;
+            }
+        }
 
         addClass("list-group-item");
         if (active != null && active.booleanValue()) {
@@ -75,6 +94,11 @@ public class ListGroupItemTag extends AbstractTag {
         }
         if (!ValueUtils.isEmpty(theme)) {
             addClass("list-group-item-"+theme);
+        }
+
+        if ("a".equals(as)) {
+            String href = ValueUtils.isEmpty(url) ? "javascript:void(0);" : url;
+            addAttribute("href", href);
         }
 
         if (!ValueUtils.isEmpty(icon)) {
