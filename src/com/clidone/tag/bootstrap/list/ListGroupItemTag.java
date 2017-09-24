@@ -24,6 +24,12 @@ public class ListGroupItemTag extends AbstractTag {
         this.text = text;
     }
 
+    // active
+    protected Boolean active = null;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     // icon
     protected String icon = null;
     public void setIcon(String icon) {
@@ -49,6 +55,9 @@ public class ListGroupItemTag extends AbstractTag {
         setTagName("li");
 
         addClass("list-group-item");
+        if (active != null && active.booleanValue()) {
+            addClass("active");
+        }
 
         if (!ValueUtils.isEmpty(icon)) {
             String iconHTML = renderIcon(icon);
