@@ -18,12 +18,6 @@ public class ListGroupItemTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    // as
-    protected String as = null;
-    public void setAs(String as) {
-        this.as = as;
-    }
-
     // text
     protected String text = null;
     public void setText(String text) {
@@ -76,12 +70,18 @@ public class ListGroupItemTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
+        ListGroupTag listGroupTag = (ListGroupTag) findAncestorWithClass(this, ListGroupTag.class);
+        if (listGroupTag == null) {
+            throw new JspException("Render ListGroupItem tag error, not found parent ListGroupTag tag.");
+        }
+
+        String as = listGroupTag.getAs();
         if (!ValueUtils.isEmpty(as)) {
             switch (as) {
-                case "li":     setTagName("li");     break;
-                case "a":      setTagName("a");      break;
-                case "button": setTagName("button"); break;
-                default:       setTagName("li");     break;
+                case ListGroupTag.AS_TEXT:   setTagName("li");     break;
+                case ListGroupTag.AS_LINK:   setTagName("a");      break;
+                case ListGroupTag.AS_BUTTON: setTagName("button"); break;
+                default:                     setTagName("li");     break;
             }
         }
 

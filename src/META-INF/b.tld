@@ -723,8 +723,23 @@
 
     <tag>
         <description>
+            ListGroupt Tag
+            [as]: text, link, button;
+            [var]: ...;
+            [items]: ...;
+        </description>
+        <name>listGroup</name>
+        <tag-class>com.clidone.tag.bootstrap.list.ListGroupTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>as</name>    <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>var</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>items</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
             ListGrouptItem Tag
-            [as]: li, a, button;
             [text]: ...;
             [active]: true, false;
             [disabled]: true, false;
@@ -735,7 +750,6 @@
         <name>listGroupItem</name>
         <tag-class>com.clidone.tag.bootstrap.list.ListGroupItemTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>as</name>       <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
