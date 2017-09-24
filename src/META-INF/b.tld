@@ -746,4 +746,20 @@
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
+    <tag>
+        <description>
+            ListGrouptItemHeading Tag
+            [as]: h1, h2, h3, h4...;
+            [text]: ...;
+            [icon]: ...;
+        </description>
+        <name>listGroupItemHeading</name>
+        <tag-class>com.clidone.tag.bootstrap.list.ListGroupItemHeadingTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>as</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
 </taglib>
