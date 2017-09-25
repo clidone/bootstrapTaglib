@@ -814,4 +814,16 @@
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
+    <tag>
+        <description>
+            Well Tag
+            [size]: sm, lg;
+        </description>
+        <name>well</name>
+        <tag-class>com.clidone.tag.bootstrap.WellTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>size</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
 </taglib>
