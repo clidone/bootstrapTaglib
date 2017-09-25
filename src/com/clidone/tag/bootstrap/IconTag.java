@@ -17,6 +17,11 @@ public class IconTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // icon
+    protected String icon = null;
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     // **********************************************************************************
     //
@@ -28,6 +33,9 @@ public class IconTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
+        String iconHTML = renderIcon(icon);
+        addBeforeContent(iconHTML);
+
         return render();
     }
 

@@ -19,73 +19,73 @@ public class TextTag extends AbstractTag {
     //
     // **********************************************************************************
     // as
-    private String as = null;
+    protected String as = null;
     public void setAs(String as) {
         this.as = as;
     }
 
     // font-family
-    private String fontFamily = null;
+    protected String fontFamily = null;
     public void setFontFamily(String fontFamily) {
         this.fontFamily = fontFamily;
     }
 
     // font-size
-    private String fontSize = null;
+    protected String fontSize = null;
     public void setFontSize(String fontSize) {
         this.fontSize = fontSize;
     }
 
     // font-style
-    private String fontStyle = null;
+    protected String fontStyle = null;
     public void setFontStyle(String fontStyle) {
         this.fontStyle = fontStyle;
     }
 
     // font-weight
-    private String fontWeight = null;
+    protected String fontWeight = null;
     public void setFontWeight(String fontWeight) {
         this.fontWeight = fontWeight;
     }
 
     // line-height
-    private String lineHeight = null;
+    protected String lineHeight = null;
     public void setLineHeight(String lineHeight) {
         this.lineHeight = lineHeight;
     }
 
     // cursor
-    private String cursor = null;
+    protected String cursor = null;
     public void setCursor(String cursor) {
         this.cursor = cursor;
     }
 
     // text-align
-    private String textAlign = null;
+    protected String textAlign = null;
     public void setAlign(String textAlign) {
         this.textAlign = textAlign;
     }
 
     // color
-    private String color = null;
+    protected String color = null;
     public void setColor(String color) {
         this.color = color;
     }
 
     // background-color
-    private String bg = null;
+    protected String bg = null;
     public void setBg(String bg) {
         this.bg = bg;
     }
 
     // case
-    private String textCase = null;
+    protected String textCase = null;
     public void setCase(String textCase) {
         this.textCase = textCase;
     }
 
     // icon
-    private String icon = null;
+    protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
     }

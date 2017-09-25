@@ -19,13 +19,13 @@ public class AnchorTag extends AbstractTag {
     //
     // **********************************************************************************
     // url
-    private String uri = null;
+    protected String uri = null;
     public void setUri(String uri) {
         this.uri = uri;
     }
 
     // icon
-    private String icon = null;
+    protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
     }
@@ -43,8 +43,8 @@ public class AnchorTag extends AbstractTag {
         setTagName("a");
 
         String contextPath = super.getServletContext().getContextPath();
-        String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
-        addAttribute("href", contextPath + uriValue);
+        String uriValue = ValueUtils.isEmpty(uri)  ? "javascript:void(0);" : contextPath+uri;
+        addAttribute("href", uriValue);
 
         String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
         addBeforeContent(iconHTML);

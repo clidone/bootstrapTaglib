@@ -18,7 +18,7 @@ public class InputTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     // addonSize
-    private String addonSize = null;
+    protected String addonSize = null;
     public void setAddonSize(String addonSize) {
         this.addonSize = addonSize;
     }

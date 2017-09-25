@@ -21,13 +21,13 @@ public class OptionTag extends AbstractTag {
     //
     // **********************************************************************************
     // value
-    private String value = null;
+    protected String value = null;
     public void setValue(String value) {
         this.value = value;
     }
 
     // text
-    private String text = null;
+    protected String text = null;
     public void setText(String text) {
         this.text = text;
     }

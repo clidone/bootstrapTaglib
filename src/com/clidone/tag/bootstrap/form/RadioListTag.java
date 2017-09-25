@@ -40,7 +40,7 @@ public class RadioListTag extends AbstractFormFieldTag {
     // items
     // Support type: List<?> and String[][], when render items is List, we must also setup valueKey and textKey attributes,
     // or items is instance of String[][], the second array index 0 is value, index 1 is text
-    private List<KeyValue> items = null;
+    protected List<KeyValue> items = null;
     public void setItems(Object items) throws JspException {
         if (items == null) {
             return;
@@ -49,26 +49,26 @@ public class RadioListTag extends AbstractFormFieldTag {
     }
 
     // valueKey
-    private String valueKey = null;
+    protected String valueKey = null;
     public void setValueKey(String valueKey) {
         this.valueKey = valueKey;
     }
 
     // textKey
-    private String textKey = null;
+    protected String textKey = null;
     public void setTextKey(String textKey) {
         this.textKey = textKey;
     }
 
     // values
-    private String values = null;
+    protected String values = null;
     public void setKeys(String values) throws JspException {
         this.values = values;
         initItems();
     }
 
     // texts
-    private String texts = null;
+    protected String texts = null;
     public void setTexts(String texts) throws JspException {
         this.texts = texts;
         initItems();

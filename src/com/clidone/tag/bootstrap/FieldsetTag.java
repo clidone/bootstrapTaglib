@@ -19,13 +19,13 @@ public class FieldsetTag extends AbstractTag {
     //
     // **********************************************************************************
     // legend
-    private String legend = null;
+    protected String legend = null;
     public void setLegend(String legend) {
         this.legend = legend;
     }
 
     // icon
-    private String icon = null;
+    protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
     }

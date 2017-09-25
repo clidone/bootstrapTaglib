@@ -46,7 +46,7 @@ public class TableTag extends AbstractTag {
     //
     // **********************************************************************************
     // var
-    private String var = null;
+    protected String var = null;
     public void setVar(String var) throws JspException {
         if (ValueUtils.isEmpty(var)) {
             throw new JspException("Table var attribute is required.");
@@ -70,55 +70,55 @@ public class TableTag extends AbstractTag {
     }
 
     // caption
-    private String caption = null;
+    protected String caption = null;
     public void setCaption(String caption) {
         this.caption = caption;
     }
 
     // icon
-    private String icon = null;
+    protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
     // bordered
-    private Boolean bordered = null;
+    protected Boolean bordered = null;
     public void setBordered(Boolean bordered) {
         this.bordered = bordered;
     }
 
     // condensed
-    private Boolean condensed = null;
+    protected Boolean condensed = null;
     public void setCondensed(Boolean condensed) {
         this.condensed = condensed;
     }
 
     // hover
-    private Boolean hover = null;
+    protected Boolean hover = null;
     public void setHover(Boolean hover) {
         this.hover = hover;
     }
 
     // striped
-    private Boolean striped = null;
+    protected Boolean striped = null;
     public void setStriped(Boolean striped) {
         this.striped = striped;
     }
 
     // responsive
-    private Boolean responsive = new Boolean(true);
+    protected Boolean responsive = new Boolean(true);
     public void setResponsive(Boolean responsive) {
         this.responsive = responsive;
     }
 
     // header
-    private Boolean header = new Boolean(true);
+    protected Boolean header = new Boolean(true);
     public void setHeader(Boolean header) {
         this.header = header;
     }
 
     // footer
-    private Boolean footer = null;
+    protected Boolean footer = null;
     public void setFooter(Boolean footer) {
         this.footer = footer;
     }

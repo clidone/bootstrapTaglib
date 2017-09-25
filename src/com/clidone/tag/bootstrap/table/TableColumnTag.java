@@ -19,7 +19,7 @@ public class TableColumnTag extends AbstractTag {
     //
     // **********************************************************************************
     // label
-    private String label = null;
+    protected String label = null;
     public void setLabel(String label) {
         this.label = label;
     }

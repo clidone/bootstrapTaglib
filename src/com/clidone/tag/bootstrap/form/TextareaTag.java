@@ -25,7 +25,7 @@ public class TextareaTag extends AbstractFormFieldTag {
      *         horizontal: horizontal resize
      *         vertical: vertical reize
      */
-    private String resize = "none";
+    protected String resize = "none";
     public void setResize(String resize) {
         this.resize = resize;
     }

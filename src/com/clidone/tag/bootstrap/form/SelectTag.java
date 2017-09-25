@@ -21,7 +21,7 @@ public class SelectTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     // items
-    private List<?> items = null;
+    protected List<?> items = null;
     public void setItems(List<?> items) {
         this.items = items;
     }

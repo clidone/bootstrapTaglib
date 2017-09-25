@@ -19,14 +19,14 @@ public class FormTag extends AbstractTag {
     //
     // **********************************************************************************
     // action
-    private String action = null;
+    protected String action = null;
     public void setAction(String action) {
         this.action = action;
     }
 
     // layout
     // Available value: inline(i)、horizontal(h)
-    private String layout = null;
+    protected String layout = null;
     public String getLayout() {
         return layout;
     }

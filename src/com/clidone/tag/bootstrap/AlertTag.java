@@ -24,10 +24,10 @@ public class AlertTag extends AbstractTag {
         this.theme = theme;
     }
 
-    // closable
-    protected Boolean closable = null;
-    public void setClosable(Boolean closable) {
-        this.closable = closable;
+    // close
+    protected Boolean close = null;
+    public void setClose(Boolean close) {
+        this.close = close;
     }
 
     // **********************************************************************************
@@ -48,7 +48,7 @@ public class AlertTag extends AbstractTag {
             addClass("alert-" + theme);
         }
 
-        if (closable != null && closable.booleanValue()) {
+        if (close != null && close.booleanValue()) {
             addClass("alert-dismissible");
 
             addBeforeContent("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");

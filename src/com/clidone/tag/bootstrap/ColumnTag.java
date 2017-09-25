@@ -19,82 +19,82 @@ public class ColumnTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    private int xs = 0;
+    protected int xs = 0;
     public void setXs(int xs) {
         this.xs = xs;
     }
 
-    private int sm = 0;
+    protected int sm = 0;
     public void setSm(int sm) {
         this.sm = sm;
     }
 
-    private int md = 0;
+    protected int md = 0;
     public void setMd(int md) {
         this.md = md;
     }
 
-    private int lg = 0;
+    protected int lg = 0;
     public void setLg(int lg) {
         this.lg = lg;
     }
 
-    private int xsPush = 0;
+    protected int xsPush = 0;
     public void setXsPush(int xsPush) {
         this.xsPush = xsPush;
     }
 
-    private int smPush = 0;
+    protected int smPush = 0;
     public void setSmPush(int smPush) {
         this.smPush = smPush;
     }
 
-    private int mdPush = 0;
+    protected int mdPush = 0;
     public void setMdPush(int mdPush) {
         this.mdPush = mdPush;
     }
 
-    private int lgPush = 0;
+    protected int lgPush = 0;
     public void setLgPush(int lgPush) {
         this.lgPush = lgPush;
     }
 
-    private int xsPull = 0;
+    protected int xsPull = 0;
     public void setXsPull(int xsPull) {
         this.xsPull = xsPull;
     }
 
-    private int smPull = 0;
+    protected int smPull = 0;
     public void setSmPull(int smPull) {
         this.smPull = smPull;
     }
 
-    private int mdPull = 0;
+    protected int mdPull = 0;
     public void setMdPull(int mdPull) {
         this.mdPull = mdPull;
     }
 
-    private int lgPull = 0;
+    protected int lgPull = 0;
     public void setLgPull(int lgPull) {
         this.lgPull = lgPull;
     }
 
-    private int xsOffset = 0;
+    protected int xsOffset = 0;
     public void setXsOffset(int offset) {
         this.xsOffset = offset;
     }
 
-    private int smOffset = 0;
+    protected int smOffset = 0;
     public void setSmOffset(int offset) {
         this.smOffset = offset;
     }
 
-    private int mdOffset = 0;
+    protected int mdOffset = 0;
     public void setMdOffset(int offset) {
         this.mdOffset = offset;
     }
 
-    private int lgOffset = 0;
+    protected int lgOffset = 0;
     public void setLgOffset(int offset) {
         this.lgOffset = offset;
     }

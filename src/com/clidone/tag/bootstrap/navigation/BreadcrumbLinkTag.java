@@ -19,13 +19,13 @@ public class BreadcrumbLinkTag extends AbstractTag {
     //
     // **********************************************************************************
     // url
-    private String uri = null;
+    protected String uri = null;
     public void setUri(String uri) {
         this.uri = uri;
     }
 
     // active
-    private Boolean active = null;
+    protected Boolean active = null;
     public void setActive(Boolean active) {
         this.active = active;
     }

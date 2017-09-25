@@ -19,19 +19,19 @@ public class ImgTag extends AbstractTag {
     //
     // **********************************************************************************
     // responsive
-    private Boolean responsive = null;
+    protected Boolean responsive = null;
     public void setResponsive(Boolean responsive) {
         this.responsive = responsive;
     }
 
     // center
-    private Boolean center = null;
+    protected Boolean center = null;
     public void setCenter(Boolean center) {
         this.center = center;
     }
 
     // theme
-    private String theme = null;
+    protected String theme = null;
     public void setTheme(String theme) {
         this.theme = theme;
     }

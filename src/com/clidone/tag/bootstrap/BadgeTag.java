@@ -49,7 +49,9 @@ public class BadgeTag extends AbstractTag {
             addBeforeContent(iconHTML);
         }
 
-        addBeforeContent(text);
+        if (!ValueUtils.isEmpty(text)) {
+            addBeforeContent(text);
+        }
 
         return render();
     }

@@ -19,19 +19,19 @@ public class DropLinkTag extends AbstractTag {
     //
     // **********************************************************************************
     // url
-    private String uri = null;
+    protected String uri = null;
     public void setUri(String uri) {
         this.uri = uri;
     }
 
     // icon
-    private String icon = null;
+    protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
     // disabled
-    private Boolean disabled = null;
+    protected Boolean disabled = null;
     public void setDisabled(Boolean disabled) {
         this.disabled = disabled;
     }

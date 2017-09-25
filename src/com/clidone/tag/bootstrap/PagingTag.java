@@ -16,33 +16,33 @@ public class PagingTag extends AbstractTag {
     //
     // **********************************************************************************
     // count
-    private long totalCount = 0L;
+    protected long totalCount = 0L;
     public void setCount(long totalCount) {
         this.totalCount = totalCount;
     }
 
     // index
-    private long currentPage = 0L;
+    protected long currentPage = 0L;
     public void setIndex(long currentPage) {
         this.currentPage = currentPage;
     }
 
     // each
-    private long eachPageCount = 24L;
+    protected long eachPageCount = 24L;
     public void setEach(long eachPageCount) {
         this.eachPageCount = eachPageCount;
     }
 
     // url
-    private String linkUrl = null;
+    protected String linkUrl = null;
     public void setUrl(String url) {
         this.linkUrl = url;
     }
 
     // page parameter
-    private String pageParamName = "page";
-    public void setPageParam(String pageParamName) {
-        this.pageParamName = pageParamName;
+    protected String page = "page";
+    public void setPage(String page) {
+        this.page = page;
     }
 
     // **********************************************************************************
@@ -180,7 +180,7 @@ public class PagingTag extends AbstractTag {
 
         } else {
             String paramChar = (linkUrl.indexOf("?") >= 0) ? "&" : "?";
-            hrefBuilder.append(linkUrl).append(paramChar).append(pageParamName).append("=").append(pageIndex);
+            hrefBuilder.append(linkUrl).append(paramChar).append(page).append("=").append(pageIndex);
         }
         hrefBuilder.append("\"");
 

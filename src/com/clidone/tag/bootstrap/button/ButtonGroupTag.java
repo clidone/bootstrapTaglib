@@ -19,19 +19,19 @@ public class ButtonGroupTag extends AbstractTag {
     //
     // **********************************************************************************
     // size (xs, sm, lg)
-    private String size = null;
+    protected String size = null;
     public void setSize(String size) {
         this.size = size;
     }
 
     // justified
-    private Boolean justified = null;
+    protected Boolean justified = null;
     public void setJustified(boolean justified) {
         this.justified = new Boolean(justified);
     }
 
     // vertical
-    private Boolean vertical = null;
+    protected Boolean vertical = null;
     public void setVertical(boolean vertical) {
         this.vertical = new Boolean(vertical);
     }

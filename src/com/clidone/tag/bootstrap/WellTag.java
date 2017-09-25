@@ -19,7 +19,7 @@ public class WellTag extends AbstractTag {
     //
     // **********************************************************************************
     // size
-    private String size = null;
+    protected String size = null;
     public void setSize(String size) {
         this.size = size;
     }

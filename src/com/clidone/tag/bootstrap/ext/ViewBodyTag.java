@@ -18,7 +18,7 @@ public class ViewBodyTag extends AbstractTag {
     //
     // **********************************************************************************
     // container fluid or not boolean flag
-    private boolean fluid = true;
+    protected boolean fluid = true;
     public void setFluid(boolean fluid) {
         this.fluid = fluid;
     }

@@ -19,7 +19,7 @@ public class PillTabTag extends AbstractTabTag {
     //
     // **********************************************************************************
     // stacked
-    private Boolean stacked = null;
+    protected Boolean stacked = null;
     public void setStacked(Boolean stacked) {
         this.stacked = stacked;
     }

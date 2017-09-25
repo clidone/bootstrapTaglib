@@ -19,7 +19,7 @@ public class ButtonToolbarTag extends AbstractTag {
     //
     // **********************************************************************************
     // size (xs, sm, lg)
-    private String size = null;
+    protected String size = null;
     public void setSize(String size) {
         this.size = size;
     }

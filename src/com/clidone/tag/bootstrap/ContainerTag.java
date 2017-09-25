@@ -18,9 +18,9 @@ public class ContainerTag extends AbstractTag {
     //
     // **********************************************************************************
     // Whether container is fluid or not
-    private Boolean isFluid = new Boolean(false);
-    public void setFluid(Boolean isFluid) {
-        this.isFluid = isFluid;
+    protected Boolean fluid = new Boolean(false);
+    public void setFluid(Boolean fluid) {
+        this.fluid = fluid;
     }
 
     // **********************************************************************************
@@ -35,7 +35,7 @@ public class ContainerTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("div");
 
-        if (isFluid != null && isFluid.booleanValue()) {
+        if (fluid != null && fluid.booleanValue()) {
             addClass("container-fluid");
         } else {
             addClass("container");

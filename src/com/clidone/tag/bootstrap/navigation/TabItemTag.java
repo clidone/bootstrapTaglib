@@ -27,31 +27,31 @@ public class TabItemTag extends AbstractTag {
     //
     // **********************************************************************************
     // id
-    private String id = null;
+    protected String id = null;
     public void setId(String id) {
         this.id = id;
     }
 
     // text
-    private String text = null;
+    protected String text = null;
     public void setText(String text) {
         this.text = text;
     }
 
     // icon
-    private String icon = null;
+    protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
     // disabled
-    private Boolean disabled = null;
+    protected Boolean disabled = null;
     public void setDisabled(Boolean disabled) {
         this.disabled = disabled;
     }
 
     // order
-    private int order = 0;
+    protected int order = 0;
     public void setOrder(int order) {
         this.order = order;
     }
