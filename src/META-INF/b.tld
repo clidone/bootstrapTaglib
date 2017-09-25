@@ -826,4 +826,52 @@
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
+    <tag>
+        <description>
+            Modal Tag
+        </description>
+        <name>modal</name>
+        <tag-class>com.clidone.tag.bootstrap.ModalTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            ModalHeader Tag
+            [headingText]: ...;
+            [headingIcon]: ...;
+            [headingAs]: h1, h2, h3, h4, h5, h6;
+            [close]: true, false;
+        </description>
+        <name>modalHeader</name>
+        <tag-class>com.clidone.tag.bootstrap.WellTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>headingText</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingIcon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingAs</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>close</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            ModalBody Tag
+        </description>
+        <name>modalBody</name>
+        <tag-class>com.clidone.tag.bootstrap.ModalBodyTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            ModalFooter Tag
+        </description>
+        <name>modalFooter</name>
+        <tag-class>com.clidone.tag.bootstrap.ModalFooterTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
 </taglib>
