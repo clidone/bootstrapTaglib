@@ -56,6 +56,12 @@ public class ModalHeaderTag extends AbstractTag {
 
         addClass("modal-header");
 
+        ModalTag modalTag = (ModalTag) findAncestorWithClass(this, ModalTag.class);
+        String modalId = "";
+        if (modalTag != null) {
+            modalId = modalTag.getId();
+        }
+
         if (close != null && close.booleanValue()) {
             addBeforeContent("<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">");
             addBeforeContent(    "<span aria-hidden=\"true\">&times;</span>");
@@ -67,7 +73,7 @@ public class ModalHeaderTag extends AbstractTag {
         boolean hasHeadingText = !ValueUtils.isEmpty(headingText);
         if (hasHeadingAs || hasHeadingIcon || hasHeadingText) {
             if (hasHeadingAs) {
-                addBeforeContent("<"+headingAs+" class=\"modal-title\">");
+                addBeforeContent("<"+headingAs+" class=\"modal-title\" id=\""+modalId+"\">");
             }
             if (!ValueUtils.isEmpty(headingIcon)) {
                 String iconHTML = renderIcon(headingIcon);
