@@ -790,4 +790,28 @@
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
+    <tag>
+        <description>
+            Panel Tag
+            [theme]: default, primary, success, info, warning, danger;
+            [headingText]: ...;
+            [headingIcon]: ...;
+            [headingAs]: ...;
+            [footerText]: ...;
+            [footerIcon]: ...;
+            [footerAs]: ...;
+        </description>
+        <name>panel</name>
+        <tag-class>com.clidone.tag.bootstrap.PanelTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>theme</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingText</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingIcon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingAs</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerText</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerIcon</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerAs</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
 </taglib>
