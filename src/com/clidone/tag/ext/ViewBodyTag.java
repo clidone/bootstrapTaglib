@@ -1,22 +1,27 @@
-package com.clidone.tag.bootstrap.ext;
+package com.clidone.tag.ext;
 
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
 
 /**
- * <strong>View tag</strong>
+ * <strong>View body tag</strong>
  * @author wuhuaxia
  */
-public class ViewTag extends AbstractTag {
+public class ViewBodyTag extends AbstractTag {
 
-    private static final long serialVersionUID = 3992394810382159549L;
+    private static final long serialVersionUID = 8067381105808339628L;
 
     // **********************************************************************************
     //
     // Tag attributes
     //
     // **********************************************************************************
+    // container fluid or not boolean flag
+    protected boolean fluid = true;
+    public void setFluid(boolean fluid) {
+        this.fluid = fluid;
+    }
 
     // **********************************************************************************
     //
@@ -30,7 +35,11 @@ public class ViewTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("div");
 
-        addClass("view");
+        if (fluid) {
+            addClass("view-body container-fluid");
+        } else {
+            addClass("view-body container");
+        }
 
         return render();
     }
