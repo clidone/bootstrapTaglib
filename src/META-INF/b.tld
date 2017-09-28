@@ -19,42 +19,6 @@
     -->
 
     <tag>
-        <description>View Tag</description>
-        <name>view</name>
-        <tag-class>com.clidone.tag.bootstrap.ext.ViewTag</tag-class>
-        <body-content>JSP</body-content>
-        <dynamic-attributes>true</dynamic-attributes>
-    </tag>
-
-    <tag>
-        <description>View Header Tag</description>
-        <name>viewHeader</name>
-        <tag-class>com.clidone.tag.bootstrap.ext.ViewHeaderTag</tag-class>
-        <body-content>JSP</body-content>
-        <dynamic-attributes>true</dynamic-attributes>
-    </tag>
-
-    <tag>
-        <description>
-            View Body Tag
-            [fluid]: true, false;
-        </description>
-        <name>viewBody</name>
-        <tag-class>com.clidone.tag.bootstrap.ext.ViewBodyTag</tag-class>
-        <body-content>JSP</body-content>
-        <attribute> <name>fluid</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <dynamic-attributes>true</dynamic-attributes>
-    </tag>
-
-    <tag>
-        <description>View Footer Tag</description>
-        <name>viewFooter</name>
-        <tag-class>com.clidone.tag.bootstrap.ext.ViewFooterTag</tag-class>
-        <body-content>JSP</body-content>
-        <dynamic-attributes>true</dynamic-attributes>
-    </tag>
-
-    <tag>
         <description>
             Container Tag
             [fluid]: true, false;
@@ -1058,4 +1022,47 @@
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
+    <tag>
+        <description>Space Tag</description>
+        <name>space</name>
+        <tag-class>com.clidone.tag.ext.SpaceTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>View Tag</description>
+        <name>view</name>
+        <tag-class>com.clidone.tag.ext.ViewTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>View Header Tag</description>
+        <name>viewHeader</name>
+        <tag-class>com.clidone.tag.ext.ViewHeaderTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>
+            View Body Tag
+            [fluid]: true, false;
+        </description>
+        <name>viewBody</name>
+        <tag-class>com.clidone.tag.ext.ViewBodyTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute> <name>fluid</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+    <tag>
+        <description>View Footer Tag</description>
+        <name>viewFooter</name>
+        <tag-class>com.clidone.tag.ext.ViewFooterTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
 </taglib>
