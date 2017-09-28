@@ -1023,7 +1023,10 @@
     </tag>
 
     <tag>
-        <description>Space Tag</description>
+        <description>
+            Space Tag
+            [count]: (default 4);
+        </description>
         <name>space</name>
         <tag-class>com.clidone.tag.ext.SpaceTag</tag-class>
         <body-content>JSP</body-content>
