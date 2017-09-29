@@ -69,7 +69,7 @@ public class PagingTag extends AbstractTag {
         html.append("<nav>");
         html.append("<ul class=\"pagination pagination-sm\">");
 
-        // 首页
+        // First page
         if (currentPage == 1) {
             html.append("<li class=\"disabled\"><span>&laquo;</span></li>");
         } else {
@@ -77,7 +77,7 @@ public class PagingTag extends AbstractTag {
         }
 
         long totalPages = getTotalPages();
-        // 页数较大场合
+        // Too many pages
         if (totalPages >= 10) {
             currentPage = (Long) (currentPage / 10);
             long startPage = currentPage * 10;
@@ -117,7 +117,7 @@ public class PagingTag extends AbstractTag {
                 html.append("<li><a href="+buildHref(totalPages)+">"+totalPages+"</a></li>");
             }
 
-        // 常规少页数时
+        // less pages
         } else {
             for (long i=1L; i<=totalPages; i++) {
                 String active = (i == currentPage) ? " class=\"active\"" : "";
@@ -125,7 +125,7 @@ public class PagingTag extends AbstractTag {
             }
         }
 
-        // 末页
+        // Last page
         if (currentPage == totalPages) {
             html.append("<li class=\"disabled\"><span>&raquo;</span></li>");
         } else {
@@ -140,9 +140,8 @@ public class PagingTag extends AbstractTag {
     }
 
     /**
-     * 计算总页数
-     * @param count 数据总数
-     * @return 总页数
+     * Get total pages
+     * @return page count
      */
     private final long getTotalPages() {
         if (totalCount < 1) {
@@ -158,13 +157,16 @@ public class PagingTag extends AbstractTag {
     }
 
     /**
-     * 构造URL参数
-     * @return URL参数
+     * Build URL
+     * @return URL
      */
     private final String buildHref(long pageIndex) {
+        String contextPath = super.getServletContext().getContextPath();
+
         if (linkUrl == null || "".equals(linkUrl.trim())) {
-            return "";
+            return contextPath;
         }
+        linkUrl = contextPath + linkUrl;
 
         StringBuilder hrefBuilder = new StringBuilder();
         hrefBuilder.append("\"");
