@@ -82,7 +82,7 @@ public class SelectTag extends AbstractFormFieldTag {
                 }
             }
 
-            if (!isMatch && hasDefault) {
+            if (!isMatch && hasDefault != null && hasDefault.booleanValue()) {
                 addBeforeContent(defaultText);
             }
 
@@ -90,7 +90,7 @@ public class SelectTag extends AbstractFormFieldTag {
             setTagName("select");
             addClass("form-control");
 
-            if (hasDefault) {
+            if (hasDefault != null && hasDefault.booleanValue()) {
                 addBeforeContent("<option value=\""+defaultValue+"\">");
                 addBeforeContent(defaultText);
                 addBeforeContent("</option>");
