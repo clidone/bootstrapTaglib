@@ -44,7 +44,8 @@ public class KeyValueBuilder {
      * @param valueName data value name
      * @return key value list
      */
-    public static List<KeyValue> build(List<Map<?,?>> dataList, String keyName, String valueName) {
+    @SuppressWarnings("rawtypes")
+    public static List<KeyValue> build(List dataList, String keyName, String valueName) {
         if (dataList == null) {
             return new ArrayList<KeyValue>();
         }
@@ -52,8 +53,9 @@ public class KeyValueBuilder {
         Map<?,?> data = null;
         int  size = dataList.size();
         List<KeyValue> list = new ArrayList<KeyValue>(size);
+
         for (int i=0; i<size; i++) {
-            data = dataList.get(i);
+            data = (Map<?, ?>) dataList.get(i);
             list.add(new KeyValue(String.valueOf(data.get(keyName)), String.valueOf(data.get(valueName))));
         }
 
