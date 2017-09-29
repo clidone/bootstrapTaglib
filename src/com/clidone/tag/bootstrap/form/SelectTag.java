@@ -26,6 +26,24 @@ public class SelectTag extends AbstractFormFieldTag {
         this.items = items;
     }
 
+    // hasDefault
+    protected Boolean hasDefault = null;
+    public void setHasDefault(Boolean hasDefault) {
+        this.hasDefault = hasDefault;
+    }
+
+    // defaultValue
+    protected String defaultValue = "";
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    // defaultText
+    protected String defaultText = "";
+    public void setDefaultText(String defaultText) {
+        this.defaultText = defaultText;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -44,6 +62,7 @@ public class SelectTag extends AbstractFormFieldTag {
             setTagName("p");
             addClass("form-control-static");
 
+            boolean isMatch = false;
             if (items != null) {
                 KeyValue keyValue  = null;
                 String optionValue = null;
@@ -58,13 +77,24 @@ public class SelectTag extends AbstractFormFieldTag {
                     if (isChcked(optionValue)) {
                         String optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
                         addBeforeContent(optionLabel);
+                        isMatch = true;
                     }
                 }
+            }
+
+            if (!isMatch && hasDefault) {
+                addBeforeContent(defaultText);
             }
 
         } else {
             setTagName("select");
             addClass("form-control");
+
+            if (hasDefault) {
+                addBeforeContent("<option value=\""+defaultValue+"\">");
+                addBeforeContent(defaultText);
+                addBeforeContent("</option>");
+            }
 
             if (items != null) {
                 KeyValue keyValue     = null;
@@ -78,9 +108,14 @@ public class SelectTag extends AbstractFormFieldTag {
                         continue;
                     }
 
-                    optionLabel    = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
-                    optionValue    = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
-                    optionSelected = !isChcked(optionValue)                  ? "" : " selected=\"selected\"";
+                    optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
+                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
+
+                    if (isChcked(optionValue)) {
+                        optionSelected = " selected=\"selected\"";
+                    } else {
+                        optionSelected = "";
+                    }
 
                     addBeforeContent("<option value=\""+optionValue+"\""+optionSelected+">");
                     addBeforeContent(optionLabel);
