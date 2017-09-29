@@ -214,23 +214,28 @@ abstract class AbstractFormFieldTag extends AbstractTag {
             addBeforeWrap("<div class=\"" + controlColXs + controlColSm + controlColMd + controlColLg + "\">");
         }
 
-        // handle addon
-        boolean hasPrefixAddon = !ValueUtils.isEmpty(prefixAddon);
-        boolean hasSuffixAddon = !ValueUtils.isEmpty(suffixAddon);
-        if (hasPrefixAddon || hasSuffixAddon) {
-            String size = ValueUtils.isEmpty(addonSize) ? "" : " input-group-" + addonSize;
-            addBeforeWrap("<div class=\"input-group"+size+"\">");
-        }
-        if (hasPrefixAddon) {
-            String addonHTML = renderAddOn(prefixAddon);
-            addBeforeWrap(addonHTML);
-        }
-        if (hasSuffixAddon) {
-            String addonHTML = renderAddOn(suffixAddon);
-            addAfterWrap(addonHTML);
-        }
-        if (hasPrefixAddon || hasSuffixAddon) {
-            addAfterWrap("</div>");
+        boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
+        boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
+
+        if (!formStatic && !fieldStatic) {
+            // handle addon
+            boolean hasPrefixAddon = !ValueUtils.isEmpty(prefixAddon);
+            boolean hasSuffixAddon = !ValueUtils.isEmpty(suffixAddon);
+            if (hasPrefixAddon || hasSuffixAddon) {
+                String size = ValueUtils.isEmpty(addonSize) ? "" : " input-group-" + addonSize;
+                addBeforeWrap("<div class=\"input-group"+size+"\">");
+            }
+            if (hasPrefixAddon) {
+                String addonHTML = renderAddOn(prefixAddon);
+                addBeforeWrap(addonHTML);
+            }
+            if (hasSuffixAddon) {
+                String addonHTML = renderAddOn(suffixAddon);
+                addAfterWrap(addonHTML);
+            }
+            if (hasPrefixAddon || hasSuffixAddon) {
+                addAfterWrap("</div>");
+            }
         }
 
         if (!ValueUtils.isEmpty(help)) {
