@@ -103,4 +103,20 @@ public class ChooseTag extends AbstractTag {
     protected int doStartTagV3() throws JspException {
         return doStartTagV2();
     }
+
+    /**
+     * @see AbstractTag#doEndTagV2()
+     */
+    @Override
+    protected String doEndTagV2() throws JspException {
+        return render();
+    }
+
+    /**
+     * @see AbstractTag#doEndTagV3()
+     */
+    @Override
+    protected String doEndTagV3() throws JspException {
+        return doEndTagV2();
+    }
 }
