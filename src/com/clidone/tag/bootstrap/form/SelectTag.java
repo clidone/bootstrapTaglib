@@ -42,12 +42,28 @@ public class SelectTag extends AbstractFormFieldTag {
 
         if (formStatic || fieldStatic) {
             setTagName("p");
-
             addClass("form-control-static");
+
+            if (items != null) {
+                KeyValue keyValue  = null;
+                String optionValue = null;
+
+                for (int i=0,len=items.size(); i<len; i++) {
+                    keyValue = (KeyValue) items.get(i);
+                    if (keyValue == null) {
+                        continue;
+                    }
+
+                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
+                    if (isChcked(optionValue)) {
+                        String optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
+                        addBeforeContent(optionLabel);
+                    }
+                }
+            }
 
         } else {
             setTagName("select");
-
             addClass("form-control");
 
             if (items != null) {
