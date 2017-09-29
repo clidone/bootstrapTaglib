@@ -90,6 +90,24 @@ public class TextTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // condition
+    protected Boolean condition = null;
+    public void setCondition(Boolean condition) {
+        this.condition = condition;
+    }
+
+    // trueText
+    protected String trueText = "";
+    public void setTrueText(String trueText) {
+        this.trueText = trueText;
+    }
+
+    // falseText
+    protected String falseText = "";
+    public void setFalseText(String falseText) {
+        this.falseText = falseText;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -143,8 +161,12 @@ public class TextTag extends AbstractTag {
         }
 
         if (!ValueUtils.isEmpty(icon)) {
-            String iconContent = super.renderIcon(icon);
-            addBeforeContent(iconContent);
+            String iconHTML = super.renderIcon(icon);
+            addBeforeContent(iconHTML);
+        }
+
+        if (condition != null) {
+            addBeforeContent(condition.booleanValue() ? trueText : falseText);
         }
 
         return render();

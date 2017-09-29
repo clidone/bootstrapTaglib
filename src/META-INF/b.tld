@@ -356,6 +356,9 @@
             [case]: lowercase, uppercase, capitalize;
             [icon]: ...;
             [cursor]: url, default, auto, crosshair, pointer, move, e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize, text, wait, help;
+            [condition]: true, false;
+            [trueText]: ...;
+            [falseText]: ...;
         </description>
         <name>text</name>
         <tag-class>com.clidone.tag.bootstrap.TextTag</tag-class>
@@ -372,6 +375,9 @@
         <attribute> <name>case</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>cursor</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>condition</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>trueText</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>falseText</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
