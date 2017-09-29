@@ -488,7 +488,16 @@
     </tag>
 
     <tag>
-        <description>Link Tag</description>
+        <description>
+            Link Tag
+            [uri]: ...;
+            [theme]: default, primary, success, info, warning, danger, link;
+            [size]: xs, sm, lg;
+            [icon]: ...;
+            [active]: true, false;
+            [disabled]: true, false;
+            [block]: true, false;
+        </description>
         <name>link</name>
         <tag-class>com.clidone.tag.bootstrap.button.LinkTag</tag-class>
         <body-content>JSP</body-content>
