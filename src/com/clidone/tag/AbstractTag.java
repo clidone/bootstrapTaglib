@@ -493,15 +493,30 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * @return icon HTML
      */
     protected String renderIcon(String icon) {
+        return renderIcon(icon, true);
+    }
+
+    /**
+     * Render icon HTML
+     * @param icon iconMark
+     * @param hasSpace Has space after icon or not
+     * @return icon HTML
+     */
+    protected String renderIcon(String icon, boolean hasSpace) {
         String iconHTML = null;
         if (BootstrapConfigConst.ICON_FONTAWESOME.equals(iconPrefix)) {
-            iconHTML = "<i class=\"fa fa-" + icon + "\"></i>&nbsp;";
+            iconHTML = "<i class=\"fa fa-"+icon+"\"></i>";
 
         } else if (BootstrapConfigConst.ICON_GLYPHICON.equals(iconPrefix)) {
-            iconHTML = "<span class=\"glyphicon glyphicon-" + icon + "\"></span>&nbsp;";
+            iconHTML = "<span class=\"glyphicon glyphicon-"+icon+"\"></span>";
         } else {
-            iconHTML = "<i class=\"" + icon + "\"></i>&nbsp;";
+            iconHTML = "<i class=\""+icon+"\"></i>";
         }
+
+        if (hasSpace) {
+            iconHTML += "&nbsp;";
+        }
+
         return iconHTML;
     }
 
