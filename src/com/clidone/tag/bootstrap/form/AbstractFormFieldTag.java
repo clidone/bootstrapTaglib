@@ -122,6 +122,24 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         this.help = help;
     }
 
+    // addonSize
+    protected String addonSize = null;
+    public void setAddonSize(String addonSize) {
+        this.addonSize = addonSize;
+    }
+
+    // prefixAddon
+    protected String prefixAddon = null;
+    public void setPrefixAddon(String prefixAddon) {
+        this.prefixAddon = prefixAddon;
+    }
+
+    // suffixAddon
+    protected String suffixAddon = null;
+    public void setSuffixAddon(String suffixAddon) {
+        this.suffixAddon = suffixAddon;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -132,14 +150,16 @@ abstract class AbstractFormFieldTag extends AbstractTag {
      * @exception JspException
      */
     protected void renderWrap() throws JspException {
-        super.addBeforeWrap("<div class=\"form-group\">");
+        addBeforeWrap("<div class=\"form-group\">");
 
-        String fieldId = super.getId();
+        String fieldId = getId();
         if (ValueUtils.isEmpty(fieldId)) {
             fieldId = UUID.randomUUID().toString();
-            super.setId(fieldId);
+            setId(fieldId);
         }
-        super.addAttribute("id", fieldId);
+        addAttribute("id", fieldId);
+
+        addAttribute("name", name);
 
         String srOnly = "";
         if (labelSrOnly != null && labelSrOnly.booleanValue()) {
@@ -151,7 +171,7 @@ abstract class AbstractFormFieldTag extends AbstractTag {
             requiredHTML = "<span class=\"form-required\">*</span>&nbsp;";
         }
 
-        FormTag formTag = (FormTag) super.findAncestorWithClass(this, FormTag.class);
+        FormTag formTag = (FormTag) findAncestorWithClass(this, FormTag.class);
         boolean isHorizontal = (formTag != null && ("h".equals(formTag.getLayout()) || "horizontal".equals(formTag.getLayout())));
 
         String labelColXs = "";
@@ -172,7 +192,7 @@ abstract class AbstractFormFieldTag extends AbstractTag {
                 labelColLg = " col-lg-" + labelLg;
             }
         }
-        super.addBeforeWrap("<label class=\"control-label" + srOnly + labelColXs + labelColSm + labelColMd + labelColLg + "\" for=\""+fieldId+"\">"+requiredHTML+label+"</label>");
+        addBeforeWrap("<label class=\"control-label" + srOnly + labelColXs + labelColSm + labelColMd + labelColLg + "\" for=\""+fieldId+"\">"+requiredHTML+label+"</label>");
 
         if (isHorizontal) {
             String controlColXs = "";
@@ -191,17 +211,54 @@ abstract class AbstractFormFieldTag extends AbstractTag {
             if (fieldLg > 0) {
                 controlColLg = " col-lg-" + fieldLg;
             }
-            super.addBeforeWrap("<div class=\"" + controlColXs + controlColSm + controlColMd + controlColLg + "\">");
+            addBeforeWrap("<div class=\"" + controlColXs + controlColSm + controlColMd + controlColLg + "\">");
+        }
+
+        // handle addon
+        boolean hasPrefixAddon = !ValueUtils.isEmpty(prefixAddon);
+        boolean hasSuffixAddon = !ValueUtils.isEmpty(suffixAddon);
+        if (hasPrefixAddon || hasSuffixAddon) {
+            String size = ValueUtils.isEmpty(addonSize) ? "" : " input-group-" + addonSize;
+            addBeforeWrap("<div class=\"input-group"+size+"\">");
+        }
+        if (hasPrefixAddon) {
+            String addonHTML = renderAddOn(prefixAddon);
+            addBeforeWrap(addonHTML);
+        }
+        if (hasSuffixAddon) {
+            String addonHTML = renderAddOn(suffixAddon);
+            addAfterWrap(addonHTML);
+        }
+        if (hasPrefixAddon || hasSuffixAddon) {
+            addAfterWrap("</div>");
         }
 
         if (!ValueUtils.isEmpty(help)) {
-            super.addAfterWrap("<span id=\""+fieldId+"HelpBlock\" class=\"help-block\">" + help + "</span>");
+            addAfterWrap("<span id=\""+fieldId+"HelpBlock\" class=\"help-block\">" + help + "</span>");
         }
 
         if (isHorizontal) {
-            super.addAfterWrap("</div>");
+            addAfterWrap("</div>");
         }
 
-        super.addAfterWrap("</div>");
+        addAfterWrap("</div>");
+    }
+
+    /**
+     * Render addOn
+     * @param addOn
+     */
+    private String renderAddOn(String addOn) {
+        if (ValueUtils.isEmpty(addOn)) {
+            return "";
+        }
+
+        String addOnHTML = null;
+        if (addOn.startsWith("icon:")) {
+            addOnHTML = renderIcon(addOn.replace("icon:", ""), false);
+        } else {
+            addOnHTML = addOn;
+        }
+        return "<span class=\"input-group-addon\">"+addOnHTML+"</span>";
     }
 }
