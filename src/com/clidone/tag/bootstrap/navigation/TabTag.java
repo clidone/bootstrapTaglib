@@ -29,18 +29,11 @@ public class TabTag extends AbstractTabTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        setTagName("ul");
+        setTagName("div");
 
-        addBeforeWrap("<nav>");
+        String justifiedClass = (justified != null && justified.booleanValue()) ? " nav-justified" : "";
 
-        addClass("nav nav-tabs");
-
-        if (justified != null && justified.booleanValue()) {
-            addClass("nav-justified");
-        }
-
-        addAttribute("role", "tablist");
-
+        addBeforeContent("<ul class=\"nav nav-tabs"+justifiedClass+"\" role=\"tablist\">");
         if (items != null) {
             TabItemData itemData = null;
             for (int i=0,len=items.size(); i<len; i++) {
@@ -64,12 +57,10 @@ public class TabTag extends AbstractTabTag {
                 addBeforeContent("</li>");
             }
         }
+        addBeforeContent("</ul>");
 
         addBeforeContent("<div class=\"tab-content\">");
-
         addAfterContent("</div>");
-
-        addAfterWrap("</nav>");
 
         return render();
     }
