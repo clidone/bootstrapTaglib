@@ -72,8 +72,6 @@ public class ProgressTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("div");
 
-        addBeforeWrap("<div class=\"progress\">");
-
         addClass("progress-bar");
         if (!ValueUtils.isEmpty(theme)) {
             addClass("progress-bar-" + theme);
@@ -89,23 +87,22 @@ public class ProgressTag extends AbstractTag {
 
         boolean srOnly = (labelSrOnly != null && labelSrOnly.booleanValue());
         if (srOnly) {
-            addBeforeContent(    "<span class=\"sr-only\">");
+            addBeforeContent("<span class=\"sr-only\">");
         }
-        addBeforeContent(            progress + "%");
+        addBeforeContent(progress + "%");
         if (srOnly) {
-            addBeforeContent(    "</span>");
+            addBeforeContent("</span>");
         }
-        addBeforeContent("</div>");
 
-
-        addStyle("width",     String.valueOf(progress));
+        addStyle("width", String.valueOf(progress) + "%");
         addStyle("min-width", "2em");
 
-        addAttribute("role",          "progressbar");
+        addAttribute("role", "progressbar");
         addAttribute("aria-valuenow", String.valueOf(value));
         addAttribute("aria-valuemin", String.valueOf(minValue));
         addAttribute("aria-valuemax", String.valueOf(maxValue));
 
+        addBeforeWrap("<div class=\"progress\">");
         addAfterWrap("</div>");
 
         return render();
