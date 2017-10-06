@@ -490,19 +490,10 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
     /**
      * Render icon HTML
      * @param icon iconMark
+     * @param noSpace Has space after icon or not
      * @return icon HTML
      */
-    protected String renderIcon(String icon) {
-        return renderIcon(icon, true);
-    }
-
-    /**
-     * Render icon HTML
-     * @param icon iconMark
-     * @param hasSpace Has space after icon or not
-     * @return icon HTML
-     */
-    protected String renderIcon(String icon, boolean hasSpace) {
+    protected String renderIcon(String icon, boolean noSpace) {
         String iconHTML = null;
         if (BootstrapConfigConst.ICON_FONTAWESOME.equals(iconPrefix)) {
             iconHTML = "<i class=\"fa fa-"+icon+"\"></i>";
@@ -513,7 +504,7 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
             iconHTML = "<i class=\""+icon+"\"></i>";
         }
 
-        if (hasSpace) {
+        if (!noSpace) {
             iconHTML += "&nbsp;";
         }
 

@@ -30,6 +30,12 @@ public class AnchorTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -46,7 +52,7 @@ public class AnchorTag extends AbstractTag {
         String uriValue = ValueUtils.isEmpty(uri)  ? "javascript:void(0);" : contextPath+uri;
         addAttribute("href", uriValue);
 
-        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
+        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         addBeforeContent(iconHTML);
 
         // When anchor is in AlterTag, should add this class

@@ -90,6 +90,12 @@ public class TextTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // condition
     protected Boolean condition = null;
     public void setCondition(Boolean condition) {
@@ -161,7 +167,7 @@ public class TextTag extends AbstractTag {
         }
 
         if (!ValueUtils.isEmpty(icon)) {
-            String iconHTML = super.renderIcon(icon);
+            String iconHTML = super.renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
             addBeforeContent(iconHTML);
         }
 

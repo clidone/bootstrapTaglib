@@ -30,6 +30,12 @@ public class DropLinkTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // disabled
     protected Boolean disabled = null;
     public void setDisabled(Boolean disabled) {
@@ -56,7 +62,7 @@ public class DropLinkTag extends AbstractTag {
         String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
         addBeforeContent("<a href=\""+contextPath+uriValue+"\">");
 
-        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
+        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         addBeforeContent(iconHTML);
 
         addAfterContent("</a>");

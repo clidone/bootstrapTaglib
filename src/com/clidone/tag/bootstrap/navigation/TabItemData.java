@@ -33,6 +33,15 @@ class TabItemData {
         this.icon = icon;
     }
 
+    // iconOnly
+    private Boolean iconOnly = null;
+    public Boolean getIconOnly() {
+        return iconOnly;
+    }
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // order
     private int order = 0;
     public int getOrder() {

@@ -42,6 +42,12 @@ public class LinkTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // active
     protected Boolean active = null;
     public void setActive(Boolean active) {
@@ -101,7 +107,7 @@ public class LinkTag extends AbstractTag {
         String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
         addAttribute("href", contextPath + uriValue);
 
-        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
+        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         addBeforeContent(iconHTML);
 
         return render();

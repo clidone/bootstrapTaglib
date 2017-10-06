@@ -36,6 +36,12 @@ public class PanelTag extends AbstractTag {
         this.headingIcon = headingIcon;
     }
 
+    // headingIconOnly
+    protected Boolean headingIconOnly = new Boolean(false);
+    public void setHeadingIconOnly(Boolean headingIconOnly) {
+        this.headingIconOnly = headingIconOnly;
+    }
+
     // headingAs
     protected String headingAs = null;
     public void setHeadingAs(String headingAs) {
@@ -52,6 +58,12 @@ public class PanelTag extends AbstractTag {
     protected String footerIcon = null;
     public void setFooterIcon(String footerIcon) {
         this.footerIcon = footerIcon;
+    }
+
+    // footerIconOnly
+    protected Boolean footerIconOnly = new Boolean(false);
+    public void setFooterIconOnly(Boolean footerIconOnly) {
+        this.footerIconOnly = footerIconOnly;
     }
 
     // footerAs
@@ -87,7 +99,7 @@ public class PanelTag extends AbstractTag {
                 addBeforeContent("<"+headingAs+" class=\"panel-title\">");
             }
             if (!ValueUtils.isEmpty(headingIcon)) {
-                String iconHTML = renderIcon(headingIcon);
+                String iconHTML = renderIcon(headingIcon, (headingIconOnly != null && headingIconOnly.booleanValue()));
                 addBeforeContent(iconHTML);
             }
             if (!ValueUtils.isEmpty(headingText)) {
@@ -112,7 +124,7 @@ public class PanelTag extends AbstractTag {
                 addAfterContent("<"+footerAs+" class=\"panel-title\">");
             }
             if (!ValueUtils.isEmpty(footerIcon)) {
-                String iconHTML = renderIcon(footerIcon);
+                String iconHTML = renderIcon(footerIcon, (footerIconOnly != null && footerIconOnly.booleanValue()));
                 addAfterContent(iconHTML);
             }
             if (!ValueUtils.isEmpty(footerText)) {

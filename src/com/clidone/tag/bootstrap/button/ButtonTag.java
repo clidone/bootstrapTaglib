@@ -42,6 +42,12 @@ public class ButtonTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // active
     protected Boolean active = null;
     public void setActive(Boolean active) {
@@ -98,7 +104,7 @@ public class ButtonTag extends AbstractTag {
             addClass("btn-block");
         }
 
-        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon);
+        String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         addBeforeContent(iconHTML);
 
         return render();

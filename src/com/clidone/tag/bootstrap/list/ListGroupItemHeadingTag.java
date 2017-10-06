@@ -36,6 +36,12 @@ public class ListGroupItemHeadingTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -51,7 +57,7 @@ public class ListGroupItemHeadingTag extends AbstractTag {
         addClass("list-group-item-heading");
 
         if (!ValueUtils.isEmpty(icon)) {
-            String iconHTML = renderIcon(icon);
+            String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
             addBeforeContent(iconHTML);
         }
 

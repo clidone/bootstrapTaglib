@@ -44,6 +44,12 @@ public class TabItemTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // active
     protected Boolean active = null;
     public void setActive(Boolean active) {
@@ -84,6 +90,7 @@ public class TabItemTag extends AbstractTag {
             itemData.setId(id);
             itemData.setText(text);
             itemData.setIcon(icon);
+            itemData.setIconOnly(iconOnly);
             itemData.setOrder(order);
             itemData.setActive(isActive);
             tabTag.addItem(itemData);

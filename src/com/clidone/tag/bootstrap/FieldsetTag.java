@@ -30,6 +30,12 @@ public class FieldsetTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -45,7 +51,7 @@ public class FieldsetTag extends AbstractTag {
         // fieldset legend
         String legendContent = "";
         if (!ValueUtils.isEmpty(icon)) {
-            legendContent += renderIcon(icon);
+            legendContent += renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         }
         if (!ValueUtils.isEmpty(legend)) {
             legendContent += legend;

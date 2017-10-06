@@ -42,14 +42,15 @@ public class TabTag extends AbstractTabTag {
                     continue;
                 }
 
-                String id     = itemData.getId();
-                String text   = itemData.getText();
-                String icon   = itemData.getIcon();
-                String active = itemData.getActive() ? " class=\"active\"" : "";
+                String  id       = itemData.getId();
+                String  text     = itemData.getText();
+                String  icon     = itemData.getIcon();
+                Boolean iconOnly = itemData.getIconOnly();
+                String  active   = itemData.getActive() ? " class=\"active\"" : "";
 
                 String iconHTML = "";
                 if (!ValueUtils.isEmpty(icon)) {
-                    iconHTML = renderIcon(icon);
+                    iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
                 }
 
                 addBeforeContent("<li role=\"presentation\""+active+">");

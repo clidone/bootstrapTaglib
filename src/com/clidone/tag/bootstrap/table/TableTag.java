@@ -81,6 +81,12 @@ public class TableTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // bordered
     protected Boolean bordered = null;
     public void setBordered(Boolean bordered) {
@@ -201,7 +207,7 @@ public class TableTag extends AbstractTag {
         // table caption
         String captionContent = "";
         if (!ValueUtils.isEmpty(icon)) {
-            captionContent += renderIcon(icon);
+            captionContent += renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         }
         if (!ValueUtils.isEmpty(caption)) {
             captionContent += caption;

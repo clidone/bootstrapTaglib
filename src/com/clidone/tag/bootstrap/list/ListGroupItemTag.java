@@ -54,6 +54,12 @@ public class ListGroupItemTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // badge
     protected String badge = null;
     public void setBadge(String badge) {
@@ -102,7 +108,7 @@ public class ListGroupItemTag extends AbstractTag {
         }
 
         if (!ValueUtils.isEmpty(icon)) {
-            String iconHTML = renderIcon(icon);
+            String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
             addBeforeContent(iconHTML);
         }
 

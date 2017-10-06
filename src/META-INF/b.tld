@@ -99,12 +99,14 @@
             Anchor Tag
             [uri]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
         </description>
         <name>a</name>
         <tag-class>com.clidone.tag.bootstrap.AnchorTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>  <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>uri</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -113,12 +115,14 @@
             Badge Tag
             [text]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
         </description>
         <name>badge</name>
         <tag-class>com.clidone.tag.bootstrap.BadgeTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>text</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -127,12 +131,14 @@
             Fieldset Tag
             [legend]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
         </description>
         <name>fieldset</name>
         <tag-class>com.clidone.tag.bootstrap.FieldsetTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>legend</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>legend</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -140,11 +146,13 @@
         <description>
             Icon Tag
             [icon]: ...;
+            [iconOnly]: true, false;
         </description>
         <name>icon</name>
         <tag-class>com.clidone.tag.bootstrap.IconTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>icon</name> <required>true</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -178,6 +186,7 @@
             [heading]: ...;
             [headingTag]: (default h4);
             [icon]: (heading icon);
+            [iconOnly]: true, false;
             [leftImage]: (image url);
             [leftWidth]: (default 64px);
             [leftHeight]: (default 64px);
@@ -195,6 +204,7 @@
         <attribute> <name>heading</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>headingTag</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>leftImage</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>leftWidth</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>leftHeight</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -229,16 +239,18 @@
             ModalHeader Tag
             [headingText]: ...;
             [headingIcon]: ...;
+            [headingIconOnly]: true, false;
             [headingAs]: h1, h2, h3, h4, h5, h6;
             [close]: true, false;
         </description>
         <name>modalHeader</name>
         <tag-class>com.clidone.tag.bootstrap.WellTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>headingText</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingIcon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingAs</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>close</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingText</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingIcon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingIconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingAs</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>close</name>           <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -284,21 +296,25 @@
             [theme]: default, primary, success, info, warning, danger;
             [headingText]: ...;
             [headingIcon]: ...;
+            [headingIconOnly]: true, false;
             [headingAs]: ...;
             [footerText]: ...;
             [footerIcon]: ...;
+            [footerIconOnly]: true, false;
             [footerAs]: ...;
         </description>
         <name>panel</name>
         <tag-class>com.clidone.tag.bootstrap.PanelTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>theme</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingText</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingIcon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingAs</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>footerText</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>footerIcon</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>footerAs</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>theme</name>           <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingText</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingIcon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingIconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headingAs</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerText</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerIcon</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerIconOnly</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerAs</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -331,13 +347,15 @@
             [theme]: default, primary, success, info, warning, danger;
             [text]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
         </description>
         <name>tag</name>
         <tag-class>com.clidone.tag.bootstrap.TagTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>theme</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>text</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -355,6 +373,7 @@
             [bg]: primary, success, info, warning, danger;
             [case]: lowercase, uppercase, capitalize;
             [icon]: ...;
+            [iconOnly]: true, false;
             [cursor]: url, default, auto, crosshair, pointer, move, e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize, text, wait, help;
             [condition]: true, false;
             [trueText]: ...;
@@ -374,6 +393,7 @@
         <attribute> <name>bg</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>case</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>cursor</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>condition</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>trueText</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -400,6 +420,7 @@
             [theme]: default, primary, success, info, warning, danger, link;
             [size]: xs, sm, lg;
             [icon]: ...;
+            [iconOnly]: true, false;
             [active]: true, false;
             [disabled]: true, false;
             [block]: true, false;
@@ -411,6 +432,7 @@
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>block</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -471,13 +493,15 @@
             Drop Link Tag
             [uri]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
             [disabled]: true, false;
         </description>
         <name>dropLink</name>
         <tag-class>com.clidone.tag.bootstrap.button.DropLinkTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>  <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>uri</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -504,6 +528,7 @@
             [theme]: default, primary, success, info, warning, danger, link;
             [size]: xs, sm, lg;
             [icon]: ...;
+            [iconOnly]: true, false;
             [active]: true, false;
             [disabled]: true, false;
             [block]: true, false;
@@ -515,6 +540,7 @@
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>block</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -889,6 +915,7 @@
             [disabled]: true, false;
             [theme]: success, info, warning, danger;
             [icon]: ...;
+            [iconOnly]: true, false;
             [badge]: ...;
         </description>
         <name>listGroupItem</name>
@@ -900,6 +927,7 @@
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>url</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>badge</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
@@ -910,13 +938,15 @@
             [as]: h1, h2, h3, h4...;
             [text]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
         </description>
         <name>listGroupItemHeading</name>
         <tag-class>com.clidone.tag.bootstrap.list.ListGroupItemHeadingTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>as</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>text</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>icon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>as</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -996,6 +1026,7 @@
             [id]: ...;
             [text]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
             [active]: true, false;
             [disabled]: true, false;
             [order]: 0, 1, 2...;
@@ -1006,6 +1037,7 @@
         <attribute> <name>id</name>       <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>text</name>     <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>order</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -1019,6 +1051,7 @@
             [items]: (list, map);
             [caption]: ...;
             [icon]: ...;
+            [iconOnly]: true, false;
             [bordered]: true, false;
             [condensed]: true, false;
             [hover]: true, false;
@@ -1034,6 +1067,7 @@
         <attribute> <name>items</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>caption</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>bordered</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>condensed</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>hover</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>

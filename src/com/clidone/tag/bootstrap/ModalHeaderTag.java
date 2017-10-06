@@ -30,6 +30,12 @@ public class ModalHeaderTag extends AbstractTag {
         this.headingIcon = headingIcon;
     }
 
+    // headingIconOnly
+    protected Boolean headingIconOnly = new Boolean(false);
+    public void setHeadingIconOnly(Boolean headingIconOnly) {
+        this.headingIconOnly = headingIconOnly;
+    }
+
     // headingAs
     protected String headingAs = "h4";
     public void setHeadingAs(String headingAs) {
@@ -76,7 +82,7 @@ public class ModalHeaderTag extends AbstractTag {
                 addBeforeContent("<"+headingAs+" class=\"modal-title\" id=\""+modalId+"\">");
             }
             if (!ValueUtils.isEmpty(headingIcon)) {
-                String iconHTML = renderIcon(headingIcon);
+                String iconHTML = renderIcon(headingIcon, (headingIconOnly != null && headingIconOnly.booleanValue()));
                 addBeforeContent(iconHTML);
             }
             if (!ValueUtils.isEmpty(headingText)) {

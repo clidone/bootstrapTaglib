@@ -36,6 +36,12 @@ public class MediaTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // left image
     protected String leftImage = null;
     public void setLeftImage(String leftImage) {
@@ -126,7 +132,7 @@ public class MediaTag extends AbstractTag {
         addBeforeContent("<div class=\"media-body\">");
         addBeforeContent("<"+headingTag+" class=\"media-heading\">");
         if (!ValueUtils.isEmpty(icon)) {
-            String iconHTML = renderIcon(icon);
+            String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
             addBeforeContent(iconHTML);
         }
         addBeforeContent(heading);

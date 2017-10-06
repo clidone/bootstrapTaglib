@@ -23,6 +23,12 @@ public class IconTag extends AbstractTag {
         this.icon = icon;
     }
 
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -33,7 +39,7 @@ public class IconTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        String iconHTML = renderIcon(icon);
+        String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         addBeforeContent(iconHTML);
 
         return render();
