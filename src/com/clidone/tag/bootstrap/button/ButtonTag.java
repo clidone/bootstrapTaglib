@@ -24,16 +24,16 @@ public class ButtonTag extends AbstractTag {
         this.type = type;
     }
 
-    // size
-    protected String size = null;
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     // theme
     protected String theme = "default";
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+    // size
+    protected String size = null;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     // icon
