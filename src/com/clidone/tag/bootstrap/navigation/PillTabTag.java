@@ -34,22 +34,12 @@ public class PillTabTag extends AbstractTabTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        setTagName("ul");
+        setTagName("div");
 
-        addBeforeWrap("<nav>");
+        String justifiedClass = (justified != null && justified.booleanValue()) ? " nav-justified" : "";
+        String stackedClass   = (stacked != null && stacked.booleanValue())     ? " nav-stacked"   : "";
 
-        addClass("nav nav-pills");
-
-        if (justified != null && justified.booleanValue()) {
-            addClass("nav-justified");
-        }
-
-        if (stacked != null && stacked.booleanValue()) {
-            addClass("nav-stacked");
-        }
-
-        addAttribute("role", "tablist");
-
+        addBeforeContent("<ul class=\"nav nav-pills"+justifiedClass+stackedClass+"\" role=\"tablist\">");
         if (items != null) {
             TabItemData itemData = null;
             for (int i=0,len=items.size(); i<len; i++) {
@@ -63,21 +53,20 @@ public class PillTabTag extends AbstractTabTag {
                 String icon   = itemData.getIcon();
                 String active = itemData.getActive() ? " class=\"active\"" : "";
 
+                String iconHTML = "";
                 if (!ValueUtils.isEmpty(icon)) {
-                    icon = renderIcon(icon);
+                    iconHTML = renderIcon(icon);
                 }
 
                 addBeforeContent("<li role=\"presentation\""+active+">");
-                addBeforeContent(    "<a href=\"#"+id+"\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">"+icon+text+"</a>");
+                addBeforeContent(    "<a href=\"#"+id+"\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">"+iconHTML+text+"</a>");
                 addBeforeContent("</li>");
             }
         }
+        addBeforeContent("</ul>");
 
         addBeforeContent("<div class=\"tab-content\">");
-
         addAfterContent("</div>");
-
-        addAfterWrap("</nav>");
 
         return render();
     }
