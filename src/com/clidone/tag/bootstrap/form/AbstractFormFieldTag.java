@@ -140,6 +140,12 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         this.suffixAddon = suffixAddon;
     }
 
+    // simple
+    protected Boolean simple = null;
+    public void setSimple(Boolean simple) {
+        this.simple = simple;
+    }
+
     // **********************************************************************************
     //
     // Tag methods

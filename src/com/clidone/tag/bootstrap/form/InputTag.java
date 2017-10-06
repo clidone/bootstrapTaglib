@@ -60,7 +60,9 @@ public class InputTag extends AbstractFormFieldTag {
                 }
             }
 
-            renderWrap();
+            if (simple == null || (simple != null && !simple.booleanValue())) {
+                renderWrap();
+            }
         }
 
         return render();

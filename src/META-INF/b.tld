@@ -561,6 +561,7 @@
             [addonSize]: sm, lg;
             [prefixAddon]: ... or icon:...;
             [suffixAddon]: ... or icon:...;
+            [simple]: true, false;
         </description>
         <name>input</name>
         <tag-class>com.clidone.tag.bootstrap.form.InputTag</tag-class>
@@ -586,6 +587,7 @@
         <attribute> <name>addonSize</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>prefixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>suffixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>simple</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -609,6 +611,7 @@
             [static]: true, false;
             [size]: sm, lg;
             [help]: ...;
+            [simple]: true, false;
             [resize]: none, both, horizontal, vertical, inherit;
         </description>
         <name>textarea</name>
@@ -631,6 +634,7 @@
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>simple</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>resize</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
@@ -655,6 +659,7 @@
             [static]: true, false;
             [size]: sm, lg;
             [help]: ...;
+            [simple]: true, false;
             [items]: (list);
             [hasDefault]: true, false;
             [defaultValue]: (default '');
@@ -680,6 +685,7 @@
         <attribute> <name>static</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>simple</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>items</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>hasDefault</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>defaultValue</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -721,6 +727,7 @@
             [static]: true, false;
             [size]: sm, lg;
             [help]: ...;
+            [simple]: true, false;
         </description>
         <name>checkbox</name>
         <tag-class>com.clidone.tag.bootstrap.form.CheckboxTag</tag-class>
@@ -742,6 +749,7 @@
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>simple</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
@@ -765,6 +773,7 @@
             [static]: true, false;
             [size]: sm, lg;
             [help]: ...;
+            [simple]: true, false;
             [items]: (list);
             [valueKey]: ...;
             [textKey]: ...;
@@ -791,6 +800,7 @@
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>simple</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>items</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>valueKey</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>textKey</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -819,6 +829,7 @@
             [static]: true, false;
             [size]: sm, lg;
             [help]: ...;
+            [simple]: true, false;
             [items]: (list);
             [valueKey]: ...;
             [textKey]: ...;
@@ -845,6 +856,7 @@
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>simple</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>items</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>valueKey</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>textKey</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
