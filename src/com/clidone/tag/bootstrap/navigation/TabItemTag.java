@@ -19,7 +19,7 @@ public class TabItemTag extends AbstractTag {
     //
     // **********************************************************************************
     // default active flag
-    private boolean defaultActive = false;
+    private boolean isActive = false;
 
     // **********************************************************************************
     //
@@ -42,6 +42,12 @@ public class TabItemTag extends AbstractTag {
     protected String icon = null;
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    // active
+    protected Boolean active = null;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     // disabled
@@ -69,8 +75,9 @@ public class TabItemTag extends AbstractTag {
         AbstractTabTag tabTag = (AbstractTabTag) findAncestorWithClass(this, AbstractTabTag.class);
         if (tabTag != null) {
             // set default active flag
-            String active = tabTag.getActive();
-            defaultActive = (!ValueUtils.isEmpty(active) && active.equals(id));
+            String tabActive = tabTag.getActive();
+            isActive = (!ValueUtils.isEmpty(tabActive) && tabActive.equals(id)) ||
+                       (active != null && active.booleanValue());
 
             // register item data
             TabItemData itemData = new TabItemData();
@@ -78,7 +85,7 @@ public class TabItemTag extends AbstractTag {
             itemData.setText(text);
             itemData.setIcon(icon);
             itemData.setOrder(order);
-            itemData.setActive(defaultActive);
+            itemData.setActive(isActive);
             tabTag.addItem(itemData);
         }
 
@@ -107,7 +114,7 @@ public class TabItemTag extends AbstractTag {
 
         addClass("tab-pane");
 
-        if (defaultActive) {
+        if (isActive) {
             addClass("active");
         }
 
@@ -117,7 +124,7 @@ public class TabItemTag extends AbstractTag {
 
         if (tabTag.getFade() != null && tabTag.getFade().booleanValue()) {
             addClass("fade");
-            if (defaultActive) {
+            if (isActive) {
                 addClass("in");
             }
         }
