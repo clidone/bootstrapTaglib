@@ -1027,6 +1027,7 @@
             [text]: ...;
             [icon]: ...;
             [iconOnly]: true, false;
+            [url]: ...;
             [active]: true, false;
             [disabled]: true, false;
             [order]: 0, 1, 2...;
@@ -1038,6 +1039,7 @@
         <attribute> <name>text</name>     <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>order</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>

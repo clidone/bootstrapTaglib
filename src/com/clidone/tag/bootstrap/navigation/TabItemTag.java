@@ -50,6 +50,12 @@ public class TabItemTag extends AbstractTag {
         this.iconOnly = iconOnly;
     }
 
+    // url
+    protected String url = null;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     // active
     protected Boolean active = null;
     public void setActive(Boolean active) {
@@ -91,6 +97,7 @@ public class TabItemTag extends AbstractTag {
             itemData.setText(text);
             itemData.setIcon(icon);
             itemData.setIconOnly(iconOnly);
+            itemData.setUrl(url);
             itemData.setOrder(order);
             itemData.setActive(isActive);
             tabTag.addItem(itemData);

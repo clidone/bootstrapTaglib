@@ -52,6 +52,7 @@ public class PillTabTag extends AbstractTabTag {
                 String  text     = itemData.getText();
                 String  icon     = itemData.getIcon();
                 Boolean iconOnly = itemData.getIconOnly();
+                String  url      = itemData.getUrl();
                 String  active   = itemData.getActive() ? " class=\"active\"" : "";
 
                 String iconHTML = "";
@@ -60,7 +61,12 @@ public class PillTabTag extends AbstractTabTag {
                 }
 
                 addBeforeContent("<li role=\"presentation\""+active+">");
-                addBeforeContent(    "<a href=\"#"+id+"\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">"+iconHTML+text+"</a>");
+                if (ValueUtils.isEmpty(url)) {
+                    addBeforeContent("<a href=\"#"+id+"\" aria-controls=\""+id+"\" role=\"tab\" data-toggle=\"pill\">"+iconHTML+text+"</a>");
+                } else {
+                    String contextPath = super.getServletContext().getContextPath();
+                    addBeforeContent("<a href=\""+contextPath+url+"\" role=\"tab\">"+iconHTML+text+"</a>");
+                }
                 addBeforeContent("</li>");
             }
         }
