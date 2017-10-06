@@ -19,9 +19,9 @@ public class BreadcrumbLinkTag extends AbstractTag {
     //
     // **********************************************************************************
     // url
-    protected String uri = null;
-    public void setUri(String uri) {
-        this.uri = uri;
+    protected String url = null;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     // active
@@ -43,9 +43,9 @@ public class BreadcrumbLinkTag extends AbstractTag {
         setTagName("li");
 
         String contextPath = super.getServletContext().getContextPath();
-        String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
+        String urlValue = ValueUtils.isEmpty(url) ? "" : url;
         String activeStyle = (active != null && active.booleanValue()) ? "active" : "";
-        addBeforeContent("<a href=\""+contextPath+uriValue+"\" class=\""+activeStyle+"\">");
+        addBeforeContent("<a href=\""+contextPath+urlValue+"\" class=\""+activeStyle+"\">");
 
         addAfterContent("</a>");
 

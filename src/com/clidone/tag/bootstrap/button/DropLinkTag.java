@@ -19,9 +19,9 @@ public class DropLinkTag extends AbstractTag {
     //
     // **********************************************************************************
     // url
-    protected String uri = null;
-    public void setUri(String uri) {
-        this.uri = uri;
+    protected String url = null;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     // icon
@@ -59,8 +59,8 @@ public class DropLinkTag extends AbstractTag {
         }
 
         String contextPath = super.getServletContext().getContextPath();
-        String uriValue = ValueUtils.isEmpty(uri)  ? "" : uri;
-        addBeforeContent("<a href=\""+contextPath+uriValue+"\">");
+        String urlValue = ValueUtils.isEmpty(url) ? "" : url;
+        addBeforeContent("<a href=\""+contextPath+urlValue+"\">");
 
         String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
         addBeforeContent(iconHTML);

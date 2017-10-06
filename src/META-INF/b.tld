@@ -97,14 +97,14 @@
     <tag>
         <description>
             Anchor Tag
-            [uri]: ...;
+            [url]: ...;
             [icon]: ...;
             [iconOnly]: true, false;
         </description>
         <name>a</name>
         <tag-class>com.clidone.tag.bootstrap.AnchorTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
@@ -491,7 +491,7 @@
     <tag>
         <description>
             Drop Link Tag
-            [uri]: ...;
+            [url]: ...;
             [icon]: ...;
             [iconOnly]: true, false;
             [disabled]: true, false;
@@ -499,7 +499,7 @@
         <name>dropLink</name>
         <tag-class>com.clidone.tag.bootstrap.button.DropLinkTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
@@ -524,7 +524,7 @@
     <tag>
         <description>
             Link Tag
-            [uri]: ...;
+            [url]: ...;
             [theme]: default, primary, success, info, warning, danger, link;
             [size]: xs, sm, lg;
             [icon]: ...;
@@ -536,7 +536,7 @@
         <name>link</name>
         <tag-class>com.clidone.tag.bootstrap.button.LinkTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -975,13 +975,13 @@
     <tag>
         <description>
             Breadcrumb link Tag
-            [uri]: ...;
+            [url]: ...;
             [active]: true, false;
         </description>
         <name>breadcrumbLink</name>
         <tag-class>com.clidone.tag.bootstrap.BreadcrumbLinkTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>uri</name>    <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>url</name>    <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name> <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
