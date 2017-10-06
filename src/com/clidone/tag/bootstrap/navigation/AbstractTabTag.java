@@ -3,6 +3,8 @@ package com.clidone.tag.bootstrap.navigation;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.jsp.JspException;
+
 import com.clidone.tag.AbstractTag;
 
 /**
@@ -56,15 +58,30 @@ abstract class AbstractTabTag extends AbstractTag {
     //
     // **********************************************************************************
     /**
+     * @see AbstractTag#doStartTagV2()
+     */
+    @Override
+    protected int doStartTagV2() throws JspException {
+        items = new ArrayList<TabItemData>();
+
+        return super.doStartTagV2();
+    }
+
+    /**
+     * @see AbstractTag#doStartTagV3()
+     */
+    @Override
+    protected int doStartTagV3() throws JspException {
+        return doStartTagV2();
+    }
+
+    /**
      * Add item tag data
      * @param itemData column data
      */
     public void addItem(TabItemData itemData) {
         if (itemData == null) {
             return;
-        }
-        if (items == null) {
-            items = new ArrayList<TabItemData>();
         }
         items.add(itemData);
     }
