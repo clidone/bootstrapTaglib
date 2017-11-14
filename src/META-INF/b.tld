@@ -244,7 +244,7 @@
             [close]: true, false;
         </description>
         <name>modalHeader</name>
-        <tag-class>com.clidone.tag.bootstrap.WellTag</tag-class>
+        <tag-class>com.clidone.tag.bootstrap.ModalHeaderTag</tag-class>
         <body-content>JSP</body-content>
         <attribute> <name>headingText</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>headingIcon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
