@@ -12,6 +12,14 @@ public final class ValueUtils {
      * Validate value is empty or not
      * @return true: empty, false: not empty
      */
+    public final static boolean isEmpty(Object value) {
+        return (value == null);
+    }
+
+    /**
+     * Validate value is empty or not
+     * @return true: empty, false: not empty
+     */
     public final static boolean isEmpty(String value) {
         return (value == null || value.length() == 0);
     }

@@ -81,7 +81,7 @@ public class ChooseTag extends AbstractTag {
             for (int i=0,len=data.size(); i<len; i++) {
                 keyValue = (KeyValue) data.get(i);
                 if (value.equals(keyValue.getKey())) {
-                    matchValue = keyValue.getValue();
+                    matchValue = String.valueOf(keyValue.getValue());
                     break;
                 }
             }

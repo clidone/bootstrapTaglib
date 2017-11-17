@@ -103,8 +103,8 @@ public class RadioListTag extends AbstractFormFieldTag {
                     continue;
                 }
 
-                filedValue   = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
-                filedText    = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
+                filedValue   = ValueUtils.isEmpty(keyValue.getKey())   ? "" : String.valueOf(keyValue.getKey());
+                filedText    = ValueUtils.isEmpty(keyValue.getValue()) ? "" : String.valueOf(keyValue.getValue());
                 fieldChecked = !isChcked(filedValue)                   ? "" : " checked=\"checked\"";
 
                 addBeforeContent("<label class=\"radio-inline\">");

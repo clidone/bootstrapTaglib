@@ -73,9 +73,9 @@ public class SelectTag extends AbstractFormFieldTag {
                         continue;
                     }
 
-                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
+                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : String.valueOf(keyValue.getKey());
                     if (isChcked(optionValue)) {
-                        String optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
+                        String optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : String.valueOf(keyValue.getValue());
                         addBeforeContent(optionLabel);
                         isMatch = true;
                     }
@@ -108,8 +108,8 @@ public class SelectTag extends AbstractFormFieldTag {
                         continue;
                     }
 
-                    optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
-                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
+                    optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : String.valueOf(keyValue.getValue());
+                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : String.valueOf(keyValue.getKey());
 
                     if (isChcked(optionValue)) {
                         optionSelected = " selected=\"selected\"";

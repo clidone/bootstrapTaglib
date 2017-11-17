@@ -103,8 +103,8 @@ public class CheckboxListTag extends AbstractFormFieldTag {
                     continue;
                 }
 
-                filedLabel   = ValueUtils.isEmpty(keyValue.getValue()) ? "" : keyValue.getValue();
-                filedValue   = ValueUtils.isEmpty(keyValue.getKey())   ? "" : keyValue.getKey();
+                filedLabel   = ValueUtils.isEmpty(keyValue.getValue()) ? "" : String.valueOf(keyValue.getValue());
+                filedValue   = ValueUtils.isEmpty(keyValue.getKey())   ? "" : String.valueOf(keyValue.getKey());
                 fieldChecked = !isChcked(filedValue)                   ? "" : " checked=\"checked\"";
 
                 addBeforeContent("<label class=\"checkbox-inline\">");

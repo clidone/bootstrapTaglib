@@ -7,20 +7,20 @@ package com.clidone.tag.data;
 public class KeyValue {
 
     // key
-    private String key = null;
-    public String getKey() {
+    private Object key = null;
+    public Object getKey() {
         return key;
     }
-    public void setKey(String key) {
+    public void setKey(Object key) {
         this.key = key;
     }
 
     // value
-    private String value = null;
-    public String getValue() {
+    private Object value = null;
+    public Object getValue() {
         return value;
     }
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 
@@ -35,7 +35,7 @@ public class KeyValue {
      * @param key Key
      * @param value Value
      */
-    public KeyValue(String key, String value) {
+    public KeyValue(Object key, Object value) {
         this.key   = key;
         this.value = value;
     }
@@ -45,6 +45,6 @@ public class KeyValue {
      */
     @Override
     public String toString() {
-        return "Key: " + key + "    Value: " + value;
+        return "Key: " + String.valueOf(key) + "    Value: " + String.valueOf(value);
     }
 }

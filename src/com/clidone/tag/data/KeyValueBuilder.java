@@ -23,7 +23,7 @@ public class KeyValueBuilder {
      * @param data key:value array
      * @return key value list
      */
-    public static List<KeyValue> build(String[][] data) {
+    public static List<KeyValue> build(Object[][] data) {
         if (data == null) {
             return new ArrayList<KeyValue>();
         }
