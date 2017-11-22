@@ -3,26 +3,20 @@ package com.clidone.tag.bootstrap;
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
-import com.clidone.tag.ValueUtils;
 
 /**
- * <strong>Panel tag</strong>
+ * <strong>PanelBody tag</strong>
  * @author wuhuaxia
  */
-public class PanelTag extends AbstractTag {
+public class PanelBodyTag extends AbstractTag {
 
-    private static final long serialVersionUID = -4271492475408010177L;
+    private static final long serialVersionUID = 5722607702430542306L;
 
     // **********************************************************************************
     //
     // Tag attributes
     //
     // **********************************************************************************
-    // theme
-    protected String theme = "default";
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
 
     // **********************************************************************************
     //
@@ -36,10 +30,7 @@ public class PanelTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("div");
 
-        addClass("panel");
-        if (!ValueUtils.isEmpty(theme)) {
-            addClass("panel-"+theme);
-        }
+        addClass("panel-body");
 
         return render();
     }
