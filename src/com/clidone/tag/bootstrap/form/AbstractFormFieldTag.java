@@ -266,7 +266,7 @@ abstract class AbstractFormFieldTag extends AbstractTag {
 
         String addOnHTML = null;
         if (addOn.startsWith("icon:")) {
-            addOnHTML = renderIcon(addOn.replace("icon:", ""), false);
+            addOnHTML = renderIcon(addOn.replace("icon:", ""), true);
         } else {
             addOnHTML = addOn;
         }
