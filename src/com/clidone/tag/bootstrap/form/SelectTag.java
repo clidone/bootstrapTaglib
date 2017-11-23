@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.ValueUtils;
-import com.clidone.tag.data.KeyValue;
 
 /**
  * <strong>Select tag</strong>
@@ -58,24 +57,29 @@ public class SelectTag extends AbstractFormFieldTag {
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
 
+        Object item  = null;
+        Object itemKey = null;
+        Object itemValue = null;
+
         if (formStatic || fieldStatic) {
             setTagName("p");
             addClass("form-control-static");
 
             boolean isMatch = false;
             if (items != null) {
-                KeyValue keyValue  = null;
                 String optionValue = null;
 
                 for (int i=0,len=items.size(); i<len; i++) {
-                    keyValue = (KeyValue) items.get(i);
-                    if (keyValue == null) {
+                    item = items.get(i);
+                    if (item == null) {
                         continue;
                     }
+                    itemKey = ValueUtils.get(item, "key");
+                    itemValue = ValueUtils.get(item, "value");
 
-                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : String.valueOf(keyValue.getKey());
+                    optionValue = ValueUtils.isEmpty(itemKey) ? "" : String.valueOf(itemKey);
                     if (isChcked(optionValue)) {
-                        String optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : String.valueOf(keyValue.getValue());
+                        String optionLabel = ValueUtils.isEmpty(itemValue) ? "" : String.valueOf(itemValue);
                         addBeforeContent(optionLabel);
                         isMatch = true;
                     }
@@ -97,19 +101,19 @@ public class SelectTag extends AbstractFormFieldTag {
             }
 
             if (items != null) {
-                KeyValue keyValue     = null;
                 String optionLabel    = null;
                 String optionValue    = null;
                 String optionSelected = null;
 
                 for (int i=0,len=items.size(); i<len; i++) {
-                    keyValue = (KeyValue) items.get(i);
-                    if (keyValue == null) {
+                    if (item == null) {
                         continue;
                     }
+                    itemKey = ValueUtils.get(item, "key");
+                    itemValue = ValueUtils.get(item, "value");
 
-                    optionLabel = ValueUtils.isEmpty(keyValue.getValue()) ? "" : String.valueOf(keyValue.getValue());
-                    optionValue = ValueUtils.isEmpty(keyValue.getKey())   ? "" : String.valueOf(keyValue.getKey());
+                    optionLabel = ValueUtils.isEmpty(itemValue) ? "" : String.valueOf(itemValue);
+                    optionValue = ValueUtils.isEmpty(itemKey)   ? "" : String.valueOf(itemKey);
 
                     if (isChcked(optionValue)) {
                         optionSelected = " selected=\"selected\"";

@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
-import com.clidone.tag.data.KeyValue;
+import com.clidone.tag.ValueUtils;
 
 /**
  * <strong>Choose tag</strong>
@@ -69,29 +69,27 @@ public class ChooseTag extends AbstractTag {
         String matchKey   = String.valueOf(value);
         String matchValue = noMatch;
 
-        if (items == null) {
-            return EVAL_BODY_BUFFERED;
-        }
-
-        if (items instanceof Map<?, ?>) {
-            Map<?, ?> data = (Map<?, ?>) items;
-            if (data.containsKey(value)) {
-                matchValue = String.valueOf(data.get(value));
-            }
-
-        } else if (items instanceof List<?>) {
-            List<?> data = (List<?>) items;
-            KeyValue keyValue = null;
-            for (int i=0,len=data.size(); i<len; i++) {
-                keyValue = (KeyValue) data.get(i);
-                if (value.equals(keyValue.getKey())) {
-                    matchValue = String.valueOf(keyValue.getValue());
-                    break;
+        if (items != null) {
+            if (items instanceof Map<?, ?>) {
+                Map<?, ?> data = (Map<?, ?>) items;
+                if (data.containsKey(value)) {
+                    matchValue = String.valueOf(data.get(value));
                 }
-            }
 
-        } else {
-            throw new JspException("Choose tag 'items' attribute not support.");
+            } else if (items instanceof List<?>) {
+                List<?> data = (List<?>) items;
+                Object item = null;
+                for (int i=0,len=data.size(); i<len; i++) {
+                    item = data.get(i);
+                    if (value.equals(String.valueOf(ValueUtils.get(item, "key")))) {
+                        matchValue = String.valueOf(ValueUtils.get(item, "value"));
+                        break;
+                    }
+                }
+
+            } else {
+                throw new JspException("Choose tag 'items' attribute not support.");
+            }
         }
 
         pageContext.setAttribute(varKey,   matchKey);
