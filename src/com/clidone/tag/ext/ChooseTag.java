@@ -69,6 +69,10 @@ public class ChooseTag extends AbstractTag {
         String matchKey   = String.valueOf(value);
         String matchValue = noMatch;
 
+        if (items == null) {
+            return EVAL_BODY_BUFFERED;
+        }
+
         if (items instanceof Map<?, ?>) {
             Map<?, ?> data = (Map<?, ?>) items;
             if (data.containsKey(value)) {
@@ -87,7 +91,7 @@ public class ChooseTag extends AbstractTag {
             }
 
         } else {
-            throw new JspException("Choose tag 'data' attribute not support.");
+            throw new JspException("Choose tag 'items' attribute not support.");
         }
 
         pageContext.setAttribute(varKey,   matchKey);
