@@ -655,7 +655,7 @@
         <attribute> <name>static</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>type</name>        <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>type</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>addonSize</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>prefixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>suffixAddon</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
