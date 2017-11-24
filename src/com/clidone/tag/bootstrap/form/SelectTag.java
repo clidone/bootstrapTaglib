@@ -106,6 +106,7 @@ public class SelectTag extends AbstractFormFieldTag {
                 String optionSelected = null;
 
                 for (int i=0,len=items.size(); i<len; i++) {
+                    item = items.get(i);
                     if (item == null) {
                         continue;
                     }
