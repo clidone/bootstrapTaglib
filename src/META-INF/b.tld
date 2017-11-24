@@ -800,6 +800,7 @@
             [size]: sm, lg;
             [help]: ...;
             [simple]: true, false;
+            [submitValue]: ...;
         </description>
         <name>checkbox</name>
         <tag-class>com.clidone.tag.bootstrap.form.CheckboxTag</tag-class>
@@ -822,6 +823,7 @@
         <attribute> <name>size</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>simple</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>submitValue</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 

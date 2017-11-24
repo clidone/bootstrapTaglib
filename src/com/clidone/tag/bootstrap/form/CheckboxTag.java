@@ -17,6 +17,11 @@ public class CheckboxTag extends AbstractFormFieldTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // submitValue
+    protected String submitValue = null;
+    public void setSubmitValue(String submitValue) {
+        this.submitValue = submitValue;
+    }
 
     // **********************************************************************************
     //
@@ -40,8 +45,13 @@ public class CheckboxTag extends AbstractFormFieldTag {
             addAttribute("readonly", "readonly");
         }
 
-        if (value != null) {
-            addAttribute("value", String.valueOf(value));
+        if (submitValue != null) {
+            addAttribute("value", String.valueOf(submitValue));
+            if (value != null) {
+                if (String.valueOf(value).equals(String.valueOf(submitValue))) {
+                    addAttribute("checked", "checked");
+                }
+            }
         }
 
         addBeforeWrap("<div class=\"checkbox\">");
