@@ -34,8 +34,6 @@ public class CheckboxTag extends AbstractFormFieldTag {
 
         setTagName("input");
 
-        addClass("form-control");
-
         addAttribute("type", "checkbox");
 
         if (formStatic || fieldStatic) {
