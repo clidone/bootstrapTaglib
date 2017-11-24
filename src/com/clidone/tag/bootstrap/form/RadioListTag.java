@@ -49,13 +49,13 @@ public class RadioListTag extends AbstractFormFieldTag {
     }
 
     // valueKey
-    protected String valueKey = null;
+    protected String valueKey = "key";
     public void setValueKey(String valueKey) {
         this.valueKey = valueKey;
     }
 
     // textKey
-    protected String textKey = null;
+    protected String textKey = "value";
     public void setTextKey(String textKey) {
         this.textKey = textKey;
     }
