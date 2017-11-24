@@ -16,7 +16,7 @@ public class InputTag extends AbstractFormFieldTag {
     //
     // **********************************************************************************
     // type
-    protected String type = null;
+    protected String type = "text";
     public void setType(String type) {
         this.type = type;
     }
