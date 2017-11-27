@@ -1,6 +1,7 @@
 package com.clidone.tag;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * <strong>Value Data Utils</strong>
@@ -77,21 +78,40 @@ public final class ValueUtils {
 
         Object value = null;
 
-        try {
-            Method[] methods = item.getClass().getMethods();
-            if (methods != null) {
-                String getter = buildGetter(key);
-                for (int i=0,len=methods.length; i<len; i++) {
-                    if (getter.equals(methods[i].getName())) {
-                        value = methods[i].invoke(item);
-                        break;
+        if (item instanceof Map) {
+            try {
+                Method[] methods = item.getClass().getMethods();
+                if (methods != null) {
+                    for (int i=0,len=methods.length; i<len; i++) {
+                        if ("get".equals(methods[i].getName())) {
+                            value = methods[i].invoke(item, key);
+                            break;
+                        }
                     }
                 }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                value = "";
             }
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            value = "";
+        } else {
+            try {
+                Method[] methods = item.getClass().getMethods();
+                if (methods != null) {
+                    String getter = buildGetter(key);
+                    for (int i=0,len=methods.length; i<len; i++) {
+                        if (getter.equals(methods[i].getName())) {
+                            value = methods[i].invoke(item);
+                            break;
+                        }
+                    }
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                value = "";
+            }
         }
 
         return value;
