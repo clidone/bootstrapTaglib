@@ -742,6 +742,8 @@
             [simple]: true, false;
             [disabled]: true, false;
             [items]: (list);
+            [valueKey]: ...;
+            [labelKey]: ...;
             [hasDefault]: true, false;
             [defaultValue]: (default '');
             [defaultText]: (default '');
@@ -767,8 +769,10 @@
         <attribute> <name>size</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>help</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>simple</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>disabled</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>disabled</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>items</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>valueKey</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>labelKey</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>hasDefault</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>defaultValue</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>defaultText</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
