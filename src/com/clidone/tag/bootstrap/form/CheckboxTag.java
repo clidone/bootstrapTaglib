@@ -41,8 +41,12 @@ public class CheckboxTag extends AbstractFormFieldTag {
 
         addAttribute("type", "checkbox");
 
-        if (formStatic || fieldStatic) {
+        if (formStatic || fieldStatic || (readonly != null && readonly.booleanValue())) {
             addAttribute("readonly", "readonly");
+        }
+
+        if (disabled != null && disabled.booleanValue()) {
+            addAttribute("disabled", "disabled");
         }
 
         if (submitValue != null) {

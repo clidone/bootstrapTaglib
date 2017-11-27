@@ -65,6 +65,14 @@ public class TextareaTag extends AbstractFormFieldTag {
             if (value != null) {
                 addBeforeContent(String.valueOf(value));
             }
+
+            if (readonly != null && readonly.booleanValue()) {
+                addAttribute("readonly", "readonly");
+            }
+
+            if (disabled != null && disabled.booleanValue()) {
+                addAttribute("disabled", "disabled");
+            }
         }
 
         if (simple == null || (simple != null && !simple.booleanValue())) {

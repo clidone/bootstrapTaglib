@@ -92,10 +92,11 @@ public class RadioListTag extends AbstractFormFieldTag {
 
             String filedName = ValueUtils.isEmpty(super.name) ? "" : name;
 
-            FormTag formTag      = (FormTag) findAncestorWithClass(this, FormTag.class);
-            boolean formStatic   = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
-            boolean fieldStatic  = (staticFlag != null && staticFlag.booleanValue());
-            String filedReadonly = (formStatic || fieldStatic) ? " readonly=\"readonly\"" : "";
+            FormTag formTag       = (FormTag) findAncestorWithClass(this, FormTag.class);
+            boolean formStatic    = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
+            boolean fieldStatic   = (staticFlag != null && staticFlag.booleanValue());
+            String  fieldReadonly = (formStatic || fieldStatic || readonly != null && readonly.booleanValue()) ? " readonly=\"readonly\"" : "";
+            String  fieldDisabled = (disabled != null && disabled.booleanValue()) ? " disabled=\"disabled\"" : "";
 
             for (int i=0,len=items.size(); i<len; i++) {
                 keyValue = (KeyValue) items.get(i);
@@ -108,7 +109,7 @@ public class RadioListTag extends AbstractFormFieldTag {
                 fieldChecked = !isChcked(filedValue)                   ? "" : " checked=\"checked\"";
 
                 addBeforeContent("<label class=\"radio-inline\">");
-                addBeforeContent(    "<input type=\"radio\" name=\""+filedName+"\" value=\""+filedValue+"\""+filedReadonly+fieldChecked+">" + filedText);
+                addBeforeContent(    "<input type=\"radio\" name=\""+filedName+"\" value=\""+filedValue+"\""+fieldReadonly+fieldDisabled+fieldChecked+">" + filedText);
                 addBeforeContent("</label>");
             }
         }

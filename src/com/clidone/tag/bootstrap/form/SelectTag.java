@@ -94,6 +94,10 @@ public class SelectTag extends AbstractFormFieldTag {
             setTagName("select");
             addClass("form-control");
 
+            if (disabled != null && disabled.booleanValue()) {
+                addAttribute("disabled", "disabled");
+            }
+
             if (hasDefault != null && hasDefault.booleanValue()) {
                 addBeforeContent("<option value=\""+defaultValue+"\">");
                 addBeforeContent(defaultText);

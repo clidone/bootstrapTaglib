@@ -146,6 +146,18 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         this.simple = simple;
     }
 
+    // readonly
+    protected Boolean readonly = null;
+    public void setReadonly(Boolean readonly) {
+        this.readonly = readonly;
+    }
+
+    // disabled
+    protected Boolean disabled = null;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
     // **********************************************************************************
     //
     // Tag methods

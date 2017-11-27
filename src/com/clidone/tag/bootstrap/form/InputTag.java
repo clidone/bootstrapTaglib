@@ -53,10 +53,21 @@ public class InputTag extends AbstractFormFieldTag {
 
             } else {
                 setTagName("input");
+
                 addClass("form-control");
+
                 addAttribute("type", type);
+
                 if (value != null) {
                     addAttribute("value", String.valueOf(value));
+                }
+
+                if (readonly != null && readonly.booleanValue()) {
+                    addAttribute("readonly", "readonly");
+                }
+
+                if (disabled != null && disabled.booleanValue()) {
+                    addAttribute("disabled", "disabled");
                 }
             }
 
