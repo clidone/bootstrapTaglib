@@ -28,8 +28,12 @@ public class TableRowTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        setTagName("tr");
-        return render();
+        TableTag tableTag = (TableTag) findAncestorWithClass(this, TableTag.class);
+        if (tableTag != null && tableTag.hasData()) {
+            setTagName("tr");
+            return render();
+        }
+        return "";
     }
 
     /**

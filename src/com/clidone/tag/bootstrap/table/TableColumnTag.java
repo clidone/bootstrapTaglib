@@ -59,8 +59,12 @@ public class TableColumnTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        setTagName("td");
-        return render();
+        TableTag tableTag = (TableTag) findAncestorWithClass(this, TableTag.class);
+        if (tableTag != null && tableTag.hasData()) {
+            setTagName("td");
+            return render();
+        }
+        return "";
     }
 
     /**

@@ -40,6 +40,9 @@ public class TableTag extends AbstractTag {
     // After first time render body content, this flag will set false, and no more collection
     private boolean shouldCollectColumn = true;
 
+    // No Record conent
+    private String noRecordContent = null;
+
     // **********************************************************************************
     //
     // Tag attributes
@@ -147,11 +150,9 @@ public class TableTag extends AbstractTag {
                 pageContext.removeAttribute(var);
             }
             pageContext.setAttribute(var, item);
-
-            return EVAL_BODY_BUFFERED;
-        } else {
-            return SKIP_BODY;
         }
+
+        return EVAL_BODY_BUFFERED;
     }
 
     /**
@@ -253,6 +254,12 @@ public class TableTag extends AbstractTag {
         addBeforeContent("<tbody>");
         addAfterContent("</tbody>");
 
+        // set No record content
+        if (noRecordContent != null) {
+            int colspan = (columns != null) ? columns.size() : 1;
+            addBeforeContent("<tr><td colspan=\""+colspan+"\">"+noRecordContent+"</td></tr>");
+        }
+
         // footer
         if (footer != null && footer.booleanValue()) {
             addAfterContent("<tfoot>");
@@ -310,6 +317,14 @@ public class TableTag extends AbstractTag {
      */
     public boolean hasData() {
         return hasData;
+    }
+
+    /**
+     * Set No record content
+     * @param noRecordContent No record content
+     */
+    public void setNoRecordContent(String noRecordContent) {
+        this.noRecordContent = noRecordContent;
     }
 
     /**

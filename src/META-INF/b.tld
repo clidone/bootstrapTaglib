@@ -1139,8 +1139,8 @@
         <name>table</name>
         <tag-class>com.clidone.tag.bootstrap.table.TableTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>var</name>        <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>items</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>var</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>items</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>caption</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>

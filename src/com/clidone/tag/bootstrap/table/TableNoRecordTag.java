@@ -38,8 +38,11 @@ public class TableNoRecordTag extends AbstractTag {
         }
 
         setTagName("div");
+        String noRecordContent = render();
 
-        return render();
+        tableTag.setNoRecordContent(noRecordContent);
+
+        return "";
     }
 
     /**
