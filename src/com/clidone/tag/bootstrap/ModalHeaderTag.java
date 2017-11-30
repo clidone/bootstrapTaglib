@@ -18,28 +18,28 @@ public class ModalHeaderTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
-    // headingText
-    protected String headingText = null;
-    public void setHeadingText(String headingText) {
-        this.headingText = headingText;
+    // text
+    protected String text = null;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    // headingIcon
-    protected String headingIcon = null;
-    public void setHeadingIcon(String headingIcon) {
-        this.headingIcon = headingIcon;
+    // icon
+    protected String icon = null;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    // headingIconOnly
-    protected Boolean headingIconOnly = new Boolean(false);
-    public void setHeadingIconOnly(Boolean headingIconOnly) {
-        this.headingIconOnly = headingIconOnly;
+    // iconOnly
+    protected Boolean iconOnly = new Boolean(false);
+    public void setIconOnly(Boolean iconOnly) {
+        this.iconOnly = iconOnly;
     }
 
     // headingAs
-    protected String headingAs = "h4";
-    public void setHeadingAs(String headingAs) {
-        this.headingAs = headingAs;
+    protected String as = "h4";
+    public void setAs(String as) {
+        this.as = as;
     }
 
     // close
@@ -74,22 +74,22 @@ public class ModalHeaderTag extends AbstractTag {
             addBeforeContent("</button>");
         }
 
-        boolean hasHeadingAs   = !ValueUtils.isEmpty(headingAs);
-        boolean hasHeadingIcon = !ValueUtils.isEmpty(headingIcon);
-        boolean hasHeadingText = !ValueUtils.isEmpty(headingText);
+        boolean hasHeadingAs   = !ValueUtils.isEmpty(as);
+        boolean hasHeadingIcon = !ValueUtils.isEmpty(icon);
+        boolean hasHeadingText = !ValueUtils.isEmpty(text);
         if (hasHeadingAs || hasHeadingIcon || hasHeadingText) {
             if (hasHeadingAs) {
-                addBeforeContent("<"+headingAs+" class=\"modal-title\" id=\""+modalId+"\">");
+                addBeforeContent("<"+as+" class=\"modal-title\" id=\""+modalId+"Label\">");
             }
-            if (!ValueUtils.isEmpty(headingIcon)) {
-                String iconHTML = renderIcon(headingIcon, (headingIconOnly != null && headingIconOnly.booleanValue()));
+            if (!ValueUtils.isEmpty(icon)) {
+                String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
                 addBeforeContent(iconHTML);
             }
-            if (!ValueUtils.isEmpty(headingText)) {
-                addBeforeContent(headingText);
+            if (!ValueUtils.isEmpty(text)) {
+                addBeforeContent(text);
             }
             if (hasHeadingAs) {
-                addBeforeContent("</"+headingAs+">");
+                addBeforeContent("</"+as+">");
             }
         }
 

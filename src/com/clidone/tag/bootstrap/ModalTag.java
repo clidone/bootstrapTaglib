@@ -1,5 +1,7 @@
 package com.clidone.tag.bootstrap;
 
+import java.util.UUID;
+
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.AbstractTag;
@@ -57,11 +59,13 @@ public class ModalTag extends AbstractTag {
         if (fade != null && fade.booleanValue()) {
             addClass("fade");
         }
+        if (ValueUtils.isEmpty(id)) {
+            id = UUID.randomUUID().toString();
+        }
+        addAttribute("id", id);
+        addAttribute("aria-labelledby", id+"Label");
         addAttribute("tabindex", "-1");
         addAttribute("role", "dialog");
-        if (!ValueUtils.isEmpty(id)) {
-            addAttribute("aria-labelledby", id);
-        }
 
         addBeforeContent("<div class=\"modal-dialog"+modalSize+"\" role=\"document\" aria-hidden=\"true\">");
         addBeforeContent(    "<div class=\"modal-content\">");

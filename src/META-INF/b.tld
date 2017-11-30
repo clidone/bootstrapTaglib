@@ -237,20 +237,20 @@
     <tag>
         <description>
             ModalHeader Tag
-            [headingText]: ...;
-            [headingIcon]: ...;
-            [headingIconOnly]: true, false;
-            [headingAs]: h1, h2, h3, h4, h5, h6;
+            [text]: ...;
+            [icon]: ...;
+            [iconOnly]: true, false;
+            [as]: h1, h2, h3, h4, h5, h6;
             [close]: true, false;
         </description>
         <name>modalHeader</name>
         <tag-class>com.clidone.tag.bootstrap.ModalHeaderTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>headingText</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingIcon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingIconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>headingAs</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
-        <attribute> <name>close</name>           <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>as</name>       <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>close</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
