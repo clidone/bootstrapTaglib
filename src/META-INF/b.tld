@@ -1123,6 +1123,7 @@
     <tag>
         <description>
             Table Tag
+            [id]: ...;
             [var]: ...;
             [items]: (list, map);
             [caption]: ...;
@@ -1139,6 +1140,7 @@
         <name>table</name>
         <tag-class>com.clidone.tag.bootstrap.table.TableTag</tag-class>
         <body-content>JSP</body-content>
+        <attribute> <name>id</name>         <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>var</name>        <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>items</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>caption</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>

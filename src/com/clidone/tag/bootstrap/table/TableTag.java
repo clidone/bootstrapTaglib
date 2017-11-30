@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.jsp.JspException;
 
@@ -48,6 +49,12 @@ public class TableTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // id
+    protected String id = null;
+    public void setId(String id) {
+        this.id = id;
+    }
+
     // var
     protected String var = null;
     public void setVar(String var) throws JspException {
@@ -205,6 +212,15 @@ public class TableTag extends AbstractTag {
 
         addClass("table");
 
+        if (ValueUtils.isEmpty(id)) {
+            id = UUID.randomUUID().toString();
+        }
+        String tableHeadId = id + "Head";
+        String tableBodyId = id + "Body";
+        String tableFootId = id + "Foot";
+
+        addAttribute("id", id);
+
         // table caption
         String captionContent = "";
         if (!ValueUtils.isEmpty(icon)) {
@@ -237,7 +253,7 @@ public class TableTag extends AbstractTag {
 
         // render header
         if (header != null && header.booleanValue()) {
-            addBeforeContent("<thead>");
+            addBeforeContent("<thead id=\""+tableHeadId+"\">");
             if (columns != null) {
                 addBeforeContent("<tr>");
                 for (int i=0,len=columns.size(); i<len; i++) {
@@ -251,7 +267,7 @@ public class TableTag extends AbstractTag {
         }
 
         // render body and data
-        addBeforeContent("<tbody>");
+        addBeforeContent("<tbody id=\""+tableBodyId+"\">");
         addAfterContent("</tbody>");
 
         // set No record content
@@ -262,7 +278,7 @@ public class TableTag extends AbstractTag {
 
         // footer
         if (footer != null && footer.booleanValue()) {
-            addAfterContent("<tfoot>");
+            addAfterContent("<tfoot id=\""+tableFootId+"\">");
             if (columns != null) {
                 addAfterContent("<tr>");
                 for (int i=0,len=columns.size(); i<len; i++) {
