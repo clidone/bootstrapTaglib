@@ -1,6 +1,10 @@
 package com.clidone.tag.bootstrap.form;
 
+import java.util.UUID;
+
 import javax.servlet.jsp.JspException;
+
+import com.clidone.tag.ValueUtils;
 
 /**
  * <strong>Input tag</strong>
@@ -35,12 +39,23 @@ public class InputTag extends AbstractFormFieldTag {
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
 
+        if (ValueUtils.isEmpty(fieldId)) {
+            fieldId = UUID.randomUUID().toString();
+        }
+        if (ValueUtils.isEmpty(name)) {
+            name = "";
+        }
+
         if ("hidden".equals(type)) {
             setTagName("input");
             addAttribute("type", type);
+            addAttribute("id",   fieldId);
             addAttribute("name", name);
             if (value != null) {
                 addAttribute("value", String.valueOf(value));
+            }
+            if (disabled != null && disabled.booleanValue()) {
+                addAttribute("disabled", "disabled");
             }
 
         } else {
@@ -53,19 +68,16 @@ public class InputTag extends AbstractFormFieldTag {
 
             } else {
                 setTagName("input");
-
                 addClass("form-control");
-
                 addAttribute("type", type);
-
+                addAttribute("id",   fieldId);
+                addAttribute("name", name);
                 if (value != null) {
                     addAttribute("value", String.valueOf(value));
                 }
-
                 if (readonly != null && readonly.booleanValue()) {
                     addAttribute("readonly", "readonly");
                 }
-
                 if (disabled != null && disabled.booleanValue()) {
                     addAttribute("disabled", "disabled");
                 }

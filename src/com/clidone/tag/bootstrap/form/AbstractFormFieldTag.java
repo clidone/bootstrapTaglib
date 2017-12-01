@@ -20,6 +20,13 @@ abstract class AbstractFormFieldTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // id
+    protected String fieldId = null;
+    public void setId(String id) {
+        super.setId(id);
+        this.fieldId = id;
+    }
+
     // name
     protected String name = null;
     public void setName(String name) {

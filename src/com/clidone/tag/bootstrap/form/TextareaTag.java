@@ -1,5 +1,7 @@
 package com.clidone.tag.bootstrap.form;
 
+import java.util.UUID;
+
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.ValueUtils;
@@ -54,9 +56,17 @@ public class TextareaTag extends AbstractFormFieldTag {
             }
 
         } else {
-            setTagName("textarea");
+            if (ValueUtils.isEmpty(fieldId)) {
+                fieldId = UUID.randomUUID().toString();
+            }
+            if (ValueUtils.isEmpty(name)) {
+                name = "";
+            }
 
+            setTagName("textarea");
             addClass("form-control");
+            addAttribute("id",   fieldId);
+            addAttribute("name", name);
 
             if (!ValueUtils.isEmpty(resize)) {
                 addStyle("resize", resize);

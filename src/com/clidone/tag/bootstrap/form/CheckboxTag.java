@@ -1,5 +1,7 @@
 package com.clidone.tag.bootstrap.form;
 
+import java.util.UUID;
+
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.ValueUtils;
@@ -37,9 +39,17 @@ public class CheckboxTag extends AbstractFormFieldTag {
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
 
-        setTagName("input");
+        if (ValueUtils.isEmpty(fieldId)) {
+            fieldId = UUID.randomUUID().toString();
+        }
+        if (ValueUtils.isEmpty(name)) {
+            name = "";
+        }
 
+        setTagName("input");
         addAttribute("type", "checkbox");
+        addAttribute("id",   fieldId);
+        addAttribute("name", name);
 
         if (formStatic || fieldStatic || (readonly != null && readonly.booleanValue())) {
             addAttribute("readonly", "readonly");
