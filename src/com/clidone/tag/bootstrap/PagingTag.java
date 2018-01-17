@@ -70,66 +70,59 @@ public class PagingTag extends AbstractTag {
         html.append("<ul class=\"pagination pagination-sm\">");
 
         // First page
-        if (currentPage == 1) {
-            html.append("<li class=\"disabled\"><span>&laquo;</span></li>");
-        } else {
-            html.append("<li><a href="+buildHref(1L)+"><span>&laquo;</span></a></li>");
-        }
+        buildPage(html, 1L);
 
+        // Middle pages
         long totalPages = getTotalPages();
-        // Too many pages
-        if (totalPages >= 10) {
-            currentPage = (Long) (currentPage / 10);
-            long startPage = currentPage * 10;
-            long endPage   = startPage + 9;
+        if (totalPages > 10) {
+            Long startPage = 0L;
+            Long endPage   = 0L;
 
-            // 不能大于最大页数
-            if (endPage > totalPages) {
-                endPage = totalPages;
-            }
-
-            // 当前页小于10, 则显示10以内的页码
-            if (currentPage == 0) {
-                startPage = 1L;
-                endPage   = 10L;
-            }
-
-            // 分开显示第一页
-            if (currentPage >= 10) {
-                html.append("<li><a href="+buildHref(1L)+">1</a></li>");
+            if ((currentPage - 1) < 4) {
+                // < 1 2 3 4 5 ... 188 >
+                startPage = 2L;
+                endPage   = 5L;
+                for (Long i=startPage; i<=endPage; i++) {
+                    buildPage(html, i);
+                }
                 html.append("<li class=\"disabled\"><span>...</span></li>");
-            }
 
-            // 页码中间部分
-            for (long i=startPage; i<=endPage; i++) {
-                String active = (i == currentPage) ? " class=\"active\"" : "";
-                html.append("<li"+active+"><a href="+buildHref(i)+">"+i+"</a></li>");
-            }
-
-            // 分开显示最后一页
-            long temp = totalPages % 10;
-            long displayLastPageNum = totalPages - temp;
-            if (temp == 0) {
-                displayLastPageNum = totalPages - 10;
-            }
-            if (currentPage < displayLastPageNum) {
+            } else if ((totalPages - currentPage) < 4) {
+                // < 1 ... 183 184 185 186 187 188 >
                 html.append("<li class=\"disabled\"><span>...</span></li>");
-                html.append("<li><a href="+buildHref(totalPages)+">"+totalPages+"</a></li>");
+                startPage = totalPages - 5L;
+                endPage   = totalPages;
+                for (Long i=startPage; i<endPage; i++) {
+                    buildPage(html, i);
+                }
+
+            } else {
+                // < 1 ... 52 53 54 55 56 57 58 ... 188 >
+                startPage = currentPage - 3L;
+                endPage   = currentPage + 4L;
+                if (startPage > 2L) {
+                    html.append("<li class=\"disabled\"><span>...</span></li>");
+                }
+                for (Long i=startPage; i<endPage; i++) {
+                    buildPage(html, i);
+                }
+                if (endPage < totalPages) {
+                    html.append("<li class=\"disabled\"><span>...</span></li>");
+                }
             }
 
-        // less pages
         } else {
-            for (long i=1L; i<=totalPages; i++) {
-                String active = (i == currentPage) ? " class=\"active\"" : "";
-                html.append("<li"+active+"><a href="+buildHref(i)+">"+i+"</a></li>");
+            // < 1 2 3 4 5 6 7 >
+            if (totalPages > 1) {
+                for (long i=2L; i<totalPages; i++) {
+                    buildPage(html, i);
+                }
             }
         }
 
         // Last page
-        if (currentPage == totalPages) {
-            html.append("<li class=\"disabled\"><span>&raquo;</span></li>");
-        } else {
-            html.append("<li><a href="+buildHref(totalPages)+"><span>&raquo;</span></a></li>");
+        if (totalPages > 1) {
+            buildPage(html, totalPages);
         }
 
         html.append("</ul>");
@@ -157,32 +150,45 @@ public class PagingTag extends AbstractTag {
     }
 
     /**
+     * Build page link
+     * @param html HTML Container
+     * @param buildIndex build page index
+     * @param pageIndex current page index
+     * @param isJSCall js call
+     * @param url URL
+     * @param paramChar parameter chars
+     */
+    private final void buildPage(StringBuilder html, Long buildIndex) {
+        String active = (buildIndex == currentPage) ? " class=\"active\"" : "";
+        html.append("<li"+active+"><a href="+buildHref(buildIndex)+">"+buildIndex+"</a></li>");
+    }
+
+    /**
      * Build URL
      * @return URL
      */
     private final String buildHref(long pageIndex) {
         String contextPath = super.getServletContext().getContextPath();
-
         if (linkUrl == null || "".equals(linkUrl.trim())) {
             return contextPath;
         }
-        linkUrl = contextPath + linkUrl;
+        String url = contextPath + linkUrl;
 
         StringBuilder hrefBuilder = new StringBuilder();
         hrefBuilder.append("\"");
 
-        boolean isJSCall = (linkUrl.indexOf("javascript:") != -1);
+        boolean isJSCall = (url.indexOf("javascript:") != -1);
         if (isJSCall) {
             hrefBuilder.append("javascript:void(0);\" onclick=\"");
-            if (linkUrl.indexOf("?page?") >= 0) {
-                hrefBuilder.append(linkUrl.replace("?page?", String.valueOf(pageIndex)));
+            if (url.indexOf("?page?") >= 0) {
+                hrefBuilder.append(url.replace("?page?", String.valueOf(pageIndex)));
             } else {
-                hrefBuilder.append(linkUrl);
+                hrefBuilder.append(url);
             }
 
         } else {
-            String paramChar = (linkUrl.indexOf("?") >= 0) ? "&" : "?";
-            hrefBuilder.append(linkUrl).append(paramChar).append(page).append("=").append(pageIndex);
+            String paramChar = (url.indexOf("?") >= 0) ? "&" : "?";
+            hrefBuilder.append(url).append(paramChar).append(page).append("=").append(pageIndex);
         }
         hrefBuilder.append("\"");
 

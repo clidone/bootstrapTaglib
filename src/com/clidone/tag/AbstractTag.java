@@ -480,6 +480,16 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
     }
 
     /**
+     * Get request root URL
+     * @return request root URL
+     */
+    protected String getURL() {
+        ServletContext servletContext = super.pageContext.getServletContext();
+        ServletRequest request = super.pageContext.getRequest();
+        return request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+servletContext.getContextPath();
+    }
+
+    /**
      * Get ServletRequest
      * @return ServletRequest
      */
