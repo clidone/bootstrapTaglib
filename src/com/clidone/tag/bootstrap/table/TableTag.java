@@ -274,6 +274,7 @@ public class TableTag extends AbstractTag {
         if (noRecordContent != null) {
             int colspan = (columns != null) ? columns.size() : 1;
             addBeforeContent("<tr><td colspan=\""+colspan+"\">"+noRecordContent+"</td></tr>");
+            noRecordContent = null;
         }
 
         // footer
