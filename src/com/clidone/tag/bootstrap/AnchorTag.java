@@ -36,6 +36,12 @@ public class AnchorTag extends AbstractTag {
         this.iconOnly = iconOnly;
     }
 
+    // confirm
+    protected String confirm = null;
+    public void setConfirm(String confirm) {
+        this.confirm = confirm;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -49,7 +55,14 @@ public class AnchorTag extends AbstractTag {
         setTagName("a");
 
         String contextPath = super.getServletContext().getContextPath();
-        String urlValue = ValueUtils.isEmpty(url) ? "javascript:void(0);" : contextPath+url;
+        String urlValue = null;
+        if (ValueUtils.isEmpty(url)) {
+            urlValue = "javascript:void(0);";
+        } else if (!ValueUtils.isEmpty(confirm)) {
+            urlValue = "javascript:confirmIt('"+contextPath+url+"','"+confirm+"');";
+        } else {
+            urlValue = contextPath + url;
+        }
         addAttribute("href", urlValue);
 
         String iconHTML = ValueUtils.isEmpty(icon) ? "" : renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
