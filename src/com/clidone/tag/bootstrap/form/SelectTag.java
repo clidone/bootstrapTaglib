@@ -116,6 +116,10 @@ public class SelectTag extends AbstractFormFieldTag {
             addAttribute("id",   fieldId);
             addAttribute("name", name);
 
+            if (size != null) {
+                addClass("input-"+size);
+            }
+
             if (disabled != null && disabled.booleanValue()) {
                 addAttribute("disabled", "disabled");
             }

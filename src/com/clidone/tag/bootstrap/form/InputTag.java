@@ -75,6 +75,9 @@ public class InputTag extends AbstractFormFieldTag {
                 if (value != null) {
                     addAttribute("value", String.valueOf(value));
                 }
+                if (size != null) {
+                    addClass("input-"+size);
+                }
                 if (readonly != null && readonly.booleanValue()) {
                     addAttribute("readonly", "readonly");
                 }
