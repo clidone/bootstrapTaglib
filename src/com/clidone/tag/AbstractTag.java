@@ -43,6 +43,9 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
     // Icon prefix
     protected String iconPrefix = null;
 
+    // Icon version
+    protected String iconVersion = null;
+
     // **********************************************************************************
     //
     // Tag attributes
@@ -260,6 +263,12 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
         iconPrefix = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
         if (ValueUtils.isEmpty(iconPrefix)) {
             iconPrefix = "";
+        }
+
+        // get icon version
+        iconVersion = (String) servletContext.getAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_VERSION_KEY);
+        if (ValueUtils.isEmpty(iconVersion)) {
+            iconVersion = "4";
         }
 
         tagHTML = new StringBuilder();
@@ -506,7 +515,11 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
     protected String renderIcon(String icon, boolean noSpace) {
         String iconHTML = null;
         if (BootstrapConfigConst.ICON_FONTAWESOME.equals(iconPrefix)) {
-            iconHTML = "<i class=\"fa fa-"+icon+"\"></i>";
+            if ("5".equals(iconVersion)) {
+                iconHTML = "<i class=\"fal fa-"+icon+"\"></i>";
+            } else {
+                iconHTML = "<i class=\"fa fa-"+icon+"\"></i>";
+            }
 
         } else if (BootstrapConfigConst.ICON_GLYPHICON.equals(iconPrefix)) {
             iconHTML = "<span class=\"glyphicon glyphicon-"+icon+"\"></span>";

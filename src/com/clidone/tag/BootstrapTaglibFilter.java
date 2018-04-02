@@ -27,6 +27,7 @@ public class BootstrapTaglibFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         String tagVersion     = filterConfig.getInitParameter("version");
         String tagIcon        = filterConfig.getInitParameter("icon");
+        String tagIconVersion = filterConfig.getInitParameter("iconVersion");
         String tagDeviceWidth = filterConfig.getInitParameter("deviceWidth");
         String tagConfig      = filterConfig.getInitParameter("configLocation");
 
@@ -51,6 +52,9 @@ public class BootstrapTaglibFilter implements Filter {
                 }
                 if (tagIcon == null) {
                     tagIcon = properties.getProperty(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY);
+                }
+                if (tagIconVersion == null) {
+                    tagIconVersion = properties.getProperty(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_VERSION_KEY);
                 }
                 if (tagDeviceWidth == null) {
                     tagDeviceWidth = properties.getProperty(BootstrapConfigConst.BOOTSTRAP_TAGLIB_DEVICE_WIDTH_KEY);;

@@ -17,6 +17,11 @@ public class BootstrapConfigConst {
     public static final String BOOTSTRAP_TAGLIB_ICON_KEY = "bootstrap.taglib.icon";
 
     /**
+     * Define taglib using icon version
+     */
+    public static final String BOOTSTRAP_TAGLIB_ICON_VERSION_KEY = "bootstrap.taglib.icon.version";
+
+    /**
      * Define taglib using device width parameter name
      */
     public static final String BOOTSTRAP_TAGLIB_DEVICE_WIDTH_KEY = "bootstrap.taglib.device.width";
