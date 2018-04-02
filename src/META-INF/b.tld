@@ -749,6 +749,7 @@
             [hasDefault]: true, false;
             [defaultValue]: (default '');
             [defaultText]: (default '');
+            [multiple]: true, false;
         </description>
         <name>select</name>
         <tag-class>com.clidone.tag.bootstrap.form.SelectTag</tag-class>
@@ -778,6 +779,7 @@
         <attribute> <name>hasDefault</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>defaultValue</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>defaultText</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>multiple</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 

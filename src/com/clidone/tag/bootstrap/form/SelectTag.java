@@ -56,6 +56,12 @@ public class SelectTag extends AbstractFormFieldTag {
         this.defaultText = defaultText;
     }
 
+    // multiple
+    protected Boolean multiple = false;
+    public void setMultiple(Boolean multiple) {
+        this.multiple = multiple;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -120,6 +126,10 @@ public class SelectTag extends AbstractFormFieldTag {
                 addClass("input-"+size);
             }
 
+            if (multiple != null && multiple.booleanValue()) {
+                addAttribute("multiple", "multiple");
+            }
+
             if (disabled != null && disabled.booleanValue()) {
                 addAttribute("disabled", "disabled");
             }
@@ -182,8 +192,19 @@ public class SelectTag extends AbstractFormFieldTag {
     private boolean isChcked(String optionValue) {
         boolean checked = false;
 
-        if (value != null) {
-            checked = String.valueOf(value).equals(optionValue);
+        if (multiple != null && multiple.booleanValue()) {
+            String[] values = String.valueOf(value).split(",");
+            for (int i=0,len=values.length; i<len; i++) {
+                if (values[i].trim().equals(optionValue)) {
+                    checked = true;
+                    break;
+                }
+            }
+
+        } else {
+            if (value != null) {
+                checked = String.valueOf(value).equals(optionValue);
+            }
         }
 
         return checked;
