@@ -100,6 +100,7 @@
             [url]: ...;
             [icon]: ...;
             [iconOnly]: true, false;
+            [cache]: true, false;
             [confirm]: ...;
         </description>
         <name>a</name>
@@ -108,6 +109,7 @@
         <attribute> <name>url</name>      <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>cache</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>confirm</name>  <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>

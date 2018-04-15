@@ -42,6 +42,12 @@ public class AnchorTag extends AbstractTag {
         this.confirm = confirm;
     }
 
+    // cache
+    protected Boolean cache = new Boolean(false);
+    public void setCache(Boolean cache) {
+        this.cache = cache;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -56,6 +62,14 @@ public class AnchorTag extends AbstractTag {
 
         String contextPath = super.getServletContext().getContextPath();
         String urlValue = null;
+        if (cache == Boolean.TRUE && !ValueUtils.isEmpty(url)) {
+            String timestamp = "_no_cache="+String.valueOf(System.currentTimeMillis());
+            if (url.indexOf("?") >= 0) {
+                url += ("&" + timestamp);
+            } else {
+                url += ("?" + timestamp);
+            }
+        }
         if (ValueUtils.isEmpty(url)) {
             urlValue = "javascript:void(0);";
         } else if (!ValueUtils.isEmpty(confirm)) {
