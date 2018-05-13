@@ -81,6 +81,7 @@ public class BootstrapTaglibFilter implements Filter {
         // Cache configurations in ServletContext
         filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_VERSION_KEY,      tagVersion);
         filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_KEY,         tagIcon);
+        filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_ICON_VERSION_KEY, tagIconVersion);
         filterConfig.getServletContext().setAttribute(BootstrapConfigConst.BOOTSTRAP_TAGLIB_DEVICE_WIDTH_KEY, tagDeviceWidth);
     }
 
