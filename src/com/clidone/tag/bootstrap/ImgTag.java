@@ -18,6 +18,12 @@ public class ImgTag extends AbstractTag {
     // Tag attributes
     //
     // **********************************************************************************
+    // src
+    protected String src = null;
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
     // responsive
     protected Boolean responsive = null;
     public void setResponsive(Boolean responsive) {
@@ -47,6 +53,10 @@ public class ImgTag extends AbstractTag {
     @Override
     protected String doEndTagV2() throws JspException {
         setTagName("img");
+
+        String contextPath = super.getServletContext().getContextPath();
+        String urlValue = contextPath + src;
+        addAttribute("src", urlValue);
 
         if (responsive != null && responsive.booleanValue()) {
             addClass("img-responsive");

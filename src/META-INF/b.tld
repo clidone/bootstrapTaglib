@@ -163,6 +163,7 @@
     <tag>
         <description>
             Img Tag
+            [src]: ...;
             [responsive]: true, false;
             [center]: true, false;
             [theme]: rounded, circle, thumbnail;
@@ -170,6 +171,7 @@
         <name>img</name>
         <tag-class>com.clidone.tag.bootstrap.ImgTag</tag-class>
         <body-content>JSP</body-content>
+        <attribute> <name>src</name>        <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>responsive</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>center</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>theme</name>      <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
