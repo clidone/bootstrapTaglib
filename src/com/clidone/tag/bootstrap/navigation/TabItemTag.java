@@ -74,6 +74,12 @@ public class TabItemTag extends AbstractTag {
         this.order = order;
     }
 
+    // badge
+    protected String badge = null;
+    public void setBadge(String badge) {
+        this.badge = badge;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -100,6 +106,7 @@ public class TabItemTag extends AbstractTag {
             itemData.setUrl(url);
             itemData.setOrder(order);
             itemData.setActive(isActive);
+            itemData.setBadge(badge);
             tabTag.addItem(itemData);
         }
 

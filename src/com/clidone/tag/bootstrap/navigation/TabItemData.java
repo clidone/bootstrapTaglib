@@ -68,4 +68,13 @@ class TabItemData {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    // badge
+    private String badge = null;
+    public String getBadge() {
+        return badge;
+    }
+    public void setBadge(String badge) {
+        this.badge = badge;
+    }
 }

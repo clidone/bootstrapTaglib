@@ -1113,6 +1113,7 @@
             [active]: true, false;
             [disabled]: true, false;
             [order]: 0, 1, 2...;
+            [badge]: ...;
         </description>
         <name>tabItem</name>
         <tag-class>com.clidone.tag.bootstrap.navigation.TabItemTag</tag-class>
@@ -1125,6 +1126,7 @@
         <attribute> <name>active</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>disabled</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>order</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>badge</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 
