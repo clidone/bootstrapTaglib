@@ -45,6 +45,18 @@ public class ChooseTag extends AbstractTag {
         this.varValue = varValue;
     }
 
+    // matchKey
+    protected String matchKey = "key";
+    public void setMatchKey(String matchKey) {
+        this.matchKey = matchKey;
+    }
+
+    // matchValue
+    protected String matchValue = "value";
+    public void setMatchValue(String matchValue) {
+        this.matchValue = matchValue;
+    }
+
     // noMatch
     protected String noMatch = null;
     public void setNoMatch(String noMatch) {
@@ -61,19 +73,24 @@ public class ChooseTag extends AbstractTag {
      */
     @Override
     protected int doStartTagV2() throws JspException {
-        // set noMatch value attribute as default
-        if (noMatch == null) {
-            noMatch = String.valueOf(value);
+        if (ValueUtils.isEmpty(value)) {
+            value = "";
         }
 
-        String matchKey   = String.valueOf(value);
-        String matchValue = noMatch;
+        // set noMatch value attribute as default
+        if (noMatch == null) {
+            noMatch = value;
+        }
+
+        String foundKey   = value;
+        String foundValue = noMatch;
 
         if (items != null) {
             if (items instanceof Map<?, ?>) {
                 Map<?, ?> data = (Map<?, ?>) items;
-                if (data.containsKey(value)) {
-                    matchValue = String.valueOf(data.get(value));
+                if (data.containsKey(foundKey)) {
+                    Object foundObject = data.get(foundKey);
+                    foundValue = (foundObject == null) ? "" : foundObject.toString();
                 }
 
             } else if (items instanceof List<?>) {
@@ -81,8 +98,12 @@ public class ChooseTag extends AbstractTag {
                 Object item = null;
                 for (int i=0,len=data.size(); i<len; i++) {
                     item = data.get(i);
-                    if (value.equals(String.valueOf(ValueUtils.get(item, "key")))) {
-                        matchValue = String.valueOf(ValueUtils.get(item, "value"));
+                    Object itemObject = ValueUtils.get(item, varKey);
+                    String itemKey = (itemObject == null) ? "" : itemObject.toString();
+
+                    if (foundKey.equals(itemKey)) {
+                        Object foundObject = ValueUtils.get(item, varValue);
+                        foundValue = (foundObject == null) ? "" : foundObject.toString();
                         break;
                     }
                 }
@@ -92,8 +113,8 @@ public class ChooseTag extends AbstractTag {
             }
         }
 
-        pageContext.setAttribute(varKey,   matchKey);
-        pageContext.setAttribute(varValue, matchValue);
+        pageContext.setAttribute(matchKey,   foundKey);
+        pageContext.setAttribute(matchValue, foundValue);
 
         return EVAL_BODY_BUFFERED;
     }
