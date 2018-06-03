@@ -879,7 +879,7 @@
             [items]: (list);
             [valueKey]: ...;
             [textKey]: ...;
-            [values]: ...;
+            [keys]: ...;
             [texts]: ...;
         </description>
         <name>checkboxList</name>

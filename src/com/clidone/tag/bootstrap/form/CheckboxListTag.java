@@ -193,7 +193,7 @@ public class CheckboxListTag extends AbstractFormFieldTag {
         String[] valueArray = this.values.split(",");
         String[] textArray  = this.texts.split(",");
         if (valueArray.length != textArray.length) {
-            throw new JspException("values and texts (length) is NOT equal.");
+            throw new JspException(this.values+" and "+this.texts+" (length) is NOT equal.");
         }
 
         this.items = new ArrayList<KeyValue>();
