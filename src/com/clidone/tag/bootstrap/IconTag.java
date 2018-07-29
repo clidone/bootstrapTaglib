@@ -29,6 +29,12 @@ public class IconTag extends AbstractTag {
         this.iconOnly = iconOnly;
     }
 
+    // spin
+    protected Boolean spin = new Boolean(false);
+    public void setSpin(Boolean spin) {
+        this.spin = spin;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -39,7 +45,7 @@ public class IconTag extends AbstractTag {
      */
     @Override
     protected String doEndTagV2() throws JspException {
-        String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
+        String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()), spin);
         addBeforeContent(iconHTML);
 
         return render();

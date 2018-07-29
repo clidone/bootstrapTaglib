@@ -151,12 +151,14 @@
             Icon Tag
             [icon]: ...;
             [iconOnly]: true, false;
+            [spin]: true, false;
         </description>
         <name>icon</name>
         <tag-class>com.clidone.tag.bootstrap.IconTag</tag-class>
         <body-content>JSP</body-content>
         <attribute> <name>icon</name>     <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>spin</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 

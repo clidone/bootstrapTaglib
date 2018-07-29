@@ -513,12 +513,24 @@ public abstract class AbstractTag extends BodyTagSupport implements DynamicAttri
      * @return icon HTML
      */
     protected String renderIcon(String icon, boolean noSpace) {
+        return renderIcon(icon, noSpace, false);
+    }
+
+    /**
+     * Render icon HTML
+     * @param icon iconMark
+     * @param noSpace Has space after icon or not
+     * @param spin
+     * @return icon HTML
+     */
+    protected String renderIcon(String icon, boolean noSpace, boolean spin) {
         String iconHTML = null;
         if (BootstrapConfigConst.ICON_FONTAWESOME.equals(iconPrefix)) {
+            String spinClass = spin ? " fa-spin" : "";
             if ("5".equals(iconVersion)) {
-                iconHTML = "<i class=\"fal fa-"+icon+"\"></i>";
+                iconHTML = "<i class=\"fal fa-"+icon+spinClass+"\"></i>";
             } else {
-                iconHTML = "<i class=\"fa fa-"+icon+"\"></i>";
+                iconHTML = "<i class=\"fa fa-"+icon+spinClass+"\"></i>";
             }
 
         } else if (BootstrapConfigConst.ICON_GLYPHICON.equals(iconPrefix)) {
