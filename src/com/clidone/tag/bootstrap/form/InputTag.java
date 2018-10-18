@@ -62,6 +62,8 @@ public class InputTag extends AbstractFormFieldTag {
             if (formStatic || fieldStatic) {
                 setTagName("p");
                 addClass("form-control-static");
+                addAttribute("id",   fieldId);
+                addAttribute("name", name);
                 if (value != null) {
                     addBeforeContent(String.valueOf(value));
                 }
