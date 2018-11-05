@@ -1063,7 +1063,7 @@
             [active]: true, false;
         </description>
         <name>breadcrumbLink</name>
-        <tag-class>com.clidone.tag.bootstrap.BreadcrumbLinkTag</tag-class>
+        <tag-class>com.clidone.tag.bootstrap.navigation.BreadcrumbLinkTag</tag-class>
         <body-content>JSP</body-content>
         <attribute> <name>url</name>    <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>active</name> <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
