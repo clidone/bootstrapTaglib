@@ -22,7 +22,7 @@ public final class ValueUtils {
      * @return true: empty, false: not empty
      */
     public final static boolean isEmpty(String value) {
-        return (value == null || value.length() == 0);
+        return (value == null || value.length() < 1);
     }
 
     /**
