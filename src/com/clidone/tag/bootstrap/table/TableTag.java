@@ -257,7 +257,7 @@ public class TableTag extends AbstractTag {
             if (columns != null) {
                 addBeforeContent("<tr>");
                 for (int i=0,len=columns.size(); i<len; i++) {
-                    addBeforeContent("<th>");
+                    addBeforeContent("<th class=\""+columns.get(i).getHeaderClass()+"\">");
                     addBeforeContent(columns.get(i).getLabel());
                     addBeforeContent("</th>");
                 }
@@ -283,7 +283,7 @@ public class TableTag extends AbstractTag {
             if (columns != null) {
                 addAfterContent("<tr>");
                 for (int i=0,len=columns.size(); i<len; i++) {
-                    addAfterContent("<th>");
+                    addAfterContent("<th class=\""+columns.get(i).getFooterClass()+"\">");
                     addAfterContent(columns.get(i).getLabel());
                     addAfterContent("</th>");
                 }
