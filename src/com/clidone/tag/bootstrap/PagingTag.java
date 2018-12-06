@@ -172,13 +172,13 @@ public class PagingTag extends AbstractTag {
         if (linkUrl == null || "".equals(linkUrl.trim())) {
             return contextPath;
         }
-        String url = contextPath + linkUrl;
 
         StringBuilder hrefBuilder = new StringBuilder();
         hrefBuilder.append("\"");
 
-        boolean isJSCall = (url.indexOf("javascript:") != -1);
+        boolean isJSCall = (linkUrl.indexOf("javascript:") != -1);
         if (isJSCall) {
+            String url = linkUrl;
             hrefBuilder.append("javascript:void(0);\" onclick=\"");
             if (url.indexOf("?page?") >= 0) {
                 hrefBuilder.append(url.replace("?page?", String.valueOf(pageIndex)));
@@ -187,6 +187,7 @@ public class PagingTag extends AbstractTag {
             }
 
         } else {
+            String url = contextPath + linkUrl;
             String paramChar = (url.indexOf("?") >= 0) ? "&" : "?";
             hrefBuilder.append(url).append(paramChar).append(page).append("=").append(pageIndex);
         }
