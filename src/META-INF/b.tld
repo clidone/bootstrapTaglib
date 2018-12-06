@@ -117,6 +117,7 @@
     <tag>
         <description>
             Badge Tag
+            [theme]: default, primary, success, info, warning, danger;
             [text]: ...;
             [icon]: ...;
             [iconOnly]: true, false;
@@ -124,6 +125,7 @@
         <name>badge</name>
         <tag-class>com.clidone.tag.bootstrap.BadgeTag</tag-class>
         <body-content>JSP</body-content>
+        <attribute> <name>theme</name>    <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>text</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>icon</name>     <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <attribute> <name>iconOnly</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
@@ -1177,11 +1179,20 @@
     </tag>
 
     <tag>
-        <description>Table column Tag</description>
+        <description>
+            Table column Tag
+            [label]: ...;
+            [headerClass]: ...;
+            [bodyClass]: ...;
+            [footerClass]: ...;
+        </description>
         <name>tableColumn</name>
         <tag-class>com.clidone.tag.bootstrap.table.TableColumnTag</tag-class>
         <body-content>JSP</body-content>
-        <attribute> <name>label</name> <required>true</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>label</name>       <required>true</required>  <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>headerClass</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>bodyClass</name>   <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
+        <attribute> <name>footerClass</name> <required>false</required> <rtexprvalue>true</rtexprvalue> </attribute>
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
 

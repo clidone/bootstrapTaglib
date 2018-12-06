@@ -36,6 +36,12 @@ public class BadgeTag extends AbstractTag {
         this.iconOnly = iconOnly;
     }
 
+    // theme
+    protected String theme = "default";
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
     // **********************************************************************************
     //
     // Tag methods
@@ -48,7 +54,10 @@ public class BadgeTag extends AbstractTag {
     protected String doEndTagV2() throws JspException {
         setTagName("span");
 
-        addClass("badge");
+        addClass("label");
+        if (!ValueUtils.isEmpty(theme)) {
+            addClass("label-" + theme.trim());
+        }
 
         if (!ValueUtils.isEmpty(icon)) {
             String iconHTML = renderIcon(icon, (iconOnly != null && iconOnly.booleanValue()));
