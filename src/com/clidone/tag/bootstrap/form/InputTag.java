@@ -1,7 +1,5 @@
 package com.clidone.tag.bootstrap.form;
 
-import java.util.UUID;
-
 import javax.servlet.jsp.JspException;
 
 import com.clidone.tag.ValueUtils;
@@ -39,9 +37,6 @@ public class InputTag extends AbstractFormFieldTag {
         boolean formStatic  = (formTag != null && formTag.getStatic() != null && formTag.getStatic().booleanValue());
         boolean fieldStatic = (staticFlag != null && staticFlag.booleanValue());
 
-        if (ValueUtils.isEmpty(fieldId)) {
-            fieldId = UUID.randomUUID().toString();
-        }
         if (ValueUtils.isEmpty(name)) {
             name = "";
         }
@@ -49,7 +44,6 @@ public class InputTag extends AbstractFormFieldTag {
         if ("hidden".equals(type)) {
             setTagName("input");
             addAttribute("type", type);
-            addAttribute("id",   fieldId);
             addAttribute("name", name);
             if (value != null) {
                 addAttribute("value", String.valueOf(value));
@@ -62,7 +56,6 @@ public class InputTag extends AbstractFormFieldTag {
             if (formStatic || fieldStatic) {
                 setTagName("p");
                 addClass("form-control-static");
-                addAttribute("id",   fieldId);
                 addAttribute("name", name);
                 if (value != null) {
                     addBeforeContent(String.valueOf(value));
@@ -72,7 +65,6 @@ public class InputTag extends AbstractFormFieldTag {
                 setTagName("input");
                 addClass("form-control");
                 addAttribute("type", type);
-                addAttribute("id",   fieldId);
                 addAttribute("name", name);
                 if (value != null) {
                     addAttribute("value", String.valueOf(value));

@@ -1,7 +1,6 @@
 package com.clidone.tag.bootstrap.form;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.jsp.JspException;
 
@@ -110,16 +109,12 @@ public class SelectTag extends AbstractFormFieldTag {
             }
 
         } else {
-            if (ValueUtils.isEmpty(fieldId)) {
-                fieldId = UUID.randomUUID().toString();
-            }
             if (ValueUtils.isEmpty(name)) {
                 name = "";
             }
 
             setTagName("select");
             addClass("form-control");
-            addAttribute("id",   fieldId);
             addAttribute("name", name);
 
             if (size != null) {

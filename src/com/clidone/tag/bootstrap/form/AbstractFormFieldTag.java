@@ -22,6 +22,7 @@ abstract class AbstractFormFieldTag extends AbstractTag {
     // **********************************************************************************
     // id
     protected String fieldId = null;
+    @Override
     public void setId(String id) {
         super.setId(id);
         this.fieldId = id;
@@ -177,10 +178,8 @@ abstract class AbstractFormFieldTag extends AbstractTag {
     protected void renderWrap() throws JspException {
         addBeforeWrap("<div class=\"form-group\">");
 
-        String fieldId = getId();
         if (ValueUtils.isEmpty(fieldId)) {
-            fieldId = UUID.randomUUID().toString();
-            setId(fieldId);
+            setId(UUID.randomUUID().toString());
         }
         addAttribute("id", fieldId);
 
@@ -272,6 +271,9 @@ abstract class AbstractFormFieldTag extends AbstractTag {
         }
 
         addAfterWrap("</div>");
+
+        // TODO: Unkown, why this field will still exist in next FieldTag
+        fieldId = null;
     }
 
     /**
